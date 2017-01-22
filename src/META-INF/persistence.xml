@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="creches">
+	<persistence-unit name="creche_PU">
+	
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>java:comp/env/jdbc/creche</jta-data-source>
+		<class>model.Contact</class>
+		<class>model.Contactenfant</class>
+		<class>model.ContactenfantPK</class>
+		<class>model.Enfant</class>
+		<class>model.Enfantmedicament</class>
+		<class>model.EnfantmedicamentPK</class>
+		<class>model.Enfantsection</class>
+		<class>model.EnfantsectionPK</class>
+		<class>model.Local</class>
+		<class>model.LocalPK</class>
+		<class>model.Localmateriel</class>
+		<class>model.LocalmaterielPK</class>
+		<class>model.Materiel</class>
+		<class>model.Medicament</class>
+		<class>model.Medicamentsoin</class>
+		<class>model.MedicamentsoinPK</class>
+		<class>model.Personnel</class>
+		<class>model.PersonnelPK</class>
+		<class>model.Role</class>
+		<class>model.Section</class>
+		<class>model.Sectionlocal</class>
+		<class>model.SectionlocalPK</class>
+		<class>model.Soin</class>
+		<class>model.Soinsenfant</class>
+		<class>model.SoinsenfantPK</class>
+		<class>model.Typelocal</class>
+		<class>model.Typesoin</class>
+
+	
+		<properties>
+			<property name="eclipselink.ddl-generation.output-mode" value="database"/>
+			<property name="eclipselink.ddl-generation" value="create-tables"/>				
+		</properties>	
 	</persistence-unit>
 </persistence>

@@ -1,4 +1,4 @@
-<Context path="/creches" docBase="creches" reloadable="true" crossContext="true">
+<Context path="/creche" docBase="creche" reloadable="true" crossContext="true">
 
 <!-- maxActive: Maximum number of dB connections in pool. Make sure you
 
@@ -42,11 +42,11 @@ com.mysql.jdbc.Driver.
 
 -->
 
-<Resource name="jdbc/creches" auth="Container" type="javax.sql.DataSource"
+<Resource name="jdbc/creche" auth="Container" type="javax.sql.DataSource"
 
 maxActive="100" maxIdle="30" maxWait="10000" driverClassName="com.mysql.jdbc.Driver"
 
-username="root" password="" url="jdbc:mysql://localhost:3306/creches?autoReconnect=true"/>
+username="root" password="" url="jdbc:mysql://localhost:3306/creche?autoReconnect=true"/>
 
 </Context>
 
