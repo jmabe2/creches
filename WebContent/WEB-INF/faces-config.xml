@@ -6,7 +6,7 @@
 
 	<application>
 		<resource-bundle>
-			<base-name>com.creche.ressources.messages</base-name>
+			<base-name>com.creche.ressources.messages.messagesEN</base-name>
 			<var>bundle</var>
 		</resource-bundle>
 	</application>
