@@ -1,8 +1,9 @@
-package model;
+package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -14,8 +15,8 @@ import java.util.Date;
 public class Soinsenfant implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private SoinsenfantPK id;
+	@Id
+	private int soinsEnfantID;
 
 	private byte actif;
 
@@ -23,6 +24,10 @@ public class Soinsenfant implements Serializable {
 	private Date dateSoins;
 
 	private String remarque;
+
+	//bi-directional many-to-one association to Personnel
+	@OneToMany(mappedBy="soinsenfant")
+	private List<Personnel> personnels;
 
 	//bi-directional many-to-one association to Enfant
 	@ManyToOne
@@ -37,12 +42,12 @@ public class Soinsenfant implements Serializable {
 	public Soinsenfant() {
 	}
 
-	public SoinsenfantPK getId() {
-		return this.id;
+	public int getSoinsEnfantID() {
+		return this.soinsEnfantID;
 	}
 
-	public void setId(SoinsenfantPK id) {
-		this.id = id;
+	public void setSoinsEnfantID(int soinsEnfantID) {
+		this.soinsEnfantID = soinsEnfantID;
 	}
 
 	public byte getActif() {
@@ -67,6 +72,28 @@ public class Soinsenfant implements Serializable {
 
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
+	}
+
+	public List<Personnel> getPersonnels() {
+		return this.personnels;
+	}
+
+	public void setPersonnels(List<Personnel> personnels) {
+		this.personnels = personnels;
+	}
+
+	public Personnel addPersonnel(Personnel personnel) {
+		getPersonnels().add(personnel);
+		personnel.setSoinsenfant(this);
+
+		return personnel;
+	}
+
+	public Personnel removePersonnel(Personnel personnel) {
+		getPersonnels().remove(personnel);
+		personnel.setSoinsenfant(null);
+
+		return personnel;
 	}
 
 	public Enfant getEnfant() {

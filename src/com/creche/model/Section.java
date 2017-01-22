@@ -1,4 +1,4 @@
-package model;
+package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -26,6 +26,10 @@ public class Section implements Serializable {
 	//bi-directional many-to-one association to Enfantsection
 	@OneToMany(mappedBy="section")
 	private List<Enfantsection> enfantsections;
+
+	//bi-directional many-to-one association to Sectionlocal
+	@OneToMany(mappedBy="section")
+	private List<Sectionlocal> sectionlocals;
 
 	public Section() {
 	}
@@ -82,6 +86,28 @@ public class Section implements Serializable {
 		enfantsection.setSection(null);
 
 		return enfantsection;
+	}
+
+	public List<Sectionlocal> getSectionlocals() {
+		return this.sectionlocals;
+	}
+
+	public void setSectionlocals(List<Sectionlocal> sectionlocals) {
+		this.sectionlocals = sectionlocals;
+	}
+
+	public Sectionlocal addSectionlocal(Sectionlocal sectionlocal) {
+		getSectionlocals().add(sectionlocal);
+		sectionlocal.setSection(this);
+
+		return sectionlocal;
+	}
+
+	public Sectionlocal removeSectionlocal(Sectionlocal sectionlocal) {
+		getSectionlocals().remove(sectionlocal);
+		sectionlocal.setSection(null);
+
+		return sectionlocal;
 	}
 
 }

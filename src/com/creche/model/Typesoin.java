@@ -1,7 +1,8 @@
-package model;
+package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -24,6 +25,10 @@ public class Typesoin implements Serializable {
 	private String nom;
 
 	private String symptome;
+
+	//bi-directional many-to-one association to Soin
+	@OneToMany(mappedBy="typesoin")
+	private List<Soin> soins;
 
 	public Typesoin() {
 	}
@@ -66,6 +71,28 @@ public class Typesoin implements Serializable {
 
 	public void setSymptome(String symptome) {
 		this.symptome = symptome;
+	}
+
+	public List<Soin> getSoins() {
+		return this.soins;
+	}
+
+	public void setSoins(List<Soin> soins) {
+		this.soins = soins;
+	}
+
+	public Soin addSoin(Soin soin) {
+		getSoins().add(soin);
+		soin.setTypesoin(this);
+
+		return soin;
+	}
+
+	public Soin removeSoin(Soin soin) {
+		getSoins().remove(soin);
+		soin.setTypesoin(null);
+
+		return soin;
 	}
 
 }

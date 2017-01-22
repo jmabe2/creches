@@ -1,4 +1,4 @@
-package model;
+package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -13,8 +13,8 @@ import javax.persistence.*;
 public class Contactenfant implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ContactenfantPK id;
+	@Id
+	private int contactEnfantID;
 
 	private String lienParente;
 
@@ -35,12 +35,12 @@ public class Contactenfant implements Serializable {
 	public Contactenfant() {
 	}
 
-	public ContactenfantPK getId() {
-		return this.id;
+	public int getContactEnfantID() {
+		return this.contactEnfantID;
 	}
 
-	public void setId(ContactenfantPK id) {
-		this.id = id;
+	public void setContactEnfantID(int contactEnfantID) {
+		this.contactEnfantID = contactEnfantID;
 	}
 
 	public String getLienParente() {

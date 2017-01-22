@@ -4,35 +4,26 @@
 	
 	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>java:comp/env/jdbc/creche</jta-data-source>
-		<class>model.Contact</class>
-		<class>model.Contactenfant</class>
-		<class>model.ContactenfantPK</class>
-		<class>model.Enfant</class>
-		<class>model.Enfantmedicament</class>
-		<class>model.EnfantmedicamentPK</class>
-		<class>model.Enfantsection</class>
-		<class>model.EnfantsectionPK</class>
-		<class>model.Local</class>
-		<class>model.LocalPK</class>
-		<class>model.Localmateriel</class>
-		<class>model.LocalmaterielPK</class>
-		<class>model.Materiel</class>
-		<class>model.Medicament</class>
-		<class>model.Medicamentsoin</class>
-		<class>model.MedicamentsoinPK</class>
-		<class>model.Personnel</class>
-		<class>model.PersonnelPK</class>
-		<class>model.Role</class>
-		<class>model.Section</class>
-		<class>model.Sectionlocal</class>
-		<class>model.SectionlocalPK</class>
-		<class>model.Soin</class>
-		<class>model.Soinsenfant</class>
-		<class>model.SoinsenfantPK</class>
-		<class>model.Typelocal</class>
-		<class>model.Typesoin</class>
+		<class>com.creche.model.Contact</class>
+		<class>com.creche.model.Contactenfant</class>
+		<class>com.creche.model.Enfant</class>
+		<class>com.creche.model.Enfantmedicament</class>
+		<class>com.creche.model.Enfantsection</class>
+		<class>com.creche.model.Local</class>
+		<class>com.creche.model.Localmateriel</class>
+		<class>com.creche.model.Materiel</class>
+		<class>com.creche.model.Medicament</class>
+		<class>com.creche.model.Medicamentsoin</class>
+		<class>com.creche.model.Personnel</class>
+		<class>com.creche.model.Role</class>
+		<class>com.creche.model.Section</class>
+		<class>com.creche.model.Sectionlocal</class>
+		<class>com.creche.model.Soin</class>
+		<class>com.creche.model.Soinsenfant</class>
+		<class>com.creche.model.Typelocal</class>
+		<class>com.creche.model.Typesoin</class>
+		
 
-	
 		<properties>
 			<property name="eclipselink.ddl-generation.output-mode" value="database"/>
 			<property name="eclipselink.ddl-generation" value="create-tables"/>				

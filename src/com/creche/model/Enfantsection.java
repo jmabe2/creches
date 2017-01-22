@@ -1,4 +1,4 @@
-package model;
+package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,8 +14,8 @@ import java.util.Date;
 public class Enfantsection implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private EnfantsectionPK id;
+	@Id
+	private int enfantSectionID;
 
 	private byte actif;
 
@@ -42,12 +42,12 @@ public class Enfantsection implements Serializable {
 	public Enfantsection() {
 	}
 
-	public EnfantsectionPK getId() {
-		return this.id;
+	public int getEnfantSectionID() {
+		return this.enfantSectionID;
 	}
 
-	public void setId(EnfantsectionPK id) {
-		this.id = id;
+	public void setEnfantSectionID(int enfantSectionID) {
+		this.enfantSectionID = enfantSectionID;
 	}
 
 	public byte getActif() {

@@ -1,4 +1,4 @@
-package model;
+package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,8 +14,8 @@ import java.util.Date;
 public class Enfantmedicament implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private EnfantmedicamentPK id;
+	@Id
+	private int enfantMedicamentID;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateDebut;
@@ -38,12 +38,12 @@ public class Enfantmedicament implements Serializable {
 	public Enfantmedicament() {
 	}
 
-	public EnfantmedicamentPK getId() {
-		return this.id;
+	public int getEnfantMedicamentID() {
+		return this.enfantMedicamentID;
 	}
 
-	public void setId(EnfantmedicamentPK id) {
-		this.id = id;
+	public void setEnfantMedicamentID(int enfantMedicamentID) {
+		this.enfantMedicamentID = enfantMedicamentID;
 	}
 
 	public Date getDateDebut() {

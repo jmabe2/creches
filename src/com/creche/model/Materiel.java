@@ -1,7 +1,8 @@
-package model;
+package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -21,6 +22,10 @@ public class Materiel implements Serializable {
 	private String nom;
 
 	private String propriete;
+
+	//bi-directional many-to-one association to Localmateriel
+	@OneToMany(mappedBy="materiel")
+	private List<Localmateriel> localmateriels;
 
 	public Materiel() {
 	}
@@ -55,6 +60,28 @@ public class Materiel implements Serializable {
 
 	public void setPropriete(String propriete) {
 		this.propriete = propriete;
+	}
+
+	public List<Localmateriel> getLocalmateriels() {
+		return this.localmateriels;
+	}
+
+	public void setLocalmateriels(List<Localmateriel> localmateriels) {
+		this.localmateriels = localmateriels;
+	}
+
+	public Localmateriel addLocalmateriel(Localmateriel localmateriel) {
+		getLocalmateriels().add(localmateriel);
+		localmateriel.setMateriel(this);
+
+		return localmateriel;
+	}
+
+	public Localmateriel removeLocalmateriel(Localmateriel localmateriel) {
+		getLocalmateriels().remove(localmateriel);
+		localmateriel.setMateriel(null);
+
+		return localmateriel;
 	}
 
 }
