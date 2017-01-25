@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.log4j.Logger;
+
 @ManagedBean
 @SessionScoped
 
@@ -11,8 +13,11 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	static Logger log = Logger.getLogger(User.class);
+
 	private String name;
 	private String password;
+	
 	
 	public String getName() {
 		return name;
@@ -26,5 +31,8 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+	
 
 }
