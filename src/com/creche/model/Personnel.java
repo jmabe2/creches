@@ -3,6 +3,7 @@ package com.creche.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -19,7 +20,7 @@ public class Personnel implements Serializable {
 
 	private byte actif;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date ddn;
 
 	private String login;
@@ -38,9 +39,8 @@ public class Personnel implements Serializable {
 	private Role role;
 
 	//bi-directional many-to-one association to Soinsenfant
-	@ManyToOne
-	@JoinColumn(name="SoinsEnfantID")
-	private Soinsenfant soinsenfant;
+	@OneToMany(mappedBy="personnel")
+	private List<Soinsenfant> soinsenfants;
 
 	public Personnel() {
 	}
@@ -117,12 +117,26 @@ public class Personnel implements Serializable {
 		this.role = role;
 	}
 
-	public Soinsenfant getSoinsenfant() {
-		return this.soinsenfant;
+	public List<Soinsenfant> getSoinsenfants() {
+		return this.soinsenfants;
 	}
 
-	public void setSoinsenfant(Soinsenfant soinsenfant) {
-		this.soinsenfant = soinsenfant;
+	public void setSoinsenfants(List<Soinsenfant> soinsenfants) {
+		this.soinsenfants = soinsenfants;
+	}
+
+	public Soinsenfant addSoinsenfant(Soinsenfant soinsenfant) {
+		getSoinsenfants().add(soinsenfant);
+		soinsenfant.setPersonnel(this);
+
+		return soinsenfant;
+	}
+
+	public Soinsenfant removeSoinsenfant(Soinsenfant soinsenfant) {
+		getSoinsenfants().remove(soinsenfant);
+		soinsenfant.setPersonnel(null);
+
+		return soinsenfant;
 	}
 
 }
