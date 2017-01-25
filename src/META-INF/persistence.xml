@@ -22,6 +22,7 @@
 		<class>com.creche.model.Soinsenfant</class>
 		<class>com.creche.model.Typelocal</class>
 		<class>com.creche.model.Typesoin</class>
+
 		
 
 		<properties>
