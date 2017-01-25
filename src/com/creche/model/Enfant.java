@@ -22,7 +22,7 @@ public class Enfant implements Serializable {
 
 	private String adresse;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date ddn;
 
 	private String nom;
