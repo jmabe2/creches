@@ -11,18 +11,20 @@ import java.util.List;
  */
 @Entity
 @NamedQueries({
+	@NamedQuery(name="Contact.createContact",
+            query="INSERT INTO Contact values e "),
 	  @NamedQuery(name="Contact.findAll",
 	              query="SELECT e FROM Contact e"),
 	  @NamedQuery(name="Contact.findByName",
 	              query="SELECT e FROM Contact e WHERE e.nom = :nom")
-	})
+})
 public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int contactID;
 
-	private byte actif;
+	private boolean actif;
 
 	private int codePostal;
 
@@ -57,11 +59,11 @@ public class Contact implements Serializable {
 		this.contactID = contactID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 

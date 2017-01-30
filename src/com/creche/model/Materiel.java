@@ -27,6 +27,19 @@ public class Materiel implements Serializable {
 	@OneToMany(mappedBy="materiel")
 	private List<Localmateriel> localmateriels;
 
+	//bi-directional many-to-many association to Local
+	@ManyToMany
+	@JoinTable(
+		name="localmateriel"
+		, joinColumns={
+			@JoinColumn(name="MaterielID")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="LocalID")
+			}
+		)
+	private List<Local> locals;
+
 	public Materiel() {
 	}
 
@@ -82,6 +95,14 @@ public class Materiel implements Serializable {
 		localmateriel.setMateriel(null);
 
 		return localmateriel;
+	}
+
+	public List<Local> getLocals() {
+		return this.locals;
+	}
+
+	public void setLocals(List<Local> locals) {
+		this.locals = locals;
 	}
 
 }

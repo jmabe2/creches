@@ -27,6 +27,19 @@ public class Section implements Serializable {
 	@OneToMany(mappedBy="section")
 	private List<Enfantsection> enfantsections;
 
+	//bi-directional many-to-many association to Local
+	@ManyToMany
+	@JoinTable(
+		name="sectionlocal"
+		, joinColumns={
+			@JoinColumn(name="SectionID")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="LocalID")
+			}
+		)
+	private List<Local> locals;
+
 	//bi-directional many-to-one association to Sectionlocal
 	@OneToMany(mappedBy="section")
 	private List<Sectionlocal> sectionlocals;
@@ -86,6 +99,14 @@ public class Section implements Serializable {
 		enfantsection.setSection(null);
 
 		return enfantsection;
+	}
+
+	public List<Local> getLocals() {
+		return this.locals;
+	}
+
+	public void setLocals(List<Local> locals) {
+		this.locals = locals;
 	}
 
 	public List<Sectionlocal> getSectionlocals() {

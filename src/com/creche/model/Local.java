@@ -30,6 +30,14 @@ public class Local implements Serializable {
 	@OneToMany(mappedBy="local")
 	private List<Localmateriel> localmateriels;
 
+	//bi-directional many-to-many association to Materiel
+	@ManyToMany(mappedBy="locals")
+	private List<Materiel> materiels;
+
+	//bi-directional many-to-many association to Section
+	@ManyToMany(mappedBy="locals")
+	private List<Section> sections;
+
 	//bi-directional many-to-one association to Sectionlocal
 	@OneToMany(mappedBy="local")
 	private List<Sectionlocal> sectionlocals;
@@ -93,6 +101,22 @@ public class Local implements Serializable {
 		localmateriel.setLocal(null);
 
 		return localmateriel;
+	}
+
+	public List<Materiel> getMateriels() {
+		return this.materiels;
+	}
+
+	public void setMateriels(List<Materiel> materiels) {
+		this.materiels = materiels;
+	}
+
+	public List<Section> getSections() {
+		return this.sections;
+	}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
 	}
 
 	public List<Sectionlocal> getSectionlocals() {
