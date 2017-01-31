@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.annotation.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+
 
 import com.creche.model.Contact;
 import com.creche.services.ContactService;
 
-@ManagedBean(value = "contactController")
+@Named
 @ViewScoped
 public class ContactController {
 	
