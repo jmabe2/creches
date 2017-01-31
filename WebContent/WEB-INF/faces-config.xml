@@ -6,7 +6,7 @@
 
 	<application>
 		<locale-config>
-			<default-locale>fr</default-locale>
+			<default-locale>en</default-locale>
 		</locale-config>
 		<resource-bundle>
 			<base-name>com.creche.ressources.messages.messages</base-name>
