@@ -70,21 +70,37 @@ public class ContactService implements Serializable {
 	/**
 	 * Method to update a contact
 
-	 * @param idChambre
-	 * @param numeroChambre
-	 * @param type
+	 * @param contactID
+	 * @param actif
+	 * @param codePostal
+	 * @param gsm
+	 * @param localite
+	 * @param niss
+	 * @param nom
+	 * @param numero
+	 * @param prenom
+	 * @param rue
+	 * @param telephone
 	 * @return
 	 */
-	public Chambre updateChambre(int idChambre,int numeroChambre, Typechambre type) 
+	public Contact updateContact (int contactID, String nom, String prenom, int niss, String rue, int numero, int codePostal, String localite, int telephone, int gsm, boolean actif ) 
 	{
-		Chambre chambre = em.find(Chambre.class, idChambre);
-		chambre.setNumeroChambre(numeroChambre);
-		chambre.setTypechambre(type);
-		return chambre;
+		Contact contact = em.find(Contact.class, contactID);
+		contact.setNom(nom);
+		contact.setPrenom(prenom);
+		contact.setNiss(niss);
+		contact.setRue(rue);
+		contact.setNumero(numero);
+		contact.setCodePostal(codePostal);
+		contact.setLocalite(localite);
+		contact.setTelephone(telephone);
+		contact.setGsm(gsm);
+		contact.setActif(actif);
+		return contact;
 	}
 	
 	/**
-	 *  Method to find a contact
+	 *  Method to find a contact by ID
 	 * @param contactID
 	 * @param actif
 	 * @param codePostal
@@ -99,20 +115,25 @@ public class ContactService implements Serializable {
 	 * @return
 	 */
 	
-	public Contact findChambre(int idchambre){
-		return em.find(Chambre.class, idchambre);
-	}
+	public Contact findContactByID(int contactID){
+	    try {
+	        return (Contact) em.createNamedQuery("Contact.findContactByID").setParameter("contactID", contactID)
+	            .getSingleResult();
+	      } catch (NoResultException e) {
+	        return null;
+	      }
+	    }
 	
 	/**
 	 *  Method to remove a chambre
 	 * @param idchambre
 	 */
 	
-	public void RemoveChambre(int idchambre){
+	public void RemoveContact(int contactID){
 		
-		Chambre chambre=findChambre(idchambre);
-		if (chambre!=null){
-			em.remove(chambre);
+		Contact contact=findContactByID(contactID);
+		if (contact!=null){
+			em.remove(contact);
 		}
 	}
 	
@@ -120,25 +141,15 @@ public class ContactService implements Serializable {
 	 *  Method to list a chambre
 	 * @return
 	 */
-	public List<Chambre> findAllChambre (){
-		
-		TypedQuery<Chambre> query = em.createQuery("SELECT chambre from Chambre chambre", Chambre.class);
-		return query.getResultList();
-	
+	public List<Contact> findAllContact (){
+	    try {
+	        TypedQuery<Contact> query = em.createNamedQuery("Contact.findAllContact", Contact.class);
+	        List<Contact> results = query.getResultList();	
+	        return results;
+	      } catch (NoResultException e) {
+	        return null;
+	      }
 	}
 	
-	/**
-	 *  Method to find by number a chambre
-	 * @param numChambre
-	 * @return
-	 */
-	public Chambre findByNum (int numChambre){
-		
-		TypedQuery<Chambre> query = em.createQuery("SELECT chambre from Chambre chambre where chambre.numeroChambre=:numchambre", Chambre.class);
-		query.setParameter("numchambre", numChambre);
-		return query.getSingleResult();
-	
-	}
-
 }
 

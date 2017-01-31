@@ -11,12 +11,10 @@ import java.util.List;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Contact.createContact",
-            query="INSERT INTO Contact values e "),
-	  @NamedQuery(name="Contact.findAll",
-	              query="SELECT e FROM Contact e"),
-	  @NamedQuery(name="Contact.findByName",
-	              query="SELECT e FROM Contact e WHERE e.nom = :nom")
+	@NamedQuery(name="Contact.findAllContact",
+			query="SELECT c FROM Contact c"),
+	@NamedQuery(name="Contact.findContactByID",
+			query="SELECT c FROM Contact c WHERE c.contactID = :contactID"),
 })
 public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
