@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 
@@ -14,7 +13,7 @@ import com.creche.model.Contact;
 import com.creche.services.ContactService;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class ContactController implements Serializable{
 	
 	/**
@@ -24,13 +23,18 @@ public class ContactController implements Serializable{
 	private List <Contact> listContact;
 	private String test;
 	
+	public ContactController(){
+		
+	}
+	
 	@PostConstruct
 	public void init(){
 		System.out.println("test");
-		test ="Jordan";
+		//test ="Jordan";
+		test = "";
 	}
 	
-	public String loadContact (){
+	public String loadContact(){
 		System.out.println("test");
 		ContactService cService = new ContactService(null);
 		listContact = cService.findAllContact();
