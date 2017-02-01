@@ -13,5 +13,30 @@
 	<h:form>
 	<h:commandLink value="#{contactController.loadContact()}" />
 	</h:form>
+	
+	<h:dataTable id="contact" value="#{contactController.listContact}" var="listContact"
+             border="1">
+    <f:facet name="header">
+        <h:outputText value="Liste de contact" />
+    </f:facet>
+    <h:column style="width: 500px">
+        <f:facet name="header">
+            <h:outputText value="nom"/>
+        </f:facet>
+        <h:outputText value="#{listContact.nom}" />
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="prénom" />
+        </f:facet>
+        <h:outputText value="#{listContact.prenom}" />
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="rue" />
+        </f:facet>
+        <h:outputText value="#{listContact.rue}" />
+    </h:column>
+    </h:dataTable>
 	</ui:define>
 </ui:composition>

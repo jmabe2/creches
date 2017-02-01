@@ -6,32 +6,20 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.creche.model.Contact;
+import com.creche.connection.EMF;
 
 
 
 public class ContactService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected EntityManager em;
-	
-	/*public Map<String, String> validate(HttpServletRequest request) {
-		Map<String, String> erreurs = new HashMap<String, String>();
-
-		if (Utils.fieldEmpty(request.getParameter("nom"))) {
-			erreurs.put( "nom", "Veuillez entrer un nom" );
-		}
 		
-		if (Utils.fieldEmpty(request.getParameter("prenom"))) {
-			erreurs.put( "prenom", "Veuillez entrer un prénom" );
-		}
-		return erreurs;
-	}*/
-	
 	/**
 	 * 
 	 * @param em (EntityManager)
 	 */
-	public ContactService(EntityManager em) {
-		this.em=em;
+	public ContactService() {
+		 this.em = EMF.getEM();
 	}
 
 	/**
@@ -126,7 +114,7 @@ public class ContactService implements Serializable {
 	    }
 	
 	/**
-	 *  Method to remove a chambre
+	 *  Method to remove a contact
 	 * @param idchambre
 	 */
 	
@@ -139,17 +127,16 @@ public class ContactService implements Serializable {
 	}
 	
 	/**
-	 *  Method to list a chambre
+	 *  Method to list a contact
 	 * @return
 	 */
 	public List<Contact> findAllContact (){
 	    try {
-	        TypedQuery<Contact> query = em.createNamedQuery("Contact.findAllContact", Contact.class);	
+	        TypedQuery<Contact> query = em.createNamedQuery("Contact.findAllContact", Contact.class);
 	        return query.getResultList();
 	      } catch (NoResultException e) {
 	        return null;
 	      }
-	}
-	
+	}	
 }
 

@@ -7,9 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-
 import com.creche.model.Contact;
 import com.creche.services.ContactService;
+
 
 @Named
 @SessionScoped
@@ -34,7 +34,7 @@ public class ContactController implements Serializable{
 	}
 	
 	public void loadContact(){
-		ContactService cService = new ContactService(null);
+		ContactService cService = new ContactService();
 		listContact = cService.findAllContact();
 	}
 
