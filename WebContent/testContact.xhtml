@@ -10,5 +10,8 @@
 	
 	<h:outputText value="try"  /><br/>
 	<h:outputText value="#{contactController.test}" />
+	<h:form>
+	<h:commandLink value="#{contactController.loadContact()}" />
+	</h:form>
 	</ui:define>
 </ui:composition>

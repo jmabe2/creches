@@ -8,6 +8,7 @@ import javax.persistence.*;
 import com.creche.model.Contact;
 
 
+
 public class ContactService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected EntityManager em;
@@ -143,9 +144,8 @@ public class ContactService implements Serializable {
 	 */
 	public List<Contact> findAllContact (){
 	    try {
-	        TypedQuery<Contact> query = em.createNamedQuery("Contact.findAllContact", Contact.class);
-	        List<Contact> results = query.getResultList();	
-	        return results;
+	        TypedQuery<Contact> query = em.createNamedQuery("Contact.findAllContact", Contact.class);	
+	        return query.getResultList();
 	      } catch (NoResultException e) {
 	        return null;
 	      }

@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Contact.findAllContact",
-			query="SELECT c FROM Contact c"),
+			query="SELECT contact FROM Contact contact"),
 	@NamedQuery(name="Contact.findContactByID",
 			query="SELECT c FROM Contact c WHERE c.contactID = :contactID"),
 })

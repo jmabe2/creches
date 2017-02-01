@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -29,16 +28,14 @@ public class ContactController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		System.out.println("test");
+		System.out.println("toto");
 		//test ="Jordan";
 		test = "";
 	}
 	
-	public String loadContact(){
-		System.out.println("test");
+	public void loadContact(){
 		ContactService cService = new ContactService(null);
 		listContact = cService.findAllContact();
-		return "";
 	}
 
 	public List<Contact> getListContact() {
