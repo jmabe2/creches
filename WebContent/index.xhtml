@@ -9,36 +9,28 @@
 #{bundle['application.loginpage.title']}
 </ui:define>
 	<ui:define name="content">
+	
 		<h:form>
-			<h:panelGrid columns="3">
-				<h:outputText value="#{bundle['user.name']}"></h:outputText>
-				<!-- 
-				<h:inputText id="userName" value="#{user.name}" required="true"
-					requiredMessage="#{bundle['user.name.validation']}">
-				</h:inputText>
-				 -->
-				<h:inputText id="userName" value="#{contactController.test}" required="true"
-					requiredMessage="#{bundle['user.name.validation']}">
-				</h:inputText>
-				<h:message for="userName" styleClass="errorMessage" />
-				<h:outputText value="#{bundle['user.password']}"></h:outputText>
-				<h:inputSecret id="password" value="#{user.password}"
-					required="true"
-					requiredMessage="#{bundle['user.password.validation']}">
-				</h:inputSecret>
-				<h:message for="password" styleClass="errorMessage" />
-			</h:panelGrid>
-			<!-- 
-			<h:commandButton value="#{bundle['application.login']}"
-				action="welcome">
-			</h:commandButton>
-			 -->
-			<h:commandButton value="#{bundle['application.login']}"
-				action="testContact">
-			</h:commandButton>
-			<br />
-			<br />
+			<h3> <h:outputText value="#{bundle['application.login']}" /> </h3>
+			
+			<h:outputText value="#{bundle['user.login']}" />
+			<h:inputText id="username" value="#{loginController.login}" required="true"
+					requiredMessage="#{bundle['user.name.validation']}"/>
+			<h:message for="username" styleClass="errorMessage" />
+			<br></br><br></br>
+			
+			<h:outputText value="#{bundle['user.password']}" />
+			<h:inputSecret id="password" value="#{loginController.mdp}" required="true"
+					requiredMessage="#{bundle['user.password.validation']}"/>
+			<h:message for="password" styleClass="errorMessage" />
+			<br></br><br></br>
+			
+			<h:commandButton action="#{loginController.checkLogin()}"
+				value="Login"></h:commandButton>
 		</h:form>
+	
+	
+		
 	</ui:define>
 </ui:composition>
 </html>

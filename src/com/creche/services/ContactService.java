@@ -115,7 +115,7 @@ public class ContactService implements Serializable {
 	
 	/**
 	 *  Method to remove a contact
-	 * @param idchambre
+	 * @param contactID
 	 */
 	
 	public void RemoveContact(int contactID){

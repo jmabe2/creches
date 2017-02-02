@@ -11,14 +11,21 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Personnel.findAll", query="SELECT p FROM Personnel p")
+@NamedQueries({
+	@NamedQuery(name="Personnel.findAllContact",
+			query="SELECT personnel FROM Personnel personnel"),
+	@NamedQuery(name="Personnel.findContactLogin",
+			query="SELECT personnel FROM Personnel personnel WHERE personnel.login = :login AND personnel.mdp = :mdp"),
+	@NamedQuery(name="Personnel.findPersonnelByID",
+	query="SELECT personnel FROM Personnel personnel WHERE personnel.personnelID = :personnelID"),
+})
 public class Personnel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int personnelID;
 
-	private byte actif;
+	private boolean actif;
 
 	@Temporal(TemporalType.DATE)
 	private Date ddn;
@@ -53,11 +60,11 @@ public class Personnel implements Serializable {
 		this.personnelID = personnelID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 
