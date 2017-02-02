@@ -3,31 +3,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
-<ui:composition template="/WEB-INF/templates/simple.xhtml">
+<ui:composition template="/WEB-INF/templates/loginTemplate.xhtml">
 
-	<ui:define name="title">
-#{bundle['application.loginpage.title']}
+<ui:define name="title">
+	#{bundle['application.loginpage.title']}
 </ui:define>
 	<ui:define name="content">
 	
-		<h:form id="loginForm">
-			<h3> <h:outputText value="#{bundle['application.login']}" /> </h3>
-			
-			<h:outputText value="#{bundle['user.login']}" />
-			<h:inputText id="username" value="#{loginController.login}" required="true"
-					requiredMessage="#{bundle['user.name.validation']}"/>
-			<h:message for="username" styleClass="errorMessage" />
-			<br></br><br></br>
-			
-			<h:outputText value="#{bundle['user.password']}" />
-			<h:inputSecret id="password" value="#{loginController.mdp}" required="true"
-					requiredMessage="#{bundle['user.password.validation']}"/>
-			<h:message for="password" styleClass="errorMessage" />
-			<br></br><br></br>
-			
-			<h:commandButton id="loginButton" action="#{loginController.checkLogin()}"
-				value="Login"></h:commandButton>
-		</h:form>
+	<div class="container">
+	    <div class="row">
+	        <div class="col-sm-6 col-md-4 col-md-offset-4">
+				<h:form id="loginForm">
+					<h:panelGrid id="grid" columns="1">
+						<h3> <h:outputText value="#{bundle['application.login']}" /> </h3>
+						
+						<h:outputText value="#{bundle['user.login']}" />
+						<h:inputText id="username" value="#{loginController.login}" required="true"
+								requiredMessage="#{bundle['user.name.validation']}"/>
+						<h:message for="username" styleClass="errorMessage" />
+						<br/>
+						
+						<h:outputText value="#{bundle['user.password']}" />
+						<h:inputSecret id="password" value="#{loginController.mdp}" required="true"
+								requiredMessage="#{bundle['user.password.validation']}"/>
+						<h:message for="password" styleClass="errorMessage" />
+						<br/>
+						
+						<h:commandButton id="loginButton" action="#{loginController.checkLogin()}"
+							value="Login"></h:commandButton>
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</div>
+	</div>
 	
 	
 		
