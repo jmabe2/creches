@@ -10,7 +10,7 @@
 </ui:define>
 	<ui:define name="content">
 	
-		<h:form>
+		<h:form id="loginForm">
 			<h3> <h:outputText value="#{bundle['application.login']}" /> </h3>
 			
 			<h:outputText value="#{bundle['user.login']}" />
@@ -25,7 +25,7 @@
 			<h:message for="password" styleClass="errorMessage" />
 			<br></br><br></br>
 			
-			<h:commandButton action="#{loginController.checkLogin()}"
+			<h:commandButton id="loginButton" action="#{loginController.checkLogin()}"
 				value="Login"></h:commandButton>
 		</h:form>
 	

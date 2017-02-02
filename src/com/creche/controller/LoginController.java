@@ -42,24 +42,12 @@ public class LoginController implements Serializable{
 		if (personnel!=null){
 			return "testContact";
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null,
+			FacesContext.getCurrentInstance().addMessage("loginForm:password",
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
 							"Incorrect Username and Passowrd",
 							"Please enter correct username and Password"));
 			return "index";
 		}
-		/*if (valid) {
-			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("username", user);
-			return "admin";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Incorrect Username and Passowrd",
-							"Please enter correct username and Password"));
-			return "login";
-		}*/
 	}
 
 	public String getLogin() {
