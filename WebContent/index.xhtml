@@ -11,28 +11,27 @@
 	<ui:define name="content">
 	
 	<div class="container">
-	    <div class="row">
-	        <div class="col-sm-6 col-md-4 col-md-offset-4">
-				<h:form id="loginForm">
-					<h:panelGrid id="grid" columns="1">
-						<h3> <h:outputText value="#{bundle['application.login']}" /> </h3>
-						
-						<h:outputText value="#{bundle['user.login']}" />
-						<h:inputText id="username" value="#{loginController.login}" required="true"
-								requiredMessage="#{bundle['user.name.validation']}"/>
-						<h:message for="username" styleClass="errorMessage" />
-						<br/>
-						
-						<h:outputText value="#{bundle['user.password']}" />
-						<h:inputSecret id="password" value="#{loginController.mdp}" required="true"
-								requiredMessage="#{bundle['user.password.validation']}"/>
-						<h:message for="password" styleClass="errorMessage" />
-						<br/>
-						
-						<h:commandButton id="loginButton" action="#{loginController.checkLogin()}"
-							value="Login"></h:commandButton>
-					</h:panelGrid>
-				</h:form>
+        <div style="box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12); margin-top:20px;" class="col-sm-6 col-md-4 col-md-offset-4">
+			<div style="margin:auto; text-align:center; padding: 5px;">
+			<h:form id="loginForm">			
+				<h3> <h:outputText value="#{bundle['application.login']}" /> </h3>
+				
+				<h:outputText value="#{bundle['user.login']}" />
+				<h:inputText class="form-control" id="username" value="#{loginController.login}" required="true"
+						requiredMessage="#{bundle['user.name.validation']}"/>
+				<h:message for="username" styleClass="errorMessage" />
+				<br/>
+				
+				<h:outputText value="#{bundle['user.password']}" />
+				<h:inputSecret class="form-control" id="password" value="#{loginController.mdp}" required="true"
+						requiredMessage="#{bundle['user.password.validation']}"/>
+				<h:message for="password" styleClass="errorMessage" />
+				<br/>
+				
+				<h:commandLink class="btn btn-primary" id="loginButton" action="#{loginController.checkLogin()}"
+					value="Login">
+					<span class="glyphicon glyphicon-lock"></span></h:commandLink>			
+			</h:form>
 			</div>
 		</div>
 	</div>

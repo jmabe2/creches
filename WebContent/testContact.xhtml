@@ -14,8 +14,7 @@
 	<h:commandLink value="#{contactController.loadContact()}" />
 	</h:form>
 	
-	<h:dataTable id="contact" value="#{contactController.listContact}" var="listContact"
-             border="1">
+	<h:dataTable class="table table-striped" id="contact" value="#{contactController.listContact}" var="listContact">
     <f:facet name="header">
         <h:outputText value="Liste de contact" />
     </f:facet>
