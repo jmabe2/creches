@@ -40,7 +40,7 @@ public class LoginController implements Serializable{
 		PersonnelService pService = new PersonnelService();
 		personnel = pService.loginPersonnel(login,mdp);
 		if (personnel!=null){
-			return "testContact";
+			return "welcome";
 		}else{
 			FacesContext.getCurrentInstance().addMessage("loginForm:password",
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
