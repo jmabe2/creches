@@ -28,9 +28,7 @@ public class ContactController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		System.out.println("toto");
-		//test ="Jordan";
-		test = "";
+
 	}
 	
 	public void loadContact(){
