@@ -20,7 +20,6 @@ public class ContactController implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private List <Contact> listContact;
-	private String test;
 	
 	public ContactController(){
 		
@@ -44,12 +43,5 @@ public class ContactController implements Serializable{
 		this.listContact = listContact;
 	}
 
-	public String getTest() {
-		return test;
-	}
-
-	public void setTest(String test) {
-		this.test = test;
-	}
 
 }

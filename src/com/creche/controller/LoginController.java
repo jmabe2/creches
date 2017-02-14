@@ -46,7 +46,7 @@ public class LoginController implements Serializable{
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
 							"Incorrect Username and Passowrd",
 							"Please enter correct username and Password"));
-			return "index";
+			return "";
 		}
 	}
 
