@@ -45,7 +45,11 @@ public class LoginController implements Serializable{
 			FacesContext.getCurrentInstance().addMessage("loginForm:password",
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
 							"Incorrect Username and Passowrd",
-							"Please enter correct username and Password"));
+							"Please enter correct Password"));
+			FacesContext.getCurrentInstance().addMessage("loginForm:username",
+					new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Incorrect Username and Passowrd",
+							"Please enter correct username"));
 			return "";
 		}
 	}
