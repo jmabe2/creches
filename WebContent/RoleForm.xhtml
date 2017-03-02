@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Encodage du rôle</title>
+</h:head>
+
+	<h:body>
+		<h:form id="RoleForm">
+			<h3>Créer un nouveau rôle</h3>
+			<h:panelGrid columns="3">
+				<h:outputLabel>Nom </h:outputLabel>
+				<h:inputText id="nom" value="#{roleController.nom}"
+					required="true"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel>Actif </h:outputLabel>
+				<h:inputText id="actif" required="true"
+					value="#{roleController.actif}">
+				</h:inputText>
+				<br />
+				<br />
+				<h:commandButton value="Enregistrer"
+					action="#{roleController.fillRole()}"></h:commandButton>
+				<h:commandButton value="Retour" action="welcome"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</html>

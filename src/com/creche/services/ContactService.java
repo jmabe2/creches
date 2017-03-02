@@ -118,7 +118,7 @@ public class ContactService implements Serializable {
 	 * @param contactID
 	 */
 	
-	public void RemoveContact(int contactID){
+	public void removeContact(int contactID){
 		
 		Contact contact=findContactByID(contactID);
 		if (contact!=null){

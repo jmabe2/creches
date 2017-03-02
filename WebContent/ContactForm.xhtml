@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Encodage de la personne de contact</title>
+</h:head>
+
+<h:body>
+	<h:form id="ContactForm">
+		<h3>Créer une personne de contact</h3>
+		<h:panelGrid columns="3">
+			<h:outputLabel>Nom</h:outputLabel>
+			<h:inputText id="nom" value="#{contactController.nom}"></h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>Prénom</h:outputLabel>
+			<h:inputText id="prenom" value="#{contactController.prenom}"></h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>NISS</h:outputLabel>
+			<h:inputText id="niss" value="#{contactController.niss}"></h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>Rue</h:outputLabel>
+			<h:inputText id="rue" value="#{contactController.rue}"></h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>Numéro</h:outputLabel>
+			<h:inputText id="numero" value="#{contactController.numero}">
+			</h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>Code postal</h:outputLabel>
+			<h:inputText id="codepostal" value="#{contactController.codePostal}">
+			</h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>Localité</h:outputLabel>
+			<h:inputText id="localite" value="#{contactController.localite}"></h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>Téléphone</h:outputLabel>
+			<h:inputText id="telephone" value="#{contactController.telephone}">
+			</h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>GSM</h:outputLabel>
+			<h:inputText id="gsm" value="#{contactController.gsm}">
+			</h:inputText>
+			<br />
+			<br />
+			<h:outputLabel>Actif </h:outputLabel>
+			<h:inputText id="actif" value="#{contactController.actif}" >
+			</h:inputText>
+			<br />
+			<br />
+			<h:commandButton value="Enregistrer"
+				action="#{contactController.fillContact()}"></h:commandButton>
+			<h:commandButton value="Retour" action="welcome"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
