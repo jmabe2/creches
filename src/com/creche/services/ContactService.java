@@ -52,7 +52,9 @@ public class ContactService implements Serializable {
 		contact.setTelephone(telephone);
 		contact.setGsm(gsm);
 		contact.setActif(actif);
+		em.getTransaction().begin();
 		em.persist(contact);
+		em.getTransaction().commit();
 		return contact;
 	}
 	
