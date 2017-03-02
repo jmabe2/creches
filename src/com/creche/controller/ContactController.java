@@ -48,7 +48,7 @@ public class ContactController implements Serializable{
 	public String fillContact(){
 		ContactService cService = new ContactService();
 		contact = cService.createContact(nom, prenom, niss, rue, numero, codePostal, localite, telephone, gsm, actif);
-		return "testContact";
+		return "listingContact";
 	} 
 	
 	public String updateContact(){

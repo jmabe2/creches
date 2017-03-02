@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Encodage de la personne de contact</title>
-</h:head>
+<ui:define name="title"> Liste de contact</ui:define>
+	<ui:define name="content">
 
-<h:body>
+
 	<h:form id="ContactForm">
 		<h3>Créer une personne de contact</h3>
 		<h:panelGrid columns="3">
@@ -64,5 +61,6 @@
 			<h:commandButton value="Retour" action="welcome"></h:commandButton>
 		</h:panelGrid>
 	</h:form>
-</h:body>
-</html>
+
+</ui:define>
+</ui:composition>
