@@ -10,14 +10,19 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Local.findAll", query="SELECT l FROM Local l")
+@NamedQueries({
+	@NamedQuery(name="Local.findAllLocal",
+			query="SELECT local FROM Local local"),
+	@NamedQuery(name="Local.findLocalByID",
+			query="SELECT l FROM Local l WHERE l.localID = :localID"),
+})
 public class Local implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int localID;
 
-	private byte actif;
+	private boolean actif;
 
 	private String section;
 
@@ -57,11 +62,11 @@ public class Local implements Serializable {
 		this.localID = localID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 
