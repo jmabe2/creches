@@ -17,7 +17,7 @@ public class Typelocal implements Serializable {
 	@Id
 	private int typeLocalID;
 
-	private byte actif;
+	private boolean actif;
 
 	private String nom;
 
@@ -36,11 +36,11 @@ public class Typelocal implements Serializable {
 		this.typeLocalID = typeLocalID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 

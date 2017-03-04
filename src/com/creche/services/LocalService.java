@@ -33,12 +33,8 @@ public class LocalService implements Serializable {
 	 * @return
 	 */
 	
-	public Local createLocal(String section, boolean actif, Typelocal typeLocal ) 
+	public Local createLocal(Local local ) 
 	{
-		Local local = new Local();
-		local.setSection(section);
-		local.setActif(actif);
-		local.setTypelocal(typeLocal);
 		em.getTransaction().begin();
 		em.persist(local);
 		em.getTransaction().commit();

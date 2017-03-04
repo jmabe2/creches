@@ -9,39 +9,39 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{contactController.loadContact()}" />
+			<h:commandLink value="#{localController.loadLocal()}" />
 		</h:form>
 
 		<h:dataTable class="table table-striped" id="contact"
-			value="#{contactController.listContact}" var="listContact">
+			value="#{localController.listLocal}" var="listLocal">
 			<f:facet name="header">
-				<h:outputText value="Liste de contact" />
+				<h:outputText value="Liste des locaux" />
 			</f:facet>
 
 			<h:column style="width: 500px">
 				<f:facet name="header">
-					<h:outputText value="nom" />
+					<h:outputText value="Section" />
 				</f:facet>
-				<h:outputText value="#{listContact.nom}" />
+				<h:outputText value="#{listLocal.section}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="prénom" />
+					<h:outputText value="actif" />
 				</f:facet>
-				<h:outputText value="#{listContact.prenom}" />
+				<h:outputText value="#{listLocal.actif}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="rue" />
+					<h:outputText value="Type" />
 				</f:facet>
-				<h:outputText value="#{listContact.rue}" />
+				<h:outputText value="#{listLocal.typelocal.nom}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="" />
 				</f:facet>
 				<h:form>
-					<h:commandLink class="btn btn-primary" id="modifContact"
+					<h:commandLink class="btn btn-primary" id="modifLocal"
 						action="welcome.xhtml">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
