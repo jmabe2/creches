@@ -9,8 +9,10 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{localController.loadLocal()}" />
-			<h:commandButton class="btn btn-primary" value="Créer un local" action="AddLocal"></h:commandButton>
+			<h:commandLink value="#{localController.loadLocal()}" />	
+			<h:commandButton class="btn btn-primary" value="Créer un local" action="AddLocal">
+				<span class="glyphicon glyphicon-plus-sign"></span>	</h:commandButton>
+			
 		</h:form>
 
 		<h:dataTable class="table table-striped" id="contact"
