@@ -1,58 +1,60 @@
 <ui:composition template="/WEB-INF/templates/simple.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:define name="title"> Liste de contact</ui:define>
 	<ui:define name="content">
 
 
 	<h:form id="ContactForm">
+		<h:commandLink value="#{contactController.init()}" />
 		<h3>Créer une personne de contact</h3>
 		<h:panelGrid columns="3">
 			<h:outputLabel>Nom</h:outputLabel>
-			<h:inputText id="nom" value="#{contactController.nom}"></h:inputText>
+			<h:inputText id="nom" value="#{contactController.contact.nom}"></h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>Prénom</h:outputLabel>
-			<h:inputText id="prenom" value="#{contactController.prenom}"></h:inputText>
+			<h:inputText id="prenom" value="#{contactController.contact.prenom}"></h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>NISS</h:outputLabel>
-			<h:inputText id="niss" value="#{contactController.niss}"></h:inputText>
+			<h:inputText id="niss" value="#{contactController.contact.niss}"></h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>Rue</h:outputLabel>
-			<h:inputText id="rue" value="#{contactController.rue}"></h:inputText>
+			<h:inputText id="rue" value="#{contactController.contact.rue}"></h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>Numéro</h:outputLabel>
-			<h:inputText id="numero" value="#{contactController.numero}">
+			<h:inputText id="numero" value="#{contactController.contact.numero}">
 			</h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>Code postal</h:outputLabel>
-			<h:inputText id="codepostal" value="#{contactController.codePostal}">
+			<h:inputText id="codepostal" value="#{contactController.contact.codePostal}">
 			</h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>Localité</h:outputLabel>
-			<h:inputText id="localite" value="#{contactController.localite}"></h:inputText>
+			<h:inputText id="localite" value="#{contactController.contact.localite}"></h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>Téléphone</h:outputLabel>
-			<h:inputText id="telephone" value="#{contactController.telephone}">
+			<h:inputText id="telephone" value="#{contactController.contact.telephone}">
 			</h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>GSM</h:outputLabel>
-			<h:inputText id="gsm" value="#{contactController.gsm}">
+			<h:inputText id="gsm" value="#{contactController.contact.gsm}">
 			</h:inputText>
 			<br />
 			<br />
 			<h:outputLabel>Actif </h:outputLabel>
-			<h:inputText id="actif" value="#{contactController.actif}" >
+			<h:inputText id="actif" value="#{contactController.contact.actif}" >
 			</h:inputText>
 			<br />
 			<br />

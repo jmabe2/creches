@@ -39,19 +39,8 @@ public class ContactService implements Serializable {
 	 * @return
 	 */
 	
-	public Contact createContact(String nom, String prenom, int niss, String rue, int numero, int codePostal, String localite, int telephone, int gsm, boolean actif ) 
+	public Contact createContact(Contact contact) 
 	{
-		Contact contact = new Contact();
-		contact.setNom(nom);
-		contact.setPrenom(prenom);
-		contact.setNiss(niss);
-		contact.setRue(rue);
-		contact.setNumero(numero);
-		contact.setCodePostal(codePostal);
-		contact.setLocalite(localite);
-		contact.setTelephone(telephone);
-		contact.setGsm(gsm);
-		contact.setActif(actif);
 		em.getTransaction().begin();
 		em.persist(contact);
 		em.getTransaction().commit();
