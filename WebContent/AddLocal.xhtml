@@ -14,6 +14,7 @@
 			<div style="margin:auto; text-align:center; padding: 5px;">
 				<h:form id="LocalForm" >
 					<h:commandLink value="#{localController.init()}" />
+					<h:commandLink value="#{typeLocalController.loadTypeLocal()}" />
 					<h3>Créer un nouveau local</h3>
 					<h:panelGrid columns="3">
 						<h:outputLabel >Section</h:outputLabel>
@@ -26,8 +27,9 @@
 						 <h:selectBooleanCheckbox class="form-control" id="actif" value="#{localController.local.actif}" />
 						<br />
 						<br />
-						<h:outputLabel >Section</h:outputLabel>
-						<h:inputText class="form-control" id="typeLocal" value="#{localController.local.typelocal}"/>
+						<h:selectOneMenu id="typeLocal" value="#{localController.local.typelocal}">
+					        <f:selectItems value="#{typeLocalController.listTypeLocal}" converter="#{typeLocalConverter.getAsObject()}" var="tl" itemValue="#{tl.typeLocalID}" itemLabel="#{tl.nom}"/>
+					    </h:selectOneMenu>
 						<br/>
 						<h:commandButton  class="btn btn-primary" value="Enregistrer"
 							action="#{localController.fillLocal()}"></h:commandButton>

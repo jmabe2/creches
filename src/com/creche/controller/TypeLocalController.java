@@ -8,34 +8,34 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import com.creche.model.Local;
-import com.creche.services.LocalService;
+import com.creche.model.Typelocal;
+import com.creche.services.TypeLocalService;
 
 
 @Named
 @SessionScoped
-public class LocalController implements Serializable{
+public class TypeLocalController implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List <Local> listLocal;
+	private List <Typelocal> listTypeLocal;
 	
-	private Local local;
+	private Typelocal typeLocal;
 	
-	public LocalController(){
+	public TypeLocalController(){
 		
 	}
 	
 	@PostConstruct
 	public void init(){
-		local = new Local();
+		typeLocal = new Typelocal();
 	}
 	
-	public String fillLocal(){
-		LocalService lService = new LocalService();
-		lService.createLocal(local);
+	public String fillTypeLocal(){
+		TypeLocalService tlService = new TypeLocalService();
+		tlService.createLocal(typeLocal);
 		return "listingContact";
 	} 
 	
@@ -50,25 +50,26 @@ public class LocalController implements Serializable{
 		contact = cService.removeContact(contactID);
 	}*/
 	
-	public void loadLocal(){
-		LocalService lService = new LocalService();
-		listLocal = lService.findAllLocal();
+	public void loadTypeLocal(){
+		TypeLocalService tlService = new TypeLocalService();
+		listTypeLocal = tlService.findAllTypeLocal();
+	}
+	
+	// Getters ans setters
+	public List<Typelocal> getListTypeLocal() {
+		return listTypeLocal;
 	}
 
-	public List<Local> getListLocal() {
-		return listLocal;
+	public void setListTypeLocal(List<Typelocal> listTypeLocal) {
+		this.listTypeLocal = listTypeLocal;
 	}
 
-	public void setListLocal(List<Local> listLocal) {
-		this.listLocal = listLocal;
+	public Typelocal getTypeLocal() {
+		return typeLocal;
 	}
 
-	public Local getLocal() {
-		return local;
-	}
-
-	public void setLocal(Local local) {
-		this.local = local;
+	public void setTypeLocal(Typelocal typeLocal) {
+		this.typeLocal = typeLocal;
 	}
 
 

@@ -10,7 +10,12 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Typelocal.findAll", query="SELECT t FROM Typelocal t")
+@NamedQueries({
+	@NamedQuery(name="Typelocal.findAllTypeLocal",
+			query="SELECT TypeLocal FROM Typelocal TypeLocal"),
+	@NamedQuery(name="Typelocal.findTypeLocalByID",
+			query="SELECT t FROM Typelocal t WHERE t.typeLocalID = :typeLocalID"),
+})
 public class Typelocal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
