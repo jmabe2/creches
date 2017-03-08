@@ -1,5 +1,6 @@
 package com.creche.converter;
 
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,33 +15,39 @@ import com.creche.services.TypeLocalService;
 @Named
 public class TypeLocalConverter implements Converter {
 
-    @Inject
+	@EJB
     private TypeLocalService typeLocalService;
 
-    public Object getAsObject(FacesContext context, UIComponent component, int typeLocalID) {
-        if(typeLocalID == 0 ) {
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
+        if(submittedValue == null || submittedValue.isEmpty()) {
+        	System.out.print("if");
             return null;
         }
-        Typelocal typeLocal = typeLocalService.findTypeLocalByID(typeLocalID);
-        if(typeLocal == null) {
-            throw new ConverterException(new FacesMessage("Employee with number: " + typeLocalID + " not found."));
+		try {
+			TypeLocalService tlService = new TypeLocalService();
+	        return tlService.findTypeLocalByID(Integer.parseInt(submittedValue));	
+	    } catch (NumberFormatException e) {
+	        throw new ConverterException(new FacesMessage(String.format("%s is not a valid User ID", submittedValue)), e);
+	    }
+	}	
+	
+
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
+        if (modelValue == null) {
+            return "";
         }
-        return typeLocal;
+
+        if (modelValue instanceof Typelocal) {
+            return String.valueOf(((Typelocal) modelValue).getTypeLocalID());
+        } else {
+            throw new ConverterException(new FacesMessage(String.format("%s is not a valid TypeLocal", modelValue)));
+        }
     }
-
-	@Override
-	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 
 
 }
+
+	

@@ -2,6 +2,7 @@ package com.creche.services;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 import com.creche.connection.EMF;
@@ -26,24 +27,27 @@ public class RoleService implements Serializable{
 	 * @param roleID
 	 */
 	
-	public Role createRole (String nom, boolean actif){
-		Role role = new Role();
-		role.setNom(nom);
-		role.getActif();
+	public Role createRole (Role role){
+
+		em.getTransaction().begin();
 		em.persist(role);
+		em.getTransaction().commit();
 		return role;
 		
 	}
 	
+
 	/**
 	 *  Method to update a role
 	 * @param roleID
 	 */
 	
-	public Role updateRole (int roleID, String nom, boolean actif){
-		Role role = em.find(Role.class, roleID);
-		role.setNom(nom);
-		role.setActif(actif);
+	public Role updateRole (int roleID, Role role){
+	   
+		em.find(Role.class, roleID);
+		em.getTransaction().begin();
+		em.persist(role);
+		em.getTransaction().commit();
 		return role;
 		
 	}

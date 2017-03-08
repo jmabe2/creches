@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Liste de contact</ui:define>
+	<ui:define name="title"> Listing contact</ui:define>
 	<ui:define name="content">
 
 		<h:form>
@@ -13,37 +13,68 @@
 			<h:commandButton value="Créer personnel" action="AddPersonnel"></h:commandButton>
 			<h:commandButton value="Créer une personne de contact" action="AddContact"></h:commandButton>
 			<h:commandButton value="Créer un rôle" action="AddRole"></h:commandButton>
-
 		</h:form>
 
-		<h:dataTable class="table table-striped" id="contact"
-			value="#{contactController.listContact}" var="listContact">
+		<h:dataTable class="table table-striped" id="contact" value="#{contactController.listContact}" var="listContact">
 			<f:facet name="header">
-				<h:outputText value="Liste de contact" />
+				<h:outputText value="Liste des contacts" />
 			</f:facet>
 
 			<h:column style="width: 500px">
 				<f:facet name="header">
-					<h:outputText value="nom" />
+					<h:outputText value="Nom" />
 				</f:facet>
 				<h:outputText value="#{listContact.nom}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="prénom" />
+					<h:outputText value="Prénom" />
 				</f:facet>
 				<h:outputText value="#{listContact.prenom}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="rue" />
+					<h:outputText value="Rue" />
 				</f:facet>
 				<h:outputText value="#{listContact.rue}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="" />
+					<h:outputText value="N°" />
 				</f:facet>
+				<h:outputText value="#{listContact.numero}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Code Postal" />
+				</f:facet>
+				<h:outputText value="#{listContact.codePostal}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Localité" />
+				</f:facet>
+				<h:outputText value="#{listContact.localite}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Téléphone" />
+				</f:facet>
+				<h:outputText value="#{listContact.telephone}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="GSM" />
+				</f:facet>
+				<h:outputText value="#{listContact.gsm}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Actif" />
+				</f:facet>
+				<h:outputText value="#{listContact.actif ? 'Oui' : 'Non'}" />
+			</h:column>
+			<h:column>
 				<h:form>
 					<h:commandLink class="btn btn-primary" id="modifContact"
 						action="welcome.xhtml">

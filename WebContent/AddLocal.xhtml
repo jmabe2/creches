@@ -27,8 +27,8 @@
 						 <h:selectBooleanCheckbox class="form-control" id="actif" value="#{localController.local.actif}" />
 						<br />
 						<br />
-						<h:selectOneMenu id="typeLocal" value="#{localController.local.typelocal}">
-					        <f:selectItems value="#{typeLocalController.listTypeLocal}" converter="#{typeLocalConverter.getAsObject()}" var="tl" itemValue="#{tl.typeLocalID}" itemLabel="#{tl.nom}"/>
+						<h:selectOneMenu id="typeLocal" value="#{localController.local.typelocal}" converter="#{typeLocalConverter}">
+					        <f:selectItems value="#{typeLocalController.listTypeLocal}"  var="tl" itemValue="#{tl}" itemLabel="#{tl.nom}"/>
 					    </h:selectOneMenu>
 						<br/>
 						<h:commandButton  class="btn btn-primary" value="Enregistrer"

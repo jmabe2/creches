@@ -34,6 +34,8 @@ public class LocalController implements Serializable{
 	}
 	
 	public String fillLocal(){
+		System.out.println(local.getSection());
+		System.out.println(local.getTypelocal());
 		LocalService lService = new LocalService();
 		lService.createLocal(local);
 		return "listingContact";
@@ -55,6 +57,9 @@ public class LocalController implements Serializable{
 		listLocal = lService.findAllLocal();
 	}
 
+
+	
+	//Getter & Setters
 	public List<Local> getListLocal() {
 		return listLocal;
 	}

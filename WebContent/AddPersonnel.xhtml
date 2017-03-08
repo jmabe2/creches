@@ -1,60 +1,58 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Encodage du personnel</title>
-</h:head>
+	<ui:define name="title"> Liste de contact</ui:define>
+	<ui:define name="content">
 
-<h:body>
-	<h:form id="PersonnelForm">
-		<h3>Créer un nouveau membre</h3>
-		<h:panelGrid columns="3">
-			<h:outputLabel>Nom </h:outputLabel>
-			<h:inputText id="nom" value="#{personnelController.nom}"
-				></h:inputText>
-			<br />
-			<br />
-			<h:outputLabel>Prénom </h:outputLabel>
-			<h:inputText id="prenom" value="#{personnelController.prenom}"></h:inputText>
-			<br />
-			<br />
-			<h:outputLabel>Sexe </h:outputLabel>
-			<h:inputText id="sexe" value="#{personnelController.sexe}"
-				></h:inputText>
-			<br />
-			<br />
-
-			<h:outputLabel>Date de naissance </h:outputLabel>
-			<h:inputText id="ddn" value="#{personnelController.ddn}">
-				   <f:convertDateTime pattern="yyyy-MM-dd"/>  
+		<h:form id="PersonnelForm">
+			<h:commandLink value="#{roleController.loadRole()}" />
+			<h3>Créer un nouveau membre</h3>
+			<h:panelGrid columns="3">
+				<h:outputLabel>Nom </h:outputLabel>
+				<h:inputText id="nom" value="#{personnelController.personnel.nom}"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel>Prénom </h:outputLabel>
+				<h:inputText id="prenom"
+					value="#{personnelController.personnel.prenom}"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel>Sexe </h:outputLabel>
+				<h:inputText id="sexe" value="#{personnelController.personnel.sexe}"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel>Date de naissance </h:outputLabel>
+				<h:inputText id="ddn" value="#{personnelController.personnel.ddn}">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
-			<br />
-			<br />
-			<h:outputLabel>Login </h:outputLabel>
-			<h:inputText id="login" value="#{personnelController.login}"
-				></h:inputText>
-			<br />
-			<br />
-			<h:outputLabel>Mot de passe </h:outputLabel>
-			<h:inputSecret id="mdp" value="#{personnelController.mdp}"
-				></h:inputSecret>
-			<br />
-			<br />
-			<h:outputLabel>Actif </h:outputLabel>
-			<h:inputText id="actif" value="#{personnelController.actif}" >
-			</h:inputText>
-			<br />
-			<br />
-			
-			<h:commandButton value="Enregistrer"
-				action="#{personnelController.fillPersonnel()}"></h:commandButton>
-			<h:commandButton value="Retour" action="welcome"></h:commandButton>
-		</h:panelGrid>
-	</h:form>
-</h:body>
-</html>
+				<br />
+				<br />
+				<h:outputLabel>Login </h:outputLabel>
+				<h:inputText id="login"
+					value="#{personnelController.personnel.login}"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel>Mot de passe </h:outputLabel>
+				<h:inputSecret id="mdp" value="#{personnelController.personnel.mdp}"></h:inputSecret>
+				<br />
+				<h:outputLabel value="Role" />
+				<h:selectOneMenu id="rules" value="#{roleController.listRole}">
+					<f:selectItems id="roles" value="#{roleController.listRole}" var="listRole" itemLabel="#{listRole.nom}"/>
+				</h:selectOneMenu>
+				<br />
+				<br />
+				<h:outputLabel value="Actif"/>
+				<h:selectBooleanCheckbox id="actif"	value="#{personnelController.personnel.actif}" />
+				<br />
+				<br />
+				<h:commandButton value="Enregistrer"
+					action="#{personnelController.fillPersonnel()}"></h:commandButton>
+				<h:commandButton value="Retour" action="listingContact"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

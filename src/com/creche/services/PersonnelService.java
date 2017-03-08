@@ -24,31 +24,13 @@ public class PersonnelService implements Serializable {
 
 	/**
 	 * Method to create a new personnel
-
-	 * @param personnelID
-	 * @param nom
-	 * @param prenom
-	 * @param ddn
-	 * @param sexe
-	 * @param login
-	 * @param mdp
-	 * @param actif
-	 * @param roleID
-	 * @return
 	 */
 	
-	public Personnel createPersonnel(String nom, String prenom, Date ddn, String sexe, String login, String mdp, boolean actif, Role roleID ) 
-	{
-		Personnel personnel = new Personnel();
-		personnel.setNom(nom);
-		personnel.setPrenom(prenom);
-		personnel.setDdn(ddn);
-		personnel.setSexe(sexe);
-		personnel.setLogin(login);
-		personnel.setMdp(mdp);
-		personnel.setActif(actif);
-		personnel.setRole(roleID);
+	public Personnel createPersonnel(Personnel personnel){
+		
+		em.getTransaction().begin();
 		em.persist(personnel);
+		em.getTransaction().commit();
 		return personnel;
 	}
 	
@@ -56,41 +38,20 @@ public class PersonnelService implements Serializable {
 	 * Method to update a personnel
 
 	 * @param personnelID
-	 * @param nom
-	 * @param prenom
-	 * @param ddn
-	 * @param sexe
-	 * @param login
-	 * @param mdp
-	 * @param actif
-	 * @param roleID
 	 * @return
 	 */
-	public Personnel updatePersonnel (int personnelID, String nom, String prenom, Date ddn, String sexe, String login, String mdp, boolean actif, Role roleID ) 
-	{
-		Personnel personnel = em.find(Personnel.class, personnelID);
-		personnel.setNom(nom);
-		personnel.setPrenom(prenom);
-		personnel.setDdn(ddn);
-		personnel.setSexe(sexe);
-		personnel.setLogin(login);
-		personnel.setMdp(mdp);
-		personnel.setActif(actif);
-		personnel.setRole(roleID);
+	public Personnel updatePersonnel (int personnelID, Personnel personnel){
+	    
+		em.find(Personnel.class, personnelID);
+		em.getTransaction().begin();
+		em.persist(personnel);
+		em.getTransaction().commit();
 		return personnel;
 	}
 	
 	/**
 	 *  Method to find a personnel by ID
 	 * @param personnelID
-	 * @param nom
-	 * @param prenom
-	 * @param ddn
-	 * @param sexe
-	 * @param login
-	 * @param mdp
-	 * @param actif
-	 * @param roleID
 	 * @return
 	 */
 	

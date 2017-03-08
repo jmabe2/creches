@@ -1,13 +1,10 @@
 package com.creche.controller;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import com.creche.model.Role;
 import com.creche.services.RoleService;
 
@@ -17,41 +14,37 @@ import com.creche.services.RoleService;
 public class RoleController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
-	private boolean actif;
-	private String nom;
-	private int roleID;
+	private List <Role> listRole;
+	private Integer roleID;
 	private Role role;
-	
-	
+
+
 	public String fillRole () {
 		RoleService rService = new RoleService();
-		setRole(rService.createRole(nom, actif));
-		return "RoleForm";
+		rService.createRole(role);
+		//return "listingContact?faces-redirect=true";
+		return "listingRole";
+	}
+
+	public String updateRole(){
+		RoleService rService = new RoleService();
+		role= rService.updateRole(roleID, role);
+		return "listingRole";
+	}
+	
+	
+	public void loadRole(){
+		RoleService rService = new RoleService();
+		listRole = rService.findAllRules();
 	}
 	
 	public RoleController() {
 	}
-	
+
 	@PostConstruct
 	public void init(){
+		role = new Role();
 
-	}
-
-	public boolean isActif() {
-		return actif;
-	}
-
-	public void setActif(boolean actif) {
-		this.actif = actif;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 	public int getRoleID() {
@@ -70,6 +63,13 @@ public class RoleController implements Serializable{
 		this.role = role;
 	}
 
+	public List <Role> getListRole() {
+		return listRole;
+	}
+
+	public void setListRole(List <Role> listRole) {
+		this.listRole = listRole;
+	}
 
 
 }

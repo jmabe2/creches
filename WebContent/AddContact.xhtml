@@ -53,14 +53,13 @@
 			</h:inputText>
 			<br />
 			<br />
-			<h:outputLabel>Actif </h:outputLabel>
-			<h:inputText id="actif" value="#{contactController.contact.actif}" >
-			</h:inputText>
+			<h:outputLabel value="Actif"> </h:outputLabel>
+			<h:selectBooleanCheckbox id="actif" value="#{contactController.contact.actif}" />
 			<br />
 			<br />
 			<h:commandButton value="Enregistrer"
 				action="#{contactController.fillContact()}"></h:commandButton>
-			<h:commandButton value="Retour" action="welcome"></h:commandButton>
+			<h:commandButton value="Retour" action="listingContact"></h:commandButton>
 		</h:panelGrid>
 	</h:form>
 

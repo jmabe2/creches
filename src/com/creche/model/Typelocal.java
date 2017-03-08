@@ -20,7 +20,7 @@ public class Typelocal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int typeLocalID;
+	private Integer typeLocalID;
 
 	private boolean actif;
 
@@ -33,11 +33,11 @@ public class Typelocal implements Serializable {
 	public Typelocal() {
 	}
 
-	public int getTypeLocalID() {
+	public long getTypeLocalID() {
 		return this.typeLocalID;
 	}
 
-	public void setTypeLocalID(int typeLocalID) {
+	public void setTypeLocalID(Integer typeLocalID) {
 		this.typeLocalID = typeLocalID;
 	}
 
@@ -79,4 +79,18 @@ public class Typelocal implements Serializable {
 		return local;
 	}
 
+
+    @Override
+    public boolean equals(Object other) {
+        return (other != null && getClass() == other.getClass() && typeLocalID != null)
+            ? typeLocalID.equals(((Typelocal) other).typeLocalID)
+            : (other == this);
+    }
+
+    @Override
+    public int hashCode() {
+        return (typeLocalID != null) 
+            ? (getClass().hashCode() + typeLocalID.hashCode())
+            : super.hashCode();
+    }
 }

@@ -60,9 +60,10 @@ public class TypeLocalService implements Serializable {
 	
 	public Typelocal findTypeLocalByID(int typeLocalID){
 	    try {
-	        return (Typelocal) em.createNamedQuery("Typelocal.findTypeLocalByID").setParameter("typelocalID", typeLocalID)
+	        return (Typelocal) em.createNamedQuery("Typelocal.findTypeLocalByID").setParameter("typeLocalID", typeLocalID)
 	            .getSingleResult();
 	      } catch (NoResultException e) {
+	    	  System.out.println("erreur");
 	        return null;
 	      }
 	    }

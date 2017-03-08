@@ -1,0 +1,40 @@
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title"> Listing rôles</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+			<h:commandLink value="#{roleController.loadRole()}" />
+		</h:form>
+
+		<h:dataTable class="table table-striped" id="role" value="#{roleController.listRole}" var="listRole">
+			<f:facet name="header">
+				<h:outputText value="Liste des rôles" />
+			</f:facet>
+			<h:column style="width: 500px">
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				<h:outputText value="#{listRole.nom}" />
+			</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Actif" />
+					</f:facet>
+					<h:outputText value="#{listRole.actif ? 'Oui' : 'Non'}" />
+				</h:column>
+				<h:column>
+					<h:form>
+						<h:commandLink class="btn btn-primary" id="modifRole" action="welcome.xhtml">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</h:commandLink>
+					</h:form>
+				</h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>
