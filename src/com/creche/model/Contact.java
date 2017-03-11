@@ -20,27 +20,27 @@ public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int contactID;
+	private Integer contactID;
 
 	private boolean actif;
 
-	private int codePostal;
+	private Integer codePostal;
 
-	private int gsm;
+	private Integer gsm;
 
 	private String localite;
 
-	private int niss;
+	private Integer niss;
 
 	private String nom;
 
-	private int numero;
+	private Integer numero;
 
 	private String prenom;
 
 	private String rue;
 
-	private int telephone;
+	private Integer telephone;
 
 	//bi-directional many-to-one association to Contactenfant
 	@OneToMany(mappedBy="contact")
@@ -49,11 +49,11 @@ public class Contact implements Serializable {
 	public Contact() {
 	}
 
-	public int getContactID() {
+	public Integer getContactID() {
 		return this.contactID;
 	}
 
-	public void setContactID(int contactID) {
+	public void setContactID(Integer contactID) {
 		this.contactID = contactID;
 	}
 
@@ -65,19 +65,19 @@ public class Contact implements Serializable {
 		this.actif = actif;
 	}
 
-	public int getCodePostal() {
+	public Integer getCodePostal() {
 		return this.codePostal;
 	}
 
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(Integer codePostal) {
 		this.codePostal = codePostal;
 	}
 
-	public int getGsm() {
+	public Integer getGsm() {
 		return this.gsm;
 	}
 
-	public void setGsm(int gsm) {
+	public void setGsm(Integer gsm) {
 		this.gsm = gsm;
 	}
 
@@ -89,11 +89,11 @@ public class Contact implements Serializable {
 		this.localite = localite;
 	}
 
-	public int getNiss() {
+	public Integer getNiss() {
 		return this.niss;
 	}
 
-	public void setNiss(int niss) {
+	public void setNiss(Integer niss) {
 		this.niss = niss;
 	}
 
@@ -105,11 +105,11 @@ public class Contact implements Serializable {
 		this.nom = nom;
 	}
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return this.numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
@@ -129,11 +129,11 @@ public class Contact implements Serializable {
 		this.rue = rue;
 	}
 
-	public int getTelephone() {
+	public Integer getTelephone() {
 		return this.telephone;
 	}
 
-	public void setTelephone(int telephone) {
+	public void setTelephone(Integer telephone) {
 		this.telephone = telephone;
 	}
 
