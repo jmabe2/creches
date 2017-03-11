@@ -38,7 +38,7 @@ public class LocalController implements Serializable{
 		System.out.println(local.getTypelocal());
 		LocalService lService = new LocalService();
 		lService.createLocal(local);
-		return "listingContact";
+		return "listingLocal";
 	} 
 	
 	/*public String updateContact(){
