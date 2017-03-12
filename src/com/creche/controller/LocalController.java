@@ -23,6 +23,7 @@ public class LocalController implements Serializable{
 	private List <Local> listLocal;
 	
 	private Local local;
+	private Local localToUpdate;
 	
 	public LocalController(){
 		
@@ -34,18 +35,16 @@ public class LocalController implements Serializable{
 	}
 	
 	public String fillLocal(){
-		System.out.println(local.getSection());
-		System.out.println(local.getTypelocal());
 		LocalService lService = new LocalService();
 		lService.createLocal(local);
 		return "listingLocal";
 	} 
 	
-	/*public String updateContact(){
-		ContactService cService = new ContactService();
-		contact = cService.updateContact(contactID, nom, prenom, niss, rue, numero, codePostal, localite, telephone, gsm, actif);
-		return "ContactForm";
-	}*/
+	public String updateLocal(){
+		LocalService lService = new LocalService();
+		lService.updateLocal(localToUpdate);
+		return "listingLocal";
+	}
 	
 	/*public void removeContact() {
 		ContactService cService = new ContactService();
@@ -74,6 +73,14 @@ public class LocalController implements Serializable{
 
 	public void setLocal(Local local) {
 		this.local = local;
+	}
+
+	public Local getLocalToUpdate() {
+		return localToUpdate;
+	}
+
+	public void setLocalToUpdate(Local localToUpdate) {
+		this.localToUpdate = localToUpdate;
 	}
 
 
