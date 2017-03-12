@@ -3,90 +3,83 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-	
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Listing contact</ui:define>
+	<ui:define name="title"> Listing membres du personnel</ui:define>
 	<ui:define name="content">
 
-		<h:form id="listContactForm">
-			<h:commandLink value="#{contactController.loadContact()}" />
-			<h:dataTable class="table table-striped" id="contactTable"
-				value="#{contactController.listContact}" var="listContact">
+		<h:form>
+			<h:commandLink value="#{personnelController.loadPersonnel()}" />
+
+			<h:dataTable class="table table-striped" id="personnel"
+				value="#{personnelController.listPersonnel}" var="listPersonnel">
 
 				<f:facet name="header">
 					<h3 class="text-center">
-						<h:outputText value="Liste des contacts" />
-						<h:commandLink class="btn btn-primary" id="AddContact"
-							action="AddContact">
+						<h:outputText value="Liste des membres du personnel" />
+						<h:commandLink class="btn btn-primary" id="AddPersonnel" action="AddPersonnel">
 							<span class="glyphicon glyphicon-plus"></span>
 						</h:commandLink>
 					</h3>
 				</f:facet>
+
 				<h:column style="width: 500px">
-				
 					<f:facet name="header">
 						<h:outputText value="Nom" />
 					</f:facet>
-					<h:outputText value="#{listContact.nom}" />
+					<h:outputText value="#{listPersonnel.nom}" />
 				</h:column>
 				<h:column>
-
 					<f:facet name="header">
 						<h:outputText value="Prénom" />
 					</f:facet>
-					<h:outputText value="#{listContact.prenom}" />
-				</h:column>
-		
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Rue" />
-					</f:facet>
-					<h:outputText value="#{listContact.rue}" />
+					<h:outputText value="#{listPersonnel.prenom}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="N°" />
+						<h:outputText value="Date de naissance" />
 					</f:facet>
-					<h:outputText value="#{listContact.numero}" />
+					<h:outputText value="#{listPersonnel.ddn}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Code Postal" />
+						<h:outputText value="Sexe" />
 					</f:facet>
-					<h:outputText value="#{listContact.codePostal}" />
+					<h:outputText value="#{listPersonnel.sexe}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Localité" />
+						<h:outputText value="Login" />
 					</f:facet>
-					<h:outputText value="#{listContact.localite}" />
+					<h:outputText value="#{listPersonnel.login}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Téléphone" />
+						<h:outputText value="Mot de passe" />
 					</f:facet>
-					<h:outputText value="#{listContact.telephone}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="GSM" />
-					</f:facet>
-					<h:outputText value="#{listContact.gsm}" />
+					<h:outputText value="#{listPersonnel.mdp}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>
-					<h:outputText value="#{listContact.actif ? 'Oui' : 'Non'}" />
+					<h:outputText value="#{listPersonnel.actif ? 'Oui' : 'Non'}" />
 					<br />
 				</h:column>
 				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Role" />
+					</f:facet>
+					<h:outputText value="#{listPersonnel.role}" />
+					<br />
+				</h:column>
+				<h:column>
+
 					<h:commandLink class="btn btn-primary" id="modifContact"
 						action="welcome.xhtml">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
+
 				</h:column>
 			</h:dataTable>
 		</h:form>

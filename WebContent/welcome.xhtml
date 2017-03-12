@@ -12,13 +12,21 @@
 </ui:define>
 
 	<ui:define name="content">
-#{bundle['application.welcome']}, #{user.name} ! <br />
-		 <h:link value="#{bundle['application.welcomepage.return']}"
-			outcome="index.xhtml"> 
+#{bundle['application.welcome']}, #{user.name} ! <br /><br />
+<h:form>
+		Crèches de Belgique fait partie d'un groupe européen ayant une expérience de 10 années dans le secteur
+			 de la « petite enfance » notamment en France, au Luxembourg, en Allemagne et en Suisse. <br />
+			Le fondateur est doté d’une expérience unique dans la gestion d’établissements médico-sociaux et sanitaires. 
+			<br />A ce titre, il appréhende parfaitement l’ensemble des aspects réglementaires de ces métiers, 
+			soumis à autorisations des autorités de tutelle, et imposant un cahier des charges strict en terme d’hygiène,
+			 de sécurité, de pédagogie et de formation.<br /><br/>
+		<h:link value="#{bundle['application.welcomepage.return']}"
+			outcome="index.xhtml"> <br />
 		</h:link>
-		<h:form>
+		<br />
 			<h:commandButton value="#{bundle['application.login']}"
 				action="welcome">
+				
 			</h:commandButton>
 		</h:form>
 		<br />
