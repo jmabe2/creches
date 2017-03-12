@@ -50,13 +50,15 @@ public class LocalService implements Serializable {
 	 * @param typeLocalID
 	 * @return
 	 */
-	public Local updateLocal (int localID,String section, boolean actif, Typelocal typeLocal ) 
+	public Local updateLocal (Local local ) 
 	{
-		Local local = em.find(Local.class, localID);
-		local.setSection(section);
-		local.setActif(actif);
-		local.setTypelocal(typeLocal);
-		return local;
+		Local localToUpdate = em.find(Local.class, local.getLocalID());
+		em.getTransaction().begin();
+		localToUpdate.setSection(local.getSection());
+		localToUpdate.setActif(local.getActif());
+		localToUpdate.setTypelocal(local.getTypelocal());
+		em.getTransaction().commit();
+		return localToUpdate;
 	}
 	
 	/**

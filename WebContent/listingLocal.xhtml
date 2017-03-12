@@ -11,8 +11,7 @@
 		<h:form>
 			<h:commandLink value="#{localController.loadLocal()}" />	
 			<h:commandLink class="btn btn-primary" action="AddLocal">
-				<span class="glyphicon glyphicon-plus-sign"></span></h:commandLink>
-			
+				<span class="glyphicon glyphicon-plus-sign"></span></h:commandLink>			
 		</h:form>
 
 		<h:dataTable class="table table-striped" id="contact"
@@ -45,7 +44,8 @@
 				</f:facet>
 				<h:form>
 					<h:commandLink class="btn btn-primary" id="modifLocal"
-						action="welcome.xhtml">
+						action="UpdateLocal">
+						<f:setPropertyActionListener target="#{localController.localToUpdate}" value="#{listLocal}" />
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
 				</h:form>
