@@ -40,7 +40,7 @@ public class LoginController implements Serializable{
 		PersonnelService pService = new PersonnelService();
 		personnel = pService.loginPersonnel(login,mdp);
 		if (personnel!=null){
-			return "welcome";
+			return "Success";
 		}else{
 			FacesContext.getCurrentInstance().addMessage("loginForm:password",
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -50,7 +50,7 @@ public class LoginController implements Serializable{
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
 							"Incorrect Username and Passowrd",
 							"Please enter correct username"));
-			return "";
+			return "Failure";
 		}
 	}
 
