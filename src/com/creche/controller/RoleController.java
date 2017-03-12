@@ -22,7 +22,6 @@ public class RoleController implements Serializable{
 	public String fillRole () {
 		RoleService rService = new RoleService();
 		rService.createRole(role);
-		//return "listingContact?faces-redirect=true";
 		return "listingRole";
 	}
 

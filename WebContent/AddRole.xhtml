@@ -9,19 +9,24 @@
 
 		<h:form id="RoleForm">
 			<h3>Créer un nouveau rôle</h3>
+			<h:messages style="color:red;margin:8px;" />
 			<h:panelGrid columns="3">
 				<h:outputLabel>Nom </h:outputLabel>
-				<h:inputText id="nom" value="#{roleController.role.nom}"></h:inputText>
+				<h:inputText id="nom" value="#{roleController.role.nom}" size="20"
+					required="true" label="Nom">
+					<f:validateLength minimum="3" maximum="10" />
+				</h:inputText>
 				<br />
 				<br />
-				<h:outputLabel value="Actif">
+				<h:outputLabel value="Actif" required="true" label="Actif">
 				</h:outputLabel>
 				<h:selectBooleanCheckbox id="actif" value="#{roleController.role.actif}" />
 				<br />
 				<br />
-				<h:commandButton value="Enregistrer" action="#{roleController.fillRole()}"></h:commandButton>
+				<h:commandButton value="Enregistrer"
+					action="#{roleController.fillRole()}"></h:commandButton>
 				<h:commandButton value="Retour" action="listingContact"></h:commandButton>
 			</h:panelGrid>
 		</h:form>
-		</ui:define>		
+	</ui:define>
 </ui:composition>

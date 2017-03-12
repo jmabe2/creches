@@ -63,7 +63,9 @@
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>
-					<h:outputText value="#{listPersonnel.actif ? 'Oui' : 'Non'}" />
+					<!-- <h:outputText value="#{listPersonnel.actif ? 'Oui' : 'Non'}" />-->
+					<h:graphicImage rendered="#{listPersonnel.actif eq true}" value="pictures/true.png" />
+					<h:graphicImage rendered="#{listPersonnel.actif eq false}" value="pictures/false.png" />
 					<br />
 				</h:column>
 				<h:column>
