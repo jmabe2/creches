@@ -13,6 +13,7 @@ import com.creche.connection.EMF;
 public class ContactService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected EntityManager em;
+
 		
 	/**
 	 * 
@@ -36,16 +37,21 @@ public class ContactService implements Serializable {
 	
 	/**
 	 * Method to update a contact
-
-	 * @param contactID
 	 */
-	public Contact updateContact (Integer contactID, Contact contact){
-	   
-		em.find(Contact.class, contactID);
-		em.getTransaction().begin();			
-		em.persist(contact);
+	public Contact updateContact (Contact contact){
+		em.find(Contact.class, contact);
+		em.getTransaction().begin();
+		em.merge(contact);
 		em.getTransaction().commit();
 		return contact;
+	}
+	
+	public boolean updateActif (Integer contactID, boolean actif){
+		em.find(Contact.class, contactID);
+		em.getTransaction().begin();			
+		em.persist(actif);
+		em.getTransaction().commit();
+		return actif;
 	}
 	
 	/**
@@ -90,6 +96,7 @@ public class ContactService implements Serializable {
 	    {
 	        return null;
 	      }
-	}	
+	}
+	
 }
 

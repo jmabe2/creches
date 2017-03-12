@@ -10,12 +10,20 @@
 
 		<h:form>
 			<h:commandLink value="#{roleController.loadRole()}" />
-		</h:form>
-
-		<h:dataTable class="table table-striped" id="role" value="#{roleController.listRole}" var="listRole">
+		
+		<h:dataTable class="table table-striped" id="role" value="#{roleController.listRole}" var="listRole"
+		>
 			<f:facet name="header">
-				<h:outputText value="Liste des rôles" />
+			
+			<h3 class="text-center">
+						<h:outputText value="Liste des rôles" />
+						<h:commandLink class="btn btn-primary" id="AddRole"
+							action="AddRole">
+							<span class="glyphicon glyphicon-plus"></span>
+						</h:commandLink>
+					</h3>
 			</f:facet>
+			
 			<h:column style="width: 500px">
 				<f:facet name="header">
 					<h:outputText value="Nom" />
@@ -26,15 +34,16 @@
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>
-					<h:outputText value="#{listRole.actif ? 'Oui' : 'Non'}" />
+					<h:outputText value="#{listRole.actif ? 'Oui' : 'Non'}" />					
 				</h:column>
 				<h:column>
-					<h:form>
+				
 						<h:commandLink class="btn btn-primary" id="modifRole" action="welcome.xhtml">
-							<span class="glyphicon glyphicon-pencil"></span>
+						 <span class="glyphicon glyphicon-pencil"></span>
 						</h:commandLink>
-					</h:form>
+						
 				</h:column>
 		</h:dataTable>
+	</h:form>
 	</ui:define>
 </ui:composition>

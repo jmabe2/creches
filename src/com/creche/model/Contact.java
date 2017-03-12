@@ -3,6 +3,7 @@ package com.creche.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.lang.Integer;
 
 
 /**
@@ -20,7 +21,7 @@ public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int contactID;
+	private Integer contactID;
 
 	private boolean actif;
 
@@ -41,7 +42,7 @@ public class Contact implements Serializable {
 	private String rue;
 
 	private int telephone;
-
+	
 	//bi-directional many-to-one association to Contactenfant
 	@OneToMany(mappedBy="contact")
 	private List<Contactenfant> contactenfants;
@@ -49,11 +50,11 @@ public class Contact implements Serializable {
 	public Contact() {
 	}
 
-	public int getContactID() {
+	public Integer getContactID() {
 		return this.contactID;
 	}
 
-	public void setContactID(int contactID) {
+	public void setContactID(Integer contactID) {
 		this.contactID = contactID;
 	}
 

@@ -36,9 +36,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="listingContact.xhtml">#{bundle['application.template.contacts']} <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href=""> <span class="sr-only">(current)</span></a></li>
+         
+         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#{bundle['application.template.contacts']} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="listingContact.xhtml">#{bundle['application.template.ListContacts']} </a></li>
+            <li><a href="listingRole.xhtml">#{bundle['application.template.ListRoles']}</a></li>
+            <li><a href="listingPersonne.xhtml">#{bundle['application.template.ListPersonnes']}</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+     	
+      
         <li><a href="listingLocal.xhtml">#{bundle['application.template.locals']} <span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
+        </ul>
+     <!--     <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -50,7 +65,7 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
-      </ul>
+      </ul> -->
 
  
     </div><!-- /.navbar-collapse -->

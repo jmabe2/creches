@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 
 import com.creche.model.Personnel;
 import com.creche.model.Role;
+import com.creche.services.ContactService;
 import com.creche.services.PersonnelService;
 
 @Named
@@ -52,6 +53,11 @@ public class PersonnelController implements Serializable{
 	public void findAllPersonnel(){
 		PersonnelService pService = new PersonnelService();
 		listPersonnel= pService.findAllPersonnel();
+	}
+	
+	public void loadPersonnel(){
+		PersonnelService pService = new PersonnelService();
+		listPersonnel = pService.findAllPersonnel();
 	}
 
 	public Personnel getPersonnel() {
