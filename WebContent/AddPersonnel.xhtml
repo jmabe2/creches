@@ -31,7 +31,7 @@
 				<br />
 				<br />
 				<h:outputLabel>Login </h:outputLabel>
-				<h:inputText id="login"
+				<h:inputText id="login" 
 					value="#{personnelController.personnel.login}"></h:inputText>
 				<br />
 				<br />
@@ -39,8 +39,8 @@
 				<h:inputSecret id="mdp" value="#{personnelController.personnel.mdp}"></h:inputSecret>
 				<br />
 				<h:outputLabel value="Role" />
-				<h:selectOneMenu id="rules" value="#{roleController.listRole}">
-					<f:selectItems id="roles" value="#{roleController.listRole}" var="listRole" itemLabel="#{listRole.nom}"/>
+				<h:selectOneMenu  value="#{roleController.listRole}" converter="#{typeRoleConverter}">
+					<f:selectItems value="#{roleController.listRole}" var="listRole" itemLabel="#{listRole.nom}"/>
 				</h:selectOneMenu>
 				<br />
 				<br />
