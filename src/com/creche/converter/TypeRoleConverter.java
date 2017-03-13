@@ -19,11 +19,14 @@ public class TypeRoleConverter implements Converter{
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
-        if(submittedValue == null || submittedValue.isEmpty()) {
+    	System.out.print("if");
+
+		if(submittedValue == null || submittedValue.isEmpty()) {
         	//System.out.print("if");
             return null;
         }
 		try {
+			System.out.print("if dd");
 			RoleService rService = new RoleService();
 	        return rService.findRoleByID((Integer.parseInt(submittedValue)));	
 	    } catch (NumberFormatException e) {
@@ -41,7 +44,7 @@ public class TypeRoleConverter implements Converter{
         if (modelValue instanceof Role) {
             return String.valueOf(((Role) modelValue).getRoleID());
         } else {
-            throw new ConverterException(new FacesMessage(String.format("%s is not a valid TypeLocal", modelValue)));
+            throw new ConverterException(new FacesMessage(String.format("%s is not a valid TypeRole", modelValue)));
         }
     }
 

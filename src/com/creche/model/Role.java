@@ -20,7 +20,7 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int roleID;
+	private Integer roleID;
 
 	private boolean actif;
 
@@ -33,11 +33,11 @@ public class Role implements Serializable {
 	public Role() {
 	}
 
-	public int getRoleID() {
+	public Integer getRoleID() {
 		return this.roleID;
 	}
 
-	public void setRoleID(int roleID) {
+	public void setRoleID(Integer roleID) {
 		this.roleID = roleID;
 	}
 
@@ -78,5 +78,19 @@ public class Role implements Serializable {
 
 		return personnel;
 	}
+	
+	@Override
+    public boolean equals(Object other) {
+        return (other != null && getClass() == other.getClass() && roleID != null)
+            ? roleID.equals(((Role) other).roleID)
+            : (other == this);
+    }
+
+    @Override
+    public int hashCode() {
+        return (roleID != null) 
+            ? (getClass().hashCode() + roleID.hashCode())
+            : super.hashCode();
+    }
 
 }

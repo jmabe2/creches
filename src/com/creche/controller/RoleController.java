@@ -18,7 +18,9 @@ public class RoleController implements Serializable{
 	private Integer roleID;
 	private Role role;
 
-
+	public RoleController(){
+		
+	}
 	public String fillRole () {
 		RoleService rService = new RoleService();
 		rService.createRole(role);
@@ -37,9 +39,10 @@ public class RoleController implements Serializable{
 		listRole = rService.findAllRules();
 	}
 	
-	public RoleController() {
+	public void clear(){
+	    setRole(null);
 	}
-
+	
 	@PostConstruct
 	public void init(){
 		role = new Role();

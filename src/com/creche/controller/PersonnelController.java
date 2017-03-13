@@ -41,7 +41,7 @@ public class PersonnelController implements Serializable{
 	public String fillPersonnel (){
 		PersonnelService pService = new PersonnelService();
 		personnel = pService.createPersonnel(personnel);
-		return "PersonnelForm";
+		return "listingPersonnel";
 	}
 
 	public String updatePersonnel(){
