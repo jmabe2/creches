@@ -1,6 +1,5 @@
 package com.creche.converter;
 
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -15,7 +14,6 @@ import com.creche.services.TypeLocalService;
 @Named
 public class TypeLocalConverter implements Converter {
 
-	@EJB
     private TypeLocalService typeLocalService;
 
 	@Override
