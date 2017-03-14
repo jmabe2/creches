@@ -41,13 +41,13 @@ public class PersonnelController implements Serializable{
 	public String fillPersonnel (){
 		PersonnelService pService = new PersonnelService();
 		personnel = pService.createPersonnel(personnel);
-		return "listingPersonnel";
+		return "listingPersonne";
 	}
 
 	public String updatePersonnel(){
 		PersonnelService pService = new PersonnelService();
 		personnel = pService.updatePersonnel(personnelID, personnel);
-		return "PersonnelForm";
+		return "listingPersonne";
 	}
 
 	public void findAllPersonnel(){

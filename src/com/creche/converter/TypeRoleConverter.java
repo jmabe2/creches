@@ -1,11 +1,11 @@
 package com.creche.converter;
 
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
+import javax.faces.convert.DateTimeConverter;
 import javax.inject.Named;
 
 import com.creche.model.Role;
@@ -14,7 +14,7 @@ import com.creche.services.RoleService;
 @Named
 public class TypeRoleConverter implements Converter{
 
-	@EJB
+	
     private RoleService RoleService;
 
 	@Override
@@ -26,7 +26,7 @@ public class TypeRoleConverter implements Converter{
             return null;
         }
 		try {
-			System.out.print("if dd");
+			//System.out.print("if dd");
 			RoleService rService = new RoleService();
 	        return rService.findRoleByID((Integer.parseInt(submittedValue)));	
 	    } catch (NumberFormatException e) {
@@ -47,6 +47,8 @@ public class TypeRoleConverter implements Converter{
             throw new ConverterException(new FacesMessage(String.format("%s is not a valid TypeRole", modelValue)));
         }
     }
+    
+
 
 
 }

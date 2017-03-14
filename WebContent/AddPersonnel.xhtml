@@ -1,10 +1,10 @@
+
 <ui:composition template="/WEB-INF/templates/simple.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-	
 
 	<ui:define name="title"> Liste de contact</ui:define>
 	<ui:define name="content">
@@ -34,10 +34,9 @@
 								value="#{personnelController.personnel.sexe}"></h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Date de naissance </h:outputLabel>
-							<h:inputText id="ddn"
-								value="#{personnelController.personnel.ddn}"  data-provide="datepicker">
-								<f:convertDateTime pattern="yyyy-MM-dd" />
+							  <h:outputLabel>Date de naissance </h:outputLabel>
+							 <h:inputText id="ddn" styleClass="datepicker" value="#{personnelController.personnel.ddn}">
+							<f:convertDateTime type="both" pattern="yyyy-mm-dd" dateStyle="short" timeStyle="medium" />
 							</h:inputText>
 							<br />
 							<br />
@@ -51,13 +50,17 @@
 								value="#{personnelController.personnel.mdp}"></h:inputSecret>
 							<br />
 							<h:outputLabel value="Role" />
-							<h:selectOneMenu id="typeRole" value="#{personnelController.personnel.role}" converter="#{typeRoleConverter}">
-								<f:selectItems value="#{roleController.listRole}" var="listRole" itemValue="#{listRole}" itemLabel="#{listRole.nom}" />
+							<h:selectOneMenu id="typeRole"
+								value="#{personnelController.personnel.role}"
+								converter="#{typeRoleConverter}">
+								<f:selectItems value="#{roleController.listRole}" var="listRole"
+									itemValue="#{listRole}" itemLabel="#{listRole.nom}" />
 							</h:selectOneMenu>
 							<br />
 							<br />
 							<h:outputLabel value="Actif" />
-							<h:selectBooleanCheckbox id="actif" value="#{personnelController.personnel.actif}" />
+							<h:selectBooleanCheckbox id="actif"
+								value="#{personnelController.personnel.actif}" />
 							<br />
 							<br />
 							<h:commandButton value="Enregistrer"
@@ -68,6 +71,16 @@
 				</div>
 			</div>
 		</div>
-		
+
+			<script>
+			$(document).ready(function() {
+				  $(".datepicker").datepicker({
+				    showOn: "button",
+				    format:'yyyy-mm-dd',
+				    buttonImage: "images/calendar.gif",
+				    buttonImageOnly: true})
+				});
+			</script>
+			
 	</ui:define>
 </ui:composition>
