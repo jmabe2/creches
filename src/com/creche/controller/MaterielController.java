@@ -23,7 +23,6 @@ public class MaterielController implements Serializable{
 	private List <Materiel> listMateriel;
 
 	private Materiel materiel;
-	private Materiel materielToUpdate;
 
 	public MaterielController(){
 
@@ -35,15 +34,13 @@ public class MaterielController implements Serializable{
 	}
 
 	public String fillMateriel(){
-		MaterielService mService = new MaterielService();
-		mService.createMateriel(materiel);
+		MaterielService.createMateriel(materiel);
 		materiel = new Materiel();
 		return "listingMateriel";
 	} 
 
 	public String updateMateriel(){
-		MaterielService mService = new MaterielService();
-		mService.updateMateriel(materiel);
+		MaterielService.updateMateriel(materiel);
 		materiel = new Materiel();
 		return "listingMateriel";
 	}
@@ -58,7 +55,7 @@ public class MaterielController implements Serializable{
 		listMateriel = mService.findAllMateriel();
 	}
 
-	
+
 	//getters & setters
 	public List<Materiel> getListMateriel() {
 		return listMateriel;
@@ -75,16 +72,5 @@ public class MaterielController implements Serializable{
 	public void setMateriel(Materiel materiel) {
 		this.materiel = materiel;
 	}
-
-	public Materiel getMaterielToUpdate() {
-		return materielToUpdate;
-	}
-
-	public void setMaterielToUpdate(Materiel materielToUpdate) {
-		this.materielToUpdate = materielToUpdate;
-	}
-
-	
-
 
 }

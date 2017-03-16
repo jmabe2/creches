@@ -14,7 +14,6 @@ import com.creche.services.TypeLocalService;
 @Named
 public class TypeLocalConverter implements Converter {
 
-    private TypeLocalService typeLocalService;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
@@ -23,8 +22,7 @@ public class TypeLocalConverter implements Converter {
             return null;
         }
 		try {
-			TypeLocalService tlService = new TypeLocalService();
-	        return tlService.findTypeLocalByID(Integer.parseInt(submittedValue));	
+			return TypeLocalService.findTypeLocalByID(Integer.parseInt(submittedValue));	
 	    } catch (NumberFormatException e) {
 	        throw new ConverterException(new FacesMessage(String.format("%s is not a valid User ID", submittedValue)), e);
 	    }

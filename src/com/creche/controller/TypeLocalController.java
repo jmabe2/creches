@@ -24,7 +24,6 @@ public class TypeLocalController implements Serializable{
 	private List <Typelocal> listTypeLocal;
 
 	private Typelocal typeLocal;
-	private Typelocal typeLocalToUpdate;
 
 	public TypeLocalController(){
 
@@ -36,14 +35,14 @@ public class TypeLocalController implements Serializable{
 	}
 
 	public String fillTypeLocal(){
-		TypeLocalService tlService = new TypeLocalService();
-		tlService.createLocal(typeLocal);
+		TypeLocalService.createLocal(typeLocal);
+		typeLocal = new Typelocal();
 		return "listingTypeLocal";
 	} 
 
 	public String updateTypeLocal(){
-		TypeLocalService tlService = new TypeLocalService();
-		tlService.updateTypeLocal(typeLocalToUpdate);
+		TypeLocalService.updateTypeLocal(typeLocal);
+		typeLocal = new Typelocal();
 		return "listingTypeLocal";
 	}
 
@@ -73,14 +72,5 @@ public class TypeLocalController implements Serializable{
 	public void setTypeLocal(Typelocal typeLocal) {
 		this.typeLocal = typeLocal;
 	}
-
-	public Typelocal getTypeLocalToUpdate() {
-		return typeLocalToUpdate;
-	}
-
-	public void setTypeLocalToUpdate(Typelocal typeLocalToUpdate) {
-		this.typeLocalToUpdate = typeLocalToUpdate;
-	}
-
 
 }

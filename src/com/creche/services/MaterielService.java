@@ -12,14 +12,14 @@ import com.creche.connection.EMF;
 
 public class MaterielService implements Serializable {
 	private static final long serialVersionUID = 1L;
-	protected EntityManager em;
+	protected static EntityManager em;
 		
 	/**
 	 * 
 	 * @param em (EntityManager)
 	 */
 	public MaterielService() {
-		 this.em = EMF.getEM();
+		 MaterielService.em = EMF.getEM();
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class MaterielService implements Serializable {
 	 * @return
 	 */
 	
-	public Materiel createMateriel(Materiel materiel ) 
+	public static Materiel createMateriel(Materiel materiel ) 
 	{
 		em.getTransaction().begin();
 		em.persist(materiel);
@@ -40,7 +40,7 @@ public class MaterielService implements Serializable {
 
 	 * @return
 	 */
-	public Materiel updateMateriel (Materiel materiel ) 
+	public static Materiel updateMateriel (Materiel materiel ) 
 	{
 		Materiel materielToUpdate = em.find(Materiel.class, materiel.getMaterielID());
 		em.getTransaction().begin();
@@ -56,7 +56,7 @@ public class MaterielService implements Serializable {
 	 * @return
 	 */
 	
-	public Materiel findMaterielByID(int materielID){
+	public static  Materiel findMaterielByID(int materielID){
 	    try {
 	        return (Materiel) em.createNamedQuery("Materiel.findMaterielByID").setParameter("materielID", materielID)
 	            .getSingleResult();

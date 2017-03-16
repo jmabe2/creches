@@ -15,17 +15,14 @@
 				<h:form id="LocalForm" >
 
 					<h3>Modification du type local</h3>
-					<h:panelGrid columns="3">
+					<h:panelGrid columns="2">
 						<h:outputLabel >Nom</h:outputLabel>
-						<h:inputText class="form-control" id="nom" value="#{typeLocalController.typeLocalToUpdate.nom}"  required="true"
+						<h:inputText class="form-control" id="nom" value="#{typeLocalController.typeLocal.nom}"  required="true"
 						requiredMessage="Veuillez enntrer un type local"/>
 					<h:message for="nom" styleClass="errorMessage" />
 						<br />
-						<br />
 						<h:outputLabel>Actif</h:outputLabel>
-						 <h:selectBooleanCheckbox class="form-control" id="actif" value="#{typeLocalController.typeLocalToUpdate.actif}" />
-						<br />
-						<br />
+						 <h:selectBooleanCheckbox class="form-control" id="actif" value="#{typeLocalController.typeLocal.actif}" />
 						<h:commandButton  class="btn btn-primary" value="Enregistrer"
 							action="#{typeLocalController.updateTypeLocal()}"></h:commandButton>
 						<h:commandButton class="btn btn-primary" value="Retour" action="listingTypeLocal"></h:commandButton>
