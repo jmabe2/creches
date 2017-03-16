@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.creche.model.Local;
 import com.creche.model.Typelocal;
 import com.creche.connection.EMF;
 
@@ -40,14 +41,15 @@ public class TypeLocalService implements Serializable {
 
 	 * @return
 	 */
-	/*public Local updateLocal (int localID,String section, boolean actif, Typelocal typeLocal ) 
+	public Typelocal updateTypeLocal (Typelocal typeLocal ) 
 	{
-		Local local = em.find(Local.class, localID);
-		local.setSection(section);
-		local.setActif(actif);
-		local.setTypelocal(typeLocal);
-		return local;
-	}*/
+		Typelocal typeLocalToUpdate = em.find(Typelocal.class, typeLocal.getTypeLocalID());
+		em.getTransaction().begin();
+		typeLocalToUpdate.setNom(typeLocal.getNom());
+		typeLocalToUpdate.setActif(typeLocal.getActif());
+		em.getTransaction().commit();
+		return typeLocalToUpdate;
+	}
 	
 	/**
 	 *  Method to find a typeLocal by ID

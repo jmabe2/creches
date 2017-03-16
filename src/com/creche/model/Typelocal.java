@@ -33,7 +33,7 @@ public class Typelocal implements Serializable {
 	public Typelocal() {
 	}
 
-	public long getTypeLocalID() {
+	public Integer getTypeLocalID() {
 		return this.typeLocalID;
 	}
 

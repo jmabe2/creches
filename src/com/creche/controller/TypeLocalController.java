@@ -24,6 +24,7 @@ public class TypeLocalController implements Serializable{
 	private List <Typelocal> listTypeLocal;
 	
 	private Typelocal typeLocal;
+	private Typelocal typeLocalToUpdate;
 	
 	public TypeLocalController(){
 		
@@ -37,14 +38,14 @@ public class TypeLocalController implements Serializable{
 	public String fillTypeLocal(){
 		TypeLocalService tlService = new TypeLocalService();
 		tlService.createLocal(typeLocal);
-		return "listingContact";
+		return "listingTypeLocal";
 	} 
 	
-	/*public String updateContact(){
-		ContactService cService = new ContactService();
-		contact = cService.updateContact(contactID, nom, prenom, niss, rue, numero, codePostal, localite, telephone, gsm, actif);
-		return "ContactForm";
-	}*/
+	public String updateTypeLocal(){
+		TypeLocalService tlService = new TypeLocalService();
+		tlService.updateTypeLocal(typeLocalToUpdate);
+		return "listingTypeLocal";
+	}
 	
 	/*public void removeContact() {
 		ContactService cService = new ContactService();
@@ -73,5 +74,13 @@ public class TypeLocalController implements Serializable{
 		this.typeLocal = typeLocal;
 	}
 
+	public Typelocal getTypeLocalToUpdate() {
+		return typeLocalToUpdate;
+	}
 
+	public void setTypeLocalToUpdate(Typelocal typeLocalToUpdate) {
+		this.typeLocalToUpdate = typeLocalToUpdate;
+	}
+
+	
 }
