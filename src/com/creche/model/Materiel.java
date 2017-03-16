@@ -10,14 +10,19 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Materiel.findAll", query="SELECT m FROM Materiel m")
+@NamedQueries({
+	@NamedQuery(name="Materiel.findAll",
+			query="SELECT m FROM Materiel m"),
+	@NamedQuery(name="Materiel.findMaterielByID",
+			query="SELECT m FROM Materiel m WHERE m.materielID = :materielID"),
+})
 public class Materiel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int materielID;
 
-	private byte actif;
+	private boolean actif;
 
 	private String nom;
 
@@ -51,11 +56,11 @@ public class Materiel implements Serializable {
 		this.materielID = materielID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 

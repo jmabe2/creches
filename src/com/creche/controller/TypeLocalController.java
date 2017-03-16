@@ -16,47 +16,47 @@ import com.creche.services.TypeLocalService;
 @Named
 @SessionScoped
 public class TypeLocalController implements Serializable{
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private List <Typelocal> listTypeLocal;
-	
+
 	private Typelocal typeLocal;
 	private Typelocal typeLocalToUpdate;
-	
+
 	public TypeLocalController(){
-		
+
 	}
-	
+
 	@PostConstruct
 	public void init(){
 		typeLocal = new Typelocal();
 	}
-	
+
 	public String fillTypeLocal(){
 		TypeLocalService tlService = new TypeLocalService();
 		tlService.createLocal(typeLocal);
 		return "listingTypeLocal";
 	} 
-	
+
 	public String updateTypeLocal(){
 		TypeLocalService tlService = new TypeLocalService();
 		tlService.updateTypeLocal(typeLocalToUpdate);
 		return "listingTypeLocal";
 	}
-	
+
 	/*public void removeContact() {
 		ContactService cService = new ContactService();
 		contact = cService.removeContact(contactID);
 	}*/
-	
+
 	public void loadTypeLocal(){
 		TypeLocalService tlService = new TypeLocalService();
 		listTypeLocal = tlService.findAllTypeLocal();
 	}
-	
+
 	// Getters ans setters
 	public List<Typelocal> getListTypeLocal() {
 		return listTypeLocal;
@@ -82,5 +82,5 @@ public class TypeLocalController implements Serializable{
 		this.typeLocalToUpdate = typeLocalToUpdate;
 	}
 
-	
+
 }
