@@ -28,10 +28,10 @@
 							<h:selectBooleanCheckbox class="form-control" id="actif"
 								value="#{typeLocalController.typeLocal.actif}" />
 							<br />
-							<h:commandButton class="btn btn-primary" value="Enregistrer"
+							<h:commandButton class="btn btn-primary" type="submit" value="Enregistrer"
 								action="#{typeLocalController.fillTypeLocal()}"></h:commandButton>
-							<h:commandButton class="btn btn-primary" value="Retour"
-								action="listingTypeLocal"></h:commandButton>
+							<h:link class="btn btn-primary" value="Retour"
+								outcome="listingTypeLocal"></h:link>
 						</h:panelGrid>
 					</h:form>
 				</div>
