@@ -27,18 +27,15 @@ public class LocalController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		local = new Local();
 	}
 	
 	public String fillLocal(){		
 		LocalService.createLocal(local);
-		local = new Local();
 		return "listingLocal";
 	} 
 	
 	public String updateLocal(){
 		LocalService.updateLocal(local);
-		local = new Local();
 		return "listingLocal";
 	}
 	
@@ -50,9 +47,9 @@ public class LocalController implements Serializable{
 	public void loadLocal(){
 		LocalService lService = new LocalService();
 		listLocal = lService.findAllLocal();
+		local = new Local();
 	}
-
-
+	
 	
 	//Getter & Setters
 	public List<Local> getListLocal() {

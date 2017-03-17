@@ -30,11 +30,11 @@ public class LocalMaterielController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		localMateriel = new Localmateriel();
 		local = new Local();
 	}
 	
-	public String fillLocalMateriel(){		
+	public String fillLocalMateriel(){	
+		localMateriel.setLocal(local);
 		LocalMaterielService.createLocalMateriel(localMateriel);
 		return "listingLocalMateriel";
 	} 
@@ -44,14 +44,15 @@ public class LocalMaterielController implements Serializable{
 		return "listingLocalMateriel";
 	}
 	
-	/*public void removeContact() {
-		ContactService cService = new ContactService();
-		contact = cService.removeContact(contactID);
+	/*public String removeLocalMateriel() {
+		LocalMaterielService.removeLocalMateriel(test);
+		return "listingLocalMateriel";
 	}*/
 	
 	public void loadMaterielForALocal(){
 		LocalMaterielService lService = new LocalMaterielService();
 		listLocalMateriel = lService.findAllMaterielForALocal(local);
+		localMateriel = new Localmateriel();
 	}
 
 	//Getter & Setters
@@ -78,7 +79,5 @@ public class LocalMaterielController implements Serializable{
 	public void setLocal(Local local) {
 		this.local = local;
 	}
-	
-	
 
 }

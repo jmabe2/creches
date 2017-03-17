@@ -13,17 +13,20 @@
 		<h:form>
 			<h:commandLink
 				value="#{localMaterielController.loadMaterielForALocal()}" />
-			<h:commandLink class="btn btn-primary" action="AddLocalMateriel">
-				<span class="glyphicon glyphicon-plus"></span>
-			</h:commandLink>
+			<div class="col-md-11">
+				<h:commandLink class="btn btn-primary" action="AddLocalMateriel">
+					<span class="glyphicon glyphicon-plus"></span>
+				</h:commandLink>
+			</div>
+			<div class="col-md-1">
+				<h:link class="btn btn-primary" outcome="listingLocal">
+					<span class="glyphicon glyphicon-step-backward"></span>
+				</h:link>
+			</div>
 		</h:form>
 
 		<h:dataTable class="table table-striped" id="contact"
 			value="#{localMaterielController.listLocalMateriel}" var="list">
-			<f:facet name="header">
-				<h:outputText value="Liste du matériel" />
-			</f:facet>
-
 			<h:column style="width: 500px">
 				<f:facet name="header">
 					<h:outputText value="Nom" />

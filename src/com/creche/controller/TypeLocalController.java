@@ -27,18 +27,16 @@ public class TypeLocalController implements Serializable{
 
 	@PostConstruct
 	public void init(){
-		typeLocal = new Typelocal();
+		
 	}
 
 	public String fillTypeLocal(){
 		TypeLocalService.createLocal(typeLocal);
-		typeLocal = new Typelocal();
 		return "listingTypeLocal";
 	} 
 
 	public String updateTypeLocal(){
 		TypeLocalService.updateTypeLocal(typeLocal);
-		typeLocal = new Typelocal();
 		return "listingTypeLocal";
 	}
 
@@ -50,6 +48,7 @@ public class TypeLocalController implements Serializable{
 	public void loadTypeLocal(){
 		TypeLocalService tlService = new TypeLocalService();
 		listTypeLocal = tlService.findAllTypeLocal();
+		typeLocal = new Typelocal();
 	}
 
 	// Getters ans setters

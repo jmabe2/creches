@@ -31,7 +31,8 @@
 				<f:facet name="header">
 					<h:outputText value="actif" />
 				</f:facet>
-				<h:outputText value="#{list.actif}" />
+				<span
+					class="#{list.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">

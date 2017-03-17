@@ -69,13 +69,11 @@ public class LocalMaterielService implements Serializable {
 	 * @param localID
 	 */
 
-	/*public static void removeLocal(int localID){
-
-		Local local=findLocalByID(localID);
-		if (local!=null){
-			em.remove(local);
+	public static void removeLocalMateriel(Localmateriel lM){
+		if (findLocalMaterielByID(lM.getLocalMaterielID())!=null){
+			em.remove(lM);
 		}
-	}*/
+	}
 
 	/**
 	 *  Method to list a contact

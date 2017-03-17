@@ -31,15 +31,16 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="actif" />
-				</f:facet>
-				<h:outputText value="#{listLocal.actif}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
 					<h:outputText value="Type" />
 				</f:facet>
 				<h:outputText value="#{listLocal.typelocal.nom}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Actif" />
+				</f:facet>
+				<span
+					class="#{listLocal.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header" />

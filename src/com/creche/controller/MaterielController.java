@@ -27,18 +27,16 @@ public class MaterielController implements Serializable{
 
 	@PostConstruct
 	public void init(){
-		materiel = new Materiel();
+		
 	}
 
 	public String fillMateriel(){
 		MaterielService.createMateriel(materiel);
-		materiel = new Materiel();
 		return "listingMateriel";
 	} 
 
 	public String updateMateriel(){
 		MaterielService.updateMateriel(materiel);
-		materiel = new Materiel();
 		return "listingMateriel";
 	}
 
@@ -50,6 +48,7 @@ public class MaterielController implements Serializable{
 	public void loadMateriel(){
 		MaterielService mService = new MaterielService();
 		listMateriel = mService.findAllMateriel();
+		materiel = new Materiel();
 	}
 
 
