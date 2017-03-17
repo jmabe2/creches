@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.creche.model.Local;
 import com.creche.model.Typelocal;
 import com.creche.connection.EMF;
 

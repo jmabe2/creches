@@ -3,11 +3,8 @@ package com.creche.controller;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import com.creche.model.Local;
 import com.creche.services.LocalService;
 

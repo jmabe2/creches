@@ -7,11 +7,15 @@
 
 	<ui:define name="title"> Liste de matériel</ui:define>
 	<ui:define name="content">
-
-		<h:outputFormat value="#{localMateriel.local.section}"/>
+		<h3 class="text-center">
+			<h:outputFormat value="#{localMaterielController.local.section}" />
+		</h3>
 		<h:form>
 			<h:commandLink
 				value="#{localMaterielController.loadMaterielForALocal()}" />
+			<h:commandLink class="btn btn-primary" action="AddLocalMateriel">
+				<span class="glyphicon glyphicon-plus"></span>
+			</h:commandLink>
 		</h:form>
 
 		<h:dataTable class="table table-striped" id="contact"

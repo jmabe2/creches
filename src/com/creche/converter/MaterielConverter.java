@@ -7,11 +7,11 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.inject.Named;
 
-import com.creche.model.Typelocal;
-import com.creche.services.TypeLocalService;
+import com.creche.model.Materiel;
+import com.creche.services.MaterielService;
 
 @Named
-public class TypeLocalConverter implements Converter {
+public class MaterielConverter implements Converter {
 
 
 	@Override
@@ -20,9 +20,9 @@ public class TypeLocalConverter implements Converter {
             return null;
         }
 		try {
-			return TypeLocalService.findTypeLocalByID(Integer.parseInt(submittedValue));	
+			return MaterielService.findMaterielByID(Integer.parseInt(submittedValue));	
 	    } catch (NumberFormatException e) {
-	        throw new ConverterException(new FacesMessage(String.format("%s is not a valid User ID", submittedValue)), e);
+	        throw new ConverterException(new FacesMessage(String.format("%s is not a valid Material ID", submittedValue)), e);
 	    }
 	}	
 	
@@ -33,10 +33,10 @@ public class TypeLocalConverter implements Converter {
             return "";
         }
 
-        if (modelValue instanceof Typelocal) {
-            return String.valueOf(((Typelocal) modelValue).getTypeLocalID());
+        if (modelValue instanceof Materiel) {
+            return String.valueOf(((Materiel) modelValue).getMaterielID());
         } else {
-            throw new ConverterException(new FacesMessage(String.format("%s is not a valid TypeLocal", modelValue)));
+            throw new ConverterException(new FacesMessage(String.format("%s is not a valid Materiel", modelValue)));
         }
     }
 

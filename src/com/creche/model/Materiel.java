@@ -20,7 +20,7 @@ public class Materiel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int materielID;
+	private Integer materielID;
 
 	private boolean actif;
 
@@ -48,11 +48,11 @@ public class Materiel implements Serializable {
 	public Materiel() {
 	}
 
-	public int getMaterielID() {
+	public Integer getMaterielID() {
 		return this.materielID;
 	}
 
-	public void setMaterielID(int materielID) {
+	public void setMaterielID(Integer materielID) {
 		this.materielID = materielID;
 	}
 
@@ -110,4 +110,17 @@ public class Materiel implements Serializable {
 		this.locals = locals;
 	}
 
+    @Override
+    public boolean equals(Object other) {
+        return (other != null && getClass() == other.getClass() && materielID != null)
+            ? materielID.equals(((Materiel) other).materielID)
+            : (other == this);
+    }
+
+    @Override
+    public int hashCode() {
+        return (materielID != null) 
+            ? (getClass().hashCode() + materielID.hashCode())
+            : super.hashCode();
+    }
 }
