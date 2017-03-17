@@ -16,26 +16,37 @@
 				<div style="margin: auto; text-align: center; padding: 5px;">
 					<h:form id="materiellForm">
 						<h3>Modification du materiel</h3>
-						<h:panelGrid columns="2">
+						<div class="col-md-4">
 							<h:outputLabel>Nom</h:outputLabel>
+						</div>
+						<div class="col-md-8" style="margin-bottom: 20px;">
 							<h:inputText class="form-control" id="nom"
 								value="#{materielController.materiel.nom}" required="true"
 								requiredMessage="Veuillez entrer un nom" />
 							<h:message for="nom" styleClass="errorMessage" />
-							<br />
+						</div>
+						<div class="col-md-4">
 							<h:outputLabel>Propiété</h:outputLabel>
+						</div>
+						<div class="col-md-8" style="margin-bottom: 20px;">
 							<h:inputText class="form-control" id="propriete"
 								value="#{materielController.materiel.propriete}" />
-							<br />
+						</div>
+						<div class="col-md-4">
 							<h:outputLabel>Actif</h:outputLabel>
+						</div>
+						<div class="col-md-8" style="margin-bottom: 20px;">
 							<h:selectBooleanCheckbox class="form-control" id="actif"
 								value="#{materielController.materiel.actif}" />
-							<br />
+						</div>
+						<div class="col-md-6" style="margin-bottom: 20px;">
 							<h:commandButton class="btn btn-primary" value="Enregistrer"
 								action="#{materielController.updateMateriel()}"></h:commandButton>
-							<h:commandButton class="btn btn-primary" value="Retour"
-								action="listingMateriel"></h:commandButton>
-						</h:panelGrid>
+						</div>
+						<div class="col-md-6">
+							<h:link class="btn btn-primary" value="Retour"
+								outcome="listingMateriel"></h:link>
+						</div>
 					</h:form>
 				</div>
 			</div>
