@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.creche.model.Local;
-import com.creche.model.Typelocal;
 import com.creche.connection.EMF;
 
 
@@ -20,7 +19,7 @@ public class LocalService implements Serializable {
 	 * @param em (EntityManager)
 	 */
 	public LocalService() {
-		 this.em = EMF.getEM();
+		 LocalService.em = EMF.getEM();
 	}
 
 	/**

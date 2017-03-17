@@ -9,9 +9,10 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{localController.loadLocal()}" />					
+			<h:commandLink value="#{localController.loadLocal()}" />
 			<h:commandLink class="btn btn-primary" action="AddLocal">
-				<span class="glyphicon glyphicon-plus"></span></h:commandLink>
+				<span class="glyphicon glyphicon-plus"></span>
+			</h:commandLink>
 		</h:form>
 
 		<h:dataTable class="table table-striped" id="contact"
@@ -39,14 +40,24 @@
 				<h:outputText value="#{listLocal.typelocal.nom}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">
-					<h:outputText value="" />
-				</f:facet>
+				<f:facet name="header" />
 				<h:form>
 					<h:commandLink class="btn btn-primary" id="modifLocal"
 						action="UpdateLocal">
-						<f:setPropertyActionListener target="#{localController.local}" value="#{listLocal}" />
+						<f:setPropertyActionListener target="#{localController.local}"
+							value="#{listLocal}" />
 						<span class="glyphicon glyphicon-pencil"></span>
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header" />
+				<h:form>
+					<h:commandLink class="btn btn-primary" id="editLocalMateriel"
+						action="listingLocalMateriel">
+						<f:setPropertyActionListener target="#{localMaterielController.local}"
+							value="#{listLocal}" />
+						<span class="glyphicon glyphicon-list"></span>
 					</h:commandLink>
 				</h:form>
 			</h:column>

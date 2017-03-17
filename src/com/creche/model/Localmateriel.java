@@ -9,7 +9,15 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Localmateriel.findAll", query="SELECT l FROM Localmateriel l")
+@NamedQueries({
+	@NamedQuery(name="Localmateriel.findAll",
+			query="SELECT l FROM Localmateriel l"),
+	@NamedQuery(name="Local.findLocalMaterielByID",
+	query="SELECT l FROM Localmateriel l WHERE l.localMaterielID = :localMaterielID"),
+	@NamedQuery(name="Local.findLocalMaterielByLocalID",
+	query="SELECT l FROM Localmateriel l WHERE l.local = :local"),
+
+})
 public class Localmateriel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
