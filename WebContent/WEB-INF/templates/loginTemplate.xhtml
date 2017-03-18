@@ -9,11 +9,17 @@
 
 	<h:head id="header" class="header">
 		<title><ui:insert name="title">#{bundle['application.defaultpage.title']}</ui:insert></title>
-		<img src="#{request.contextPath}/pictures/logoLogin.png" width="100%"
-			height="300px"></img>
+
 		<link href="#{request.contextPath}/bootstrap/css/bootstrap.css"
 			rel="stylesheet" type="text/css" />
-
+		<img src="#{request.contextPath}/pictures/logoLogin.png" width="100%"
+			height="300px"></img>
+		<h:form style="position: absolute; right:0px; top:0px;">
+			<h:selectOneMenu value="#{languageBean.language}" onchange="submit()">
+				<f:selectItem itemValue="en" itemLabel="English" />
+				<f:selectItem itemValue="fr" itemLabel="Français" />
+			</h:selectOneMenu>
+		</h:form>
 	</h:head>
 
 	<h:body>
@@ -31,15 +37,6 @@
 						<ui:insert name="footer">
 					#{bundle['application.defaultpage.footer.content']}
 				</ui:insert>
-					</div>
-					<div>
-						<h:form>
-							<h:selectOneMenu value="#{languageBean.language}"
-								onchange="submit()">
-								<f:selectItem itemValue="en" itemLabel="English" />
-								<f:selectItem itemValue="fr" itemLabel="Français" />
-							</h:selectOneMenu>
-						</h:form>
 					</div>
 				</div>
 			</div>

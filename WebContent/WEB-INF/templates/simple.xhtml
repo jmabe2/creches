@@ -9,7 +9,6 @@
 
 	<h:head id="header" class="header">
 		<title><ui:insert name="title">#{bundle['application.defaultpage.title']}</ui:insert></title>
-		<img src="#{request.contextPath}/pictures/logoCreche.png"></img>
 		<link href="#{request.contextPath}/bootstrap/css/bootstrap.css"
 			rel="stylesheet" type="text/css" />
 		<script src="#{request.contextPath}/bootstrap/js/jquery.js"></script>
@@ -22,7 +21,13 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 		<link rel="stylesheet"
 			href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
-
+		<img src="#{request.contextPath}/pictures/logoCreche.png"></img>
+		<h:form style="position: absolute; right:0px; top:0px;">
+			<h:selectOneMenu value="#{languageBean.language}" onchange="submit()">
+				<f:selectItem itemValue="en" itemLabel="English" />
+				<f:selectItem itemValue="fr" itemLabel="Français" />
+			</h:selectOneMenu>
+		</h:form>
 	</h:head>
 
 	<h:body>
@@ -93,15 +98,6 @@
 							<ui:insert name="footer">
 								#{bundle['application.defaultpage.footer.content']}
 						</ui:insert>
-						</div>
-						<div>
-							<h:form>
-								<h:selectOneMenu value="#{languageBean.language}"
-									onchange="submit()">
-									<f:selectItem itemValue="en" itemLabel="English" />
-									<f:selectItem itemValue="fr" itemLabel="Français" />
-								</h:selectOneMenu>
-							</h:form>
 						</div>
 					</div>
 				</div>
