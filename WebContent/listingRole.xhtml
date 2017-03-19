@@ -26,8 +26,6 @@
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-
-
 						<h:outputText value="Nom" />
 					</f:facet>
 					<h:outputText value="#{listRole.nom}" />
@@ -41,12 +39,10 @@
 					<h:graphicImage rendered="#{listRole.actif eq false}" value="pictures/false.png" />
 				</h:column>
 				<h:column>
-
-					<h:commandLink class="btn btn-primary" id="modifRole"
-						action="welcome.xhtml">
+					<h:commandLink class="btn btn-primary" id="modiRole" action="UpdateRole">
+						<f:setPropertyActionListener target="#{roleController.roleUpdate}" value="#{listRole}" />
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
-
 				</h:column>
 			</h:dataTable>
 		</h:form>

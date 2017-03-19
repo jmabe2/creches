@@ -13,6 +13,8 @@ import com.creche.connection.EMF;
 public class ContactService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected EntityManager em;
+	
+
 
 		
 	/**
@@ -81,6 +83,8 @@ public class ContactService implements Serializable {
 		}
 	}
 	
+
+	
 	/**
 	 *  Method to list a contact
 	 * @return
@@ -97,6 +101,7 @@ public class ContactService implements Serializable {
 	        return null;
 	      }
 	}
+
 	
 }
 

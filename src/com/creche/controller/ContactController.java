@@ -17,8 +17,7 @@ public class ContactController implements Serializable{
 	private List <Contact> listContact;
 	private Integer contactID;
 	private Contact contact;
-	
-	private Contact editContact;
+   
 
 	public ContactController(){
 
@@ -40,6 +39,8 @@ public class ContactController implements Serializable{
 		contact = cService.updateContact(contact);
 		return "listingContact";
 	}
+	
+
 
 	/*
 	 public void removeContact() {
@@ -75,6 +76,7 @@ public class ContactController implements Serializable{
 	public void setContactID(Integer contactID) {
 		this.contactID = contactID;
 	}
+	
 
 }
 

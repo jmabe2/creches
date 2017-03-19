@@ -1,11 +1,8 @@
 package com.creche.services;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
-
 import javax.persistence.*;
-
 import com.creche.connection.EMF;
 import com.creche.model.Personnel;
 import com.creche.model.Role;
@@ -40,13 +37,33 @@ public class PersonnelService implements Serializable {
 	 * @param personnelID
 	 * @return
 	 */
-	public Personnel updatePersonnel (int personnelID, Personnel personnel){
+	public Personnel updatePersonnel (Personnel personnel){
 	    
-		em.find(Personnel.class, personnelID);
+		Personnel personnelUpdate = em.find(Personnel.class, personnel.getPersonnelID());
 		em.getTransaction().begin();
-		em.persist(personnel);
+		em.merge(personnel);
+		personnel.setNom(personnel.getNom());
+		personnel.setPrenom(personnel.getPrenom());
+		personnel.setDdn(personnel.getDdn());
+		personnel.setSexe(personnel.getSexe());
+		personnel.setLogin(personnel.getLogin());
+		personnel.setMdp(personnel.getMdp());
+		personnel.setActif(personnel.getActif());
+		personnel.setRole(personnel.getRole());
 		em.getTransaction().commit();
-		return personnel;
+		return personnelUpdate;
+	}
+	
+	public Role updateRole (Role role){
+		   
+		Role roleUpdate = em.find(Role.class, role.getRoleID());
+		em.getTransaction().begin();
+		em.merge(role);
+		role.setNom(role.getNom());
+		role.setActif(role.getActif());
+		em.getTransaction().commit();
+		return roleUpdate;
+		
 	}
 	
 	/**

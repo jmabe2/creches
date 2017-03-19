@@ -2,7 +2,6 @@ package com.creche.services;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 import com.creche.connection.EMF;
@@ -42,13 +41,15 @@ public class RoleService implements Serializable{
 	 * @param roleID
 	 */
 	
-	public Role updateRole (int roleID, Role role){
+	public Role updateRole (Role role){
 	   
-		em.find(Role.class, roleID);
+		Role roleUpdate = em.find(Role.class, role.getRoleID());
 		em.getTransaction().begin();
-		em.persist(role);
+		em.merge(role);
+		role.setNom(role.getNom());
+		role.setActif(role.getActif());
 		em.getTransaction().commit();
-		return role;
+		return roleUpdate;
 		
 	}
 	
@@ -66,6 +67,10 @@ public class RoleService implements Serializable{
 		
 	}
 	
+	public boolean exist(Object roleName) {
+		return false;
+	}
+		
 	/**
 	 *  Method to remove a role
 	 * @param roleID
@@ -79,6 +84,7 @@ public class RoleService implements Serializable{
 			}
 		}
 	
+	
 	/**
 	 *  Method to list rules
 	 * @return
@@ -91,6 +97,11 @@ public class RoleService implements Serializable{
 	      } catch (NoResultException e) {
 	        return null;
 	      }
+	}
+
+	public boolean findRole(String roleName) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

@@ -16,44 +16,50 @@
 				<div style="margin: auto; text-align: center; padding: 5px;">
 
 					<h:form id="PersonnelForm">
+						<h:commandLink value="#{roleController.init()}" />
 						<h:commandLink value="#{roleController.loadRole()}" />
-						<h3>Créer un nouveau membre</h3>
+						<h3>Modifier un membre existant</h3>
 						<h:panelGrid columns="3">
 							<h:outputLabel>Nom </h:outputLabel>
 							<h:inputText id="nom"
-								value="#{personnelController.personnel.nom}"></h:inputText>
+								value="#{personnelController.personnelUpdate.nom}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Prénom </h:outputLabel>
 							<h:inputText id="prenom"
-								value="#{personnelController.personnel.prenom}"></h:inputText>
+								value="#{personnelController.personnelUpdate.prenom}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Sexe </h:outputLabel>
-							<h:inputText id="sexe" value="#{personnelController.personnel.sexe}"></h:inputText>
+							<h:inputText id="sexe" value="#{personnelController.personnelUpdate.sexe}"></h:inputText>
 							<br />
 							<br />
 							  <h:outputLabel>Date de naissance </h:outputLabel>
-							 <h:inputText id="ddn" styleClass="datepicker" value="#{personnelController.personnel.ddn}">
+							 <h:inputText id="ddn" styleClass="datepicker" value="#{personnelController.personnelUpdate.ddn}">
 							<f:convertDateTime type="both" pattern="yyyy-mm-dd" dateStyle="short" timeStyle="medium" />
 							</h:inputText>							
 							<br />
 							<br />
 							<h:outputLabel>Login </h:outputLabel>
 							<h:inputText id="login" 
-								value="#{personnelController.personnel.login}"></h:inputText>
+								value="#{personnelController.personnelUpdate.login}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Mot de passe </h:outputLabel>
 							<h:inputSecret id="mdp"
-								value="#{personnelController.personnel.mdp}"></h:inputSecret>
+								value="#{personnelController.personnelUpdate.mdp}"></h:inputSecret>
 							<br />
 							<h:outputLabel value="Role" />
-							<h:selectOneMenu id="typeRole" value="#{personnelController.personnel.role}"
-							converter="#{typeRoleConverter}">
+							<h:selectOneMenu id="typeRole" value="#{personnelController.personnelUpdate.role}" converter="#{typeRoleConverter}">
 								<f:selectItems value="#{roleController.listRole}" var="listRole"
 									itemValue="#{listRole}" itemLabel="#{listRole.nom}" />
 							</h:selectOneMenu>
+							
+							<h:selectOneMenu id="typeLocal" value="#{localController.localToUpdate.typelocal}" converter="#{typeLocalConverter}">
+					        <f:selectItems value="#{typeLocalController.listTypeLocal}"  var="tl" itemValue="#{tl}" itemLabel="#{tl.nom}"/>
+					    </h:selectOneMenu>
+						<br/>
+						
 							<br />
 							<br />
 							<h:outputLabel value="Actif" />
@@ -62,7 +68,7 @@
 							<br />
 							<br />
 							<h:commandButton value="Enregistrer" 
-								action="#{personnelController.fillPersonnel()}"></h:commandButton>
+								action="#{personnelController.updatePersonnel()}"></h:commandButton>
 							<h:commandButton outcome="Retour" action="listingPersonne" value="Retour"/> 
 						</h:panelGrid>
 					</h:form>

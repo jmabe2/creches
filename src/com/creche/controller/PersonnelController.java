@@ -1,20 +1,14 @@
 package com.creche.controller;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import com.creche.model.Personnel;
-import com.creche.model.Role;
-import com.creche.services.ContactService;
 import com.creche.services.PersonnelService;
 
 @Named
@@ -27,10 +21,11 @@ public class PersonnelController implements Serializable{
 
 	@Temporal(TemporalType.DATE)
 	private Personnel personnel;
-	private Integer personnelID;
+	private Personnel personnelUpdate;
 
 	public PersonnelController() {
 	}
+
 
 	@PostConstruct
 	public void init(){
@@ -41,14 +36,25 @@ public class PersonnelController implements Serializable{
 	public String fillPersonnel (){
 		PersonnelService pService = new PersonnelService();
 		personnel = pService.createPersonnel(personnel);
+		clear();
 		return "listingPersonne";
 	}
 
 	public String updatePersonnel(){
 		PersonnelService pService = new PersonnelService();
-		personnel = pService.updatePersonnel(personnelID, personnel);
+		personnel = pService.updatePersonnel(personnelUpdate);
+		clear();
 		return "listingPersonne";
 	}
+	
+	public void clear(){
+	    setPersonnel(null);
+	}
+	
+	public static boolean checkRolePersonnel(Personnel personnel, List<String> roles) {
+		return (personnel != null) && (roles.contains(personnel.getRole().getNom()));
+	}
+	
 
 	public void findAllPersonnel(){
 		PersonnelService pService = new PersonnelService();
@@ -76,16 +82,22 @@ public class PersonnelController implements Serializable{
 		return listPersonnel;
 	}
 
-	public int getPersonnelID() {
-		return personnelID;
-	}
-
-	public void setPersonnelID(int personnelID) {
-		this.personnelID = personnelID;
-	}
-
 	public void setListPersonnel(List <Personnel> listPersonnel) {
 		this.listPersonnel = listPersonnel;
 	}
+	
+
+	public Personnel getPersonnelUpdate() {
+		return personnelUpdate;
+	}
+
+
+	public void setPersonnelUpdate(Personnel personnelUpdate) {
+		this.personnelUpdate = personnelUpdate;
+	}
+
+
+
+
 
 }

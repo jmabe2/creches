@@ -23,7 +23,7 @@ public class Personnel implements Serializable {
 
 	@Id
 	private int personnelID;
-
+	
 	private boolean actif;
 
 	@Temporal(TemporalType.DATE)
@@ -144,5 +144,7 @@ public class Personnel implements Serializable {
 
 		return soinsenfant;
 	}
+	
+	
 
 }

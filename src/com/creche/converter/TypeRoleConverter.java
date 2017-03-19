@@ -5,7 +5,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
-import javax.faces.convert.DateTimeConverter;
 import javax.inject.Named;
 
 import com.creche.model.Role;
@@ -14,8 +13,6 @@ import com.creche.services.RoleService;
 @Named
 public class TypeRoleConverter implements Converter{
 
-	
-    private RoleService RoleService;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {

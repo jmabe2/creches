@@ -78,12 +78,10 @@
 					<br />
 				</h:column>
 				<h:column>
-
-					<h:commandLink class="btn btn-primary" id="modifContact"
-						action="welcome.xhtml">
+					<h:commandLink class="btn btn-primary" id="modifContact" action="UpdatePersonnel" >
+						<f:setPropertyActionListener target="#{roleController.roleUpdate}" value="#{listPersonnel}" />
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
-
 				</h:column>
 			</h:dataTable>
 		</h:form>

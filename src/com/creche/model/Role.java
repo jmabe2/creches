@@ -2,6 +2,8 @@ package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+
 import java.util.List;
 
 
@@ -16,6 +18,8 @@ import java.util.List;
 	@NamedQuery(name="Role.findRoleByID",
 			query="SELECT r FROM Role r WHERE r.roleID = :roleID"),
 })
+
+@Table(name = "Role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -23,8 +27,10 @@ public class Role implements Serializable {
 	private Integer roleID;
 
 	private boolean actif;
-
-	private String nom;
+    
+	//@Pattern(regexp = "([a-zA-Z])", message = "Invalid format")
+    @Column(name = "nom")
+    private String nom;
 
 	//bi-directional many-to-one association to Personnel
 	@OneToMany(mappedBy="role")
@@ -48,7 +54,7 @@ public class Role implements Serializable {
 	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
-
+	
 	public String getNom() {
 		return this.nom;
 	}

@@ -16,17 +16,15 @@
 
 					<h:form id="RoleForm">
 						<h:commandLink value="#{roleController.init()}" />
-
-						<h3>Créer un nouveau rôle</h3>
+						<h3>Modifier un rôle existant</h3>
 						<h:messages style="color:red;margin:5px;" />
 						<h:panelGrid columns="3">
 							<h:outputLabel for="nom" value="Nom" />
-							<h:inputText id="nom" value="#{roleController.role.nom}"
+							<h:inputText id="nom" value="#{roleController.roleUpdate.nom}"
 								required="true" requiredMessage="Entrez un nom"
-								styleClass="form-control"
-								validator="#{validatorRole.validate}">
+								styleClass="form-control">
 								<f:validateLength minimum="3" maximum="10" />
-								<f:validateRegex pattern="([_A-Za-z0-9-])" />
+								<!--  <f:validateRegex pattern="([_A-Za-z0-9-])" />-->
 								<!--  <f:validateRegex pattern="([_A-Za-z0-9-])" /> -->
 								<!--  <f:validator validatorId="#{validatorRole}"  /> -->
 								<!--  <f:validator binding="#{validatorRole}" /> -->
@@ -38,12 +36,12 @@
 							<h:outputLabel value="Actif" label="Actif">
 							</h:outputLabel>
 							<h:selectBooleanCheckbox id="actif"
-								value="#{roleController.role.actif}" />
+								value="#{roleController.roleUpdate.actif}" />
 							<br />
 							<br />
 							<h:commandButton value="Enregistrer"
-								action="#{roleController.fillRole()}"></h:commandButton>
-							<h:commandButton outcome="listingRole" value="Retour" />
+								action="#{roleController.updateRole()}"></h:commandButton>
+							<h:commandButton action="listingRole" value="Retour" />
 						</h:panelGrid>
 					</h:form>
 				</div>

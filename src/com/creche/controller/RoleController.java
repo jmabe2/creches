@@ -17,26 +17,39 @@ public class RoleController implements Serializable{
 	private List <Role> listRole;
 	private Integer roleID;
 	private Role role;
+	private Role roleUpdate;
+	private Role roleName;
 
 	public RoleController(){
 		
 	}
+	
 	public String fillRole () {
 		RoleService rService = new RoleService();
 		rService.createRole(role);
+		rService.exist(roleName);
+		clear();
 		return "listingRole";
 	}
 
 	public String updateRole(){
 		RoleService rService = new RoleService();
-		role= rService.updateRole(roleID, role);
+		role= rService.updateRole(roleUpdate);
+		clear();
 		return "listingRole";
 	}
 	
+	/*public static boolean checkRole(Role role, List<Role> listRole) {
+		return (listRole != null) && (listRole.contains(role.getNom()));
+	}*/
 	
 	public void loadRole(){
 		RoleService rService = new RoleService();
 		listRole = rService.findAllRules();
+	}
+	
+	public boolean exist(String roleName) {
+		return true;
 	}
 	
 	public void clear(){
@@ -72,6 +85,13 @@ public class RoleController implements Serializable{
 	public void setListRole(List <Role> listRole) {
 		this.listRole = listRole;
 	}
+	public Role getRoleUpdate() {
+		return roleUpdate;
+	}
+	public void setRoleUpdate(Role roleUpate) {
+		this.roleUpdate = roleUpate;
+	}
+	
 
 
 }
