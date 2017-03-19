@@ -10,14 +10,19 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Materiel.findAll", query="SELECT m FROM Materiel m")
+@NamedQueries({
+	@NamedQuery(name="Materiel.findAll",
+			query="SELECT m FROM Materiel m"),
+	@NamedQuery(name="Materiel.findMaterielByID",
+			query="SELECT m FROM Materiel m WHERE m.materielID = :materielID"),
+})
 public class Materiel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int materielID;
+	private Integer materielID;
 
-	private byte actif;
+	private boolean actif;
 
 	private String nom;
 
@@ -43,19 +48,19 @@ public class Materiel implements Serializable {
 	public Materiel() {
 	}
 
-	public int getMaterielID() {
+	public Integer getMaterielID() {
 		return this.materielID;
 	}
 
-	public void setMaterielID(int materielID) {
+	public void setMaterielID(Integer materielID) {
 		this.materielID = materielID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 
@@ -105,4 +110,17 @@ public class Materiel implements Serializable {
 		this.locals = locals;
 	}
 
+    @Override
+    public boolean equals(Object other) {
+        return (other != null && getClass() == other.getClass() && materielID != null)
+            ? materielID.equals(((Materiel) other).materielID)
+            : (other == this);
+    }
+
+    @Override
+    public int hashCode() {
+        return (materielID != null) 
+            ? (getClass().hashCode() + materielID.hashCode())
+            : super.hashCode();
+    }
 }

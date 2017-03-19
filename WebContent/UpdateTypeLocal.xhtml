@@ -15,40 +15,30 @@
 				class="col-sm-6 col-md-4 col-md-offset-4">
 				<div style="margin: auto; text-align: center; padding: 5px;">
 					<h:form id="LocalForm">
-						<h:commandLink value="#{typeLocalController.loadTypeLocal()}" />
-						<h3>Modification du local</h3>
+						<h3>Modification du type local</h3>
 						<div class="col-md-4">
-							<h:outputLabel>Section</h:outputLabel>
+							<h:outputLabel>Nom</h:outputLabel>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-8" style="margin-bottom: 20px;">
 							<h:inputText class="form-control" id="nom"
-								value="#{localController.local.section}" required="true"
-								requiredMessage="Veuillez enntrer un nom de section" />
+								value="#{typeLocalController.typeLocal.nom}" required="true"
+								requiredMessage="Veuillez enntrer un type local" />
 							<h:message for="nom" styleClass="errorMessage" />
 						</div>
 						<div class="col-md-4">
 							<h:outputLabel>Actif</h:outputLabel>
 						</div>
-						<div class="col-md-8">
-							<h:selectBooleanCheckbox class="form-control" id="actif"
-								value="#{localController.local.actif}" />
-						</div>
-						<div class="col-md-4"></div>
 						<div class="col-md-8" style="margin-bottom: 20px;">
-							<h:selectOneMenu id="typeLocal"
-								value="#{localController.local.typelocal}"
-								converter="#{typeLocalConverter}">
-								<f:selectItems value="#{typeLocalController.listTypeLocal}"
-									var="tl" itemValue="#{tl}" itemLabel="#{tl.nom}" />
-							</h:selectOneMenu>
+							<h:selectBooleanCheckbox class="form-control" id="actif"
+								value="#{typeLocalController.typeLocal.actif}" />
 						</div>
 						<div class="col-md-6" style="margin-bottom: 20px;">
 							<h:commandButton class="btn btn-primary" value="Enregistrer"
-								action="#{localController.updateLocal()}"></h:commandButton>
+								action="#{typeLocalController.updateTypeLocal()}"></h:commandButton>
 						</div>
 						<div class="col-md-6">
 							<h:link class="btn btn-primary" value="Retour"
-								outcome="listingLocal"></h:link>
+								outcome="listingTypeLocal"></h:link>
 						</div>
 					</h:form>
 				</div>

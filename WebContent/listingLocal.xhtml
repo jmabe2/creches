@@ -9,44 +9,58 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{localController.loadLocal()}" />					
+			<h:commandLink value="#{localController.loadLocal()}" />
 			<h:commandLink class="btn btn-primary" action="AddLocal">
-				<span class="glyphicon glyphicon-plus"></span></h:commandLink>
+				<span class="glyphicon glyphicon-plus"></span>
+			</h:commandLink>
 		</h:form>
 
 		<h:dataTable class="table table-striped" id="contact"
 			value="#{localController.listLocal}" var="listLocal">
 			<f:facet name="header">
-				<h:outputText value="Liste des locaux" />
+				<h3 class="text-center">
+					<h:outputText value="Liste des locaux" />
+				</h3>
 			</f:facet>
 
 			<h:column style="width: 500px">
 				<f:facet name="header">
-					<h:outputText value="Section" />
+					<h:outputText value="#{bundle['application.dataTable.nom']}" />
 				</f:facet>
 				<h:outputText value="#{listLocal.section}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="actif" />
-				</f:facet>
-				<h:outputText value="#{listLocal.actif}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Type" />
+					<h:outputText value="#{bundle['application.dataTable.type']}" />
 				</f:facet>
 				<h:outputText value="#{listLocal.typelocal.nom}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="" />
+					<h:outputText value="#{bundle['application.dataTable.actif']}" />
 				</f:facet>
+				<span
+					class="#{listLocal.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header" />
 				<h:form>
 					<h:commandLink class="btn btn-primary" id="modifLocal"
 						action="UpdateLocal">
-						<f:setPropertyActionListener target="#{localController.localToUpdate}" value="#{listLocal}" />
+						<f:setPropertyActionListener target="#{localController.local}"
+							value="#{listLocal}" />
 						<span class="glyphicon glyphicon-pencil"></span>
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header" />
+				<h:form>
+					<h:commandLink class="btn btn-primary" id="editLocalMateriel"
+						action="listingLocalMateriel">
+						<f:setPropertyActionListener
+							target="#{localMaterielController.local}" value="#{listLocal}" />
+						<span class="glyphicon glyphicon-list"></span>
 					</h:commandLink>
 				</h:form>
 			</h:column>

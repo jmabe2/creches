@@ -6,21 +6,20 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.creche.model.Local;
-import com.creche.model.Typelocal;
 import com.creche.connection.EMF;
 
 
 
 public class LocalService implements Serializable {
 	private static final long serialVersionUID = 1L;
-	protected EntityManager em;
+	protected static EntityManager em;
 		
 	/**
 	 * 
 	 * @param em (EntityManager)
 	 */
 	public LocalService() {
-		 this.em = EMF.getEM();
+		 LocalService.em = EMF.getEM();
 	}
 
 	/**
@@ -33,7 +32,7 @@ public class LocalService implements Serializable {
 	 * @return
 	 */
 	
-	public Local createLocal(Local local ) 
+	public static Local createLocal(Local local ) 
 	{
 		em.getTransaction().begin();
 		em.persist(local);
@@ -50,7 +49,7 @@ public class LocalService implements Serializable {
 	 * @param typeLocalID
 	 * @return
 	 */
-	public Local updateLocal (Local local ) 
+	public static Local updateLocal (Local local ) 
 	{
 		Local localToUpdate = em.find(Local.class, local.getLocalID());
 		em.getTransaction().begin();
@@ -70,7 +69,7 @@ public class LocalService implements Serializable {
 	 * @return
 	 */
 	
-	public Local findLocalByID(int localID){
+	public static Local findLocalByID(int localID){
 	    try {
 	        return (Local) em.createNamedQuery("Local.findLocalByID").setParameter("localID", localID)
 	            .getSingleResult();
@@ -84,7 +83,7 @@ public class LocalService implements Serializable {
 	 * @param localID
 	 */
 	
-	public void removeLocal(int localID){
+	public static void removeLocal(int localID){
 		
 		Local local=findLocalByID(localID);
 		if (local!=null){
@@ -96,7 +95,7 @@ public class LocalService implements Serializable {
 	 *  Method to list a contact
 	 * @return
 	 */
-	public List<Local> findAllLocal (){
+	public  List<Local> findAllLocal (){
 	    try {
 	        TypedQuery<Local> query = em.createNamedQuery("Local.findAllLocal", Local.class);
 	        return query.getResultList();

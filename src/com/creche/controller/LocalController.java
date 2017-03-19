@@ -3,11 +3,8 @@ package com.creche.controller;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import com.creche.model.Local;
 import com.creche.services.LocalService;
 
@@ -23,7 +20,6 @@ public class LocalController implements Serializable{
 	private List <Local> listLocal;
 	
 	private Local local;
-	private Local localToUpdate;
 	
 	public LocalController(){
 		
@@ -31,18 +27,15 @@ public class LocalController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		local = new Local();
 	}
 	
-	public String fillLocal(){
-		LocalService lService = new LocalService();
-		lService.createLocal(local);
+	public String fillLocal(){		
+		LocalService.createLocal(local);
 		return "listingLocal";
 	} 
 	
 	public String updateLocal(){
-		LocalService lService = new LocalService();
-		lService.updateLocal(localToUpdate);
+		LocalService.updateLocal(local);
 		return "listingLocal";
 	}
 	
@@ -54,9 +47,9 @@ public class LocalController implements Serializable{
 	public void loadLocal(){
 		LocalService lService = new LocalService();
 		listLocal = lService.findAllLocal();
+		local = new Local();
 	}
-
-
+	
 	
 	//Getter & Setters
 	public List<Local> getListLocal() {
@@ -74,14 +67,5 @@ public class LocalController implements Serializable{
 	public void setLocal(Local local) {
 		this.local = local;
 	}
-
-	public Local getLocalToUpdate() {
-		return localToUpdate;
-	}
-
-	public void setLocalToUpdate(Local localToUpdate) {
-		this.localToUpdate = localToUpdate;
-	}
-
 
 }

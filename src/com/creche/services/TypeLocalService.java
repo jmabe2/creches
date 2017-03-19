@@ -12,14 +12,14 @@ import com.creche.connection.EMF;
 
 public class TypeLocalService implements Serializable {
 	private static final long serialVersionUID = 1L;
-	protected EntityManager em;
+	protected static EntityManager em;
 		
 	/**
 	 * 
 	 * @param em (EntityManager)
 	 */
 	public TypeLocalService() {
-		 this.em = EMF.getEM();
+		 TypeLocalService.em = EMF.getEM();
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class TypeLocalService implements Serializable {
 	 * @return
 	 */
 	
-	public Typelocal createLocal(Typelocal typeLocal ) 
+	public static Typelocal createLocal(Typelocal typeLocal ) 
 	{
 		em.getTransaction().begin();
 		em.persist(typeLocal);
@@ -40,14 +40,15 @@ public class TypeLocalService implements Serializable {
 
 	 * @return
 	 */
-	/*public Local updateLocal (int localID,String section, boolean actif, Typelocal typeLocal ) 
+	public static Typelocal updateTypeLocal (Typelocal typeLocal ) 
 	{
-		Local local = em.find(Local.class, localID);
-		local.setSection(section);
-		local.setActif(actif);
-		local.setTypelocal(typeLocal);
-		return local;
-	}*/
+		Typelocal typeLocalToUpdate = em.find(Typelocal.class, typeLocal.getTypeLocalID());
+		em.getTransaction().begin();
+		typeLocalToUpdate.setNom(typeLocal.getNom());
+		typeLocalToUpdate.setActif(typeLocal.getActif());
+		em.getTransaction().commit();
+		return typeLocalToUpdate;
+	}
 	
 	/**
 	 *  Method to find a typeLocal by ID
@@ -58,7 +59,7 @@ public class TypeLocalService implements Serializable {
 	 * @return
 	 */
 	
-	public Typelocal findTypeLocalByID(int typeLocalID){
+	public static Typelocal findTypeLocalByID(int typeLocalID){
 	    try {
 	        return (Typelocal) em.createNamedQuery("Typelocal.findTypeLocalByID").setParameter("typeLocalID", typeLocalID)
 	            .getSingleResult();
@@ -73,7 +74,7 @@ public class TypeLocalService implements Serializable {
 	 * @param localID
 	 */
 	
-	public void removeLocal(int typeLocalID){
+	public static void removeLocal(int typeLocalID){
 		
 		Typelocal typeLocal=findTypeLocalByID(typeLocalID);
 		if (typeLocal!=null){
