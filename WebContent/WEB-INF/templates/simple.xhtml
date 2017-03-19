@@ -23,10 +23,18 @@
 			href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
 		<img src="#{request.contextPath}/pictures/logoCreche.png"></img>
 		<h:form style="position: absolute; right:0px; top:0px;">
-			<h:selectOneMenu value="#{languageBean.language}" onchange="submit()">
-				<f:selectItem itemValue="en" itemLabel="English" />
-				<f:selectItem itemValue="fr" itemLabel="Français" />
-			</h:selectOneMenu>
+			<div class="col-md-4">
+				<h:commandButton value="#{personnel.login}"
+					action="#{loginController.logout}" />
+			</div>
+			<div class="col-md-8">
+				<h:selectOneMenu value="#{languageBean.language}"
+					onchange="submit()" class="form-control">
+					<f:selectItem itemValue="en" itemLabel="English" />
+					<f:selectItem itemValue="fr" itemLabel="Français" />
+				</h:selectOneMenu>
+			</div>
+
 		</h:form>
 	</h:head>
 
@@ -72,9 +80,9 @@
 									</a>
 										<ul class="dropdown-menu">
 											<li><a href="listingLocal.xhtml">#{bundle['application.template.ListLocals']}</a></li>
-											<li><a href="listingTypeLocal.xhtml">Type de Locaux
+											<li><a href="listingTypeLocal.xhtml">#{bundle['application.template.typeLocaux']}
 											</a></li>
-											<li><a href="listingMateriel.xhtml">Materiel</a></li>
+											<li><a href="listingMateriel.xhtml">#{bundle['application.template.materiels']}</a></li>
 										</ul></li>
 								</ul>
 							</div>
@@ -85,9 +93,7 @@
 				</ui:insert>
 			</div>
 			<div id="content">
-				<ui:insert name="content">
-#{bundle['application.defaultpage.body.content']}
-</ui:insert>
+				<ui:insert name="content">#{bundle['application.defaultpage.body.content']}</ui:insert>
 			</div>
 			<div class="container">
 				<div

@@ -25,19 +25,19 @@
 
 			<h:column style="width: 500px">
 				<f:facet name="header">
-					<h:outputText value="Section" />
+					<h:outputText value="#{bundle['application.dataTable.nom']}" />
 				</f:facet>
 				<h:outputText value="#{listLocal.section}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Type" />
+					<h:outputText value="#{bundle['application.dataTable.type']}" />
 				</f:facet>
 				<h:outputText value="#{listLocal.typelocal.nom}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Actif" />
+					<h:outputText value="#{bundle['application.dataTable.actif']}" />
 				</f:facet>
 				<span
 					class="#{listLocal.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />

@@ -15,7 +15,7 @@ import com.creche.services.PersonnelService;
 @Named
 @SessionScoped
 public class LoginController implements Serializable{
-	
+
 	/**
 	 * 
 	 */
@@ -24,23 +24,27 @@ public class LoginController implements Serializable{
 	private String mdp;
 	private Personnel personnel;
 
-	
+
 	public LoginController(){		
 	}
-	
+
 	@PostConstruct
 	public void init(){
 
 	}
-	
+
 
 	//validate login
 	public String checkLogin() {
 		PersonnelService pService = new PersonnelService();
 		personnel = pService.loginPersonnel(login,mdp);
+		FacesContext context = FacesContext.getCurrentInstance();
 		if (personnel!=null){
+			context.getExternalContext().getSessionMap().put("personnel", personnel);
 			return "Success";
 		}else{
+			login=null;
+			mdp=null;
 			FacesContext.getCurrentInstance().addMessage("loginForm:password",
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
 							"Incorrect Username and Passowrd",
@@ -53,6 +57,13 @@ public class LoginController implements Serializable{
 		}
 	}
 
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "index.html";
+	}
+		
+	
+	//Getters & Setters 
 	public String getLogin() {
 		return login;
 	}
@@ -81,6 +92,6 @@ public class LoginController implements Serializable{
 		return serialVersionUID;
 	}	
 
-	
+
 
 }
