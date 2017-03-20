@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.creche.model.Contact;
+import com.creche.model.Personnel;
 import com.creche.connection.EMF;
 
 
@@ -41,19 +42,21 @@ public class ContactService implements Serializable {
 	 * Method to update a contact
 	 */
 	public Contact updateContact (Contact contact){
-		em.find(Contact.class, contact);
+		Contact contactUpdate = em.find(Contact.class, contact.getContactID());
 		em.getTransaction().begin();
 		em.merge(contact);
+		contact.setNom(contact.getNom());
+		contact.setPrenom(contact.getPrenom());
+		contact.setNiss(contact.getNiss());
+		contact.setRue(contact.getRue());
+		contact.setNumero(contact.getNumero());
+		contact.setCodePostal(contact.getCodePostal());
+		contact.setLocalite(contact.getLocalite());
+		contact.setTelephone(contact.getTelephone());
+		contact.setGsm(contact.getGsm());
+		contact.setActif(contact.getActif());
 		em.getTransaction().commit();
-		return contact;
-	}
-	
-	public boolean updateActif (Integer contactID, boolean actif){
-		em.find(Contact.class, contactID);
-		em.getTransaction().begin();			
-		em.persist(actif);
-		em.getTransaction().commit();
-		return actif;
+		return contactUpdate;
 	}
 	
 	/**

@@ -15,10 +15,8 @@ public class RoleController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private List <Role> listRole;
-	private Integer roleID;
 	private Role role;
 	private Role roleUpdate;
-	private Role roleName;
 
 	public RoleController(){
 		
@@ -27,7 +25,6 @@ public class RoleController implements Serializable{
 	public String fillRole () {
 		RoleService rService = new RoleService();
 		rService.createRole(role);
-		rService.exist(roleName);
 		clear();
 		return "listingRole";
 	}
@@ -62,14 +59,7 @@ public class RoleController implements Serializable{
 
 	}
 
-	public int getRoleID() {
-		return roleID;
-	}
-
-	public void setRoleID(int roleID) {
-		this.roleID = roleID;
-	}
-
+	
 	public Role getRole() {
 		return role;
 	}

@@ -17,6 +17,9 @@ import java.util.List;
 			, query="SELECT r FROM Role r"),
 	@NamedQuery(name="Role.findRoleByID",
 			query="SELECT r FROM Role r WHERE r.roleID = :roleID"),
+	@NamedQuery(name="Role.findRoleByName",
+	query="SELECT r FROM Role r WHERE r.nom = :nom"),
+
 })
 
 @Table(name = "Role")

@@ -88,9 +88,9 @@
 					<br />
 				</h:column>
 				<h:column>
-					<h:commandLink class="btn btn-primary" id="modifContact"
-						action="welcome.xhtml">
+					<h:commandLink class="btn btn-primary" id="modifContact" action="UpdateContact">
 						<span class="glyphicon glyphicon-pencil"></span>
+						<f:setPropertyActionListener target="#{contactController.contactUpdate}" value="#{listContact}" />
 					</h:commandLink>
 				</h:column>
 			</h:dataTable>

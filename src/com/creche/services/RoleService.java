@@ -10,7 +10,7 @@ import com.creche.model.Role;
 public class RoleService implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	protected EntityManager em;
+	protected static EntityManager em;
 
 	/**
 	 * 
@@ -61,6 +61,15 @@ public class RoleService implements Serializable{
 	public Role findRoleByID (int roleID){
 		try {
 	        return (Role) em.createNamedQuery("Role.findRoleByID").setParameter("roleID", roleID).getSingleResult();
+	      } catch (NoResultException e) {
+	        return null;
+	      }
+		
+	}
+	
+	public static Role findRoleByName (String nom){
+		try {
+	        return (Role) em.createNamedQuery("Role.findRoleByName").setParameter("nom", nom).getSingleResult();
 	      } catch (NoResultException e) {
 	        return null;
 	      }

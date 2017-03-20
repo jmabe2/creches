@@ -7,6 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import com.creche.model.Contact;
 import com.creche.services.ContactService;
+
 import java.lang.Integer;
 
 @Named
@@ -17,8 +18,8 @@ public class ContactController implements Serializable{
 	private List <Contact> listContact;
 	private Integer contactID;
 	private Contact contact;
+	private Contact contactUpdate;
    
-
 	public ContactController(){
 
 	}
@@ -31,17 +32,21 @@ public class ContactController implements Serializable{
 	public String fillContact(){
 		ContactService cService = new ContactService();
 		contact = cService.createContact(contact);
+		clear();
 		return "listingContact";
 	} 
 
 	public String updateContact(){
 		ContactService cService = new ContactService();
-		contact = cService.updateContact(contact);
+		contact = cService.updateContact(contactUpdate);
+		clear();
 		return "listingContact";
 	}
 	
-
-
+	public void clear(){
+	    setContact(null);
+	}
+	
 	/*
 	 public void removeContact() {
 		ContactService cService = new ContactService();
@@ -76,6 +81,16 @@ public class ContactController implements Serializable{
 	public void setContactID(Integer contactID) {
 		this.contactID = contactID;
 	}
+	
+	public Contact getContactUpdate() {
+		return contactUpdate;
+	}
+
+	public void setContactUpdate(Contact contactUpdate) {
+		this.contactUpdate = contactUpdate;
+	}
+	
+	
 	
 
 }
