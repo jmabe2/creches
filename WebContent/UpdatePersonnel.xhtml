@@ -36,7 +36,7 @@
 							<br />
 							  <h:outputLabel>Date de naissance </h:outputLabel>
 							 <h:inputText id="ddn" styleClass="datepicker" value="#{personnelController.personnelUpdate.ddn}">
-							<f:convertDateTime type="both" pattern="yyyy-mm-dd" dateStyle="short" timeStyle="medium" />
+							<f:convertDateTime pattern="yyyy-mm-dd" />
 							</h:inputText>							
 							<br />
 							<br />
@@ -53,18 +53,12 @@
 							<h:selectOneMenu id="typeRole" value="#{personnelController.personnelUpdate.role}" converter="#{typeRoleConverter}">
 								<f:selectItems value="#{roleController.listRole}" var="listRole"
 									itemValue="#{listRole}" itemLabel="#{listRole.nom}" />
-							</h:selectOneMenu>
-							
-							<h:selectOneMenu id="typeLocal" value="#{localController.localToUpdate.typelocal}" converter="#{typeLocalConverter}">
-					        <f:selectItems value="#{typeLocalController.listTypeLocal}"  var="tl" itemValue="#{tl}" itemLabel="#{tl.nom}"/>
-					    </h:selectOneMenu>
-						<br/>
-						
+							</h:selectOneMenu>						
 							<br />
 							<br />
 							<h:outputLabel value="Actif" />
 							<h:selectBooleanCheckbox id="actif"
-								value="#{personnelController.personnel.actif}" />
+								value="#{personnelController.personnelUpdate.actif}" />
 							<br />
 							<br />
 							<h:commandButton value="Enregistrer" 
