@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.creche.model.Contact;
-import com.creche.model.Personnel;
 import com.creche.connection.EMF;
 
 

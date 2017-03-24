@@ -75,11 +75,7 @@ public class RoleService implements Serializable{
 	      }
 		
 	}
-	
-	public boolean exist(Object roleName) {
-		return false;
-	}
-		
+			
 	/**
 	 *  Method to remove a role
 	 * @param roleID

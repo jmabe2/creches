@@ -20,15 +20,16 @@
 						<h3>Créer un nouveau rôle</h3>
 						<h:messages style="color:red;margin:5px;" />
 						<h:panelGrid columns="3">
-							<h:outputLabel for="nom" value="Nom" />
+							<h:outputLabel for="nom" value="Nom" id="role"/>
 							<h:inputText id="nom" value="#{roleController.role.nom}"
 								required="true" requiredMessage="Entrez un nom"
-								styleClass="form-control">
+								styleClass="form-control" >
 								<f:validateLength minimum="3" maximum="10" />
-								<!--  <f:validateRegex pattern="([_A-Za-z0-9-])" />   -->
+					            <!--   <f:validateRegex pattern="([a-zA-Z])" />-->
+					      		<!--  <f:validateRegex pattern="([_A-Za-z0-9-])" />   -->
 								<!--  <f:validateRegex pattern="([_A-Za-z0-9-])" /> -->
 								<!--  <f:validator validatorId="#{validatorRole}"  /> -->
-								 <f:validator binding="#{validatorRole}" />
+								<f:validator binding="#{validatorRole}" />
 								<!--  <f:ajax event="blur" render="Role_message" />  -->
 							</h:inputText>
 							<h:message id="Role_message" for="role" />

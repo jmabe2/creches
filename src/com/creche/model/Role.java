@@ -2,8 +2,6 @@ package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-
 import java.util.List;
 
 
@@ -19,7 +17,7 @@ import java.util.List;
 			query="SELECT r FROM Role r WHERE r.roleID = :roleID"),
 	@NamedQuery(name="Role.findRoleByName",
 	query="SELECT r FROM Role r WHERE r.nom = :nom"),
-
+	
 })
 
 @Table(name = "Role")

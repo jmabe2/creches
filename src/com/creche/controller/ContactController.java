@@ -8,7 +8,6 @@ import javax.inject.Named;
 import com.creche.model.Contact;
 import com.creche.services.ContactService;
 
-import java.lang.Integer;
 
 @Named
 @SessionScoped
@@ -16,7 +15,6 @@ public class ContactController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private List <Contact> listContact;
-	private Integer contactID;
 	private Contact contact;
 	private Contact contactUpdate;
    
@@ -72,14 +70,6 @@ public class ContactController implements Serializable{
 
 	public void setContact(Contact contact) {
 		this.contact = contact;
-	}
-	
-	public Integer getContactID() {
-		return contactID;
-	}
-
-	public void setContactID(Integer contactID) {
-		this.contactID = contactID;
 	}
 	
 	public Contact getContactUpdate() {

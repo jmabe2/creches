@@ -1,5 +1,8 @@
 package com.creche.validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -9,7 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-import com.creche.controller.RoleController;
 import com.creche.services.RoleService;
 
 
@@ -19,37 +21,41 @@ import com.creche.services.RoleService;
 public class ValidatorRole implements Validator  {
 
 	@EJB
-	private RoleController rController;
 	private String name;
+	private Pattern pattern;
+	private Matcher matcher;
 
+	private static final String ROLE_PATTERN ="[A-Za-z]";
 
+	public ValidatorRole(){
+		setPattern(Pattern.compile(ROLE_PATTERN));
+
+	}
 
 	public void validate(FacesContext context, UIComponent component, Object submittedValue) throws ValidatorException {
 
-		//RoleController rController = new RoleController();
+		matcher = pattern.matcher(submittedValue.toString());
+
 		String name = (String)submittedValue;
 
 		if (RoleService.findRoleByName(name) == null) 
 		{
+
+			if (!matcher.matches()){
+
+				throw new ValidatorException( new FacesMessage("Fomat not accepted, please use only A-Z-a-z"));
+
+			}
 			return;
-		}else{
-			throw new ValidatorException(new FacesMessage("Role already in use, choose another"));
+
 		}
+
+		else {
+			throw new ValidatorException(new FacesMessage("Role already in use, choose another"));
+
+		}
+
 	}
-
-	/*
-	public void validateName(FacesContext context,UIComponent component,Object value)throws ValidatorException
-	{
-		UIInput Input = (UIInput) component.getAttributes().get("nom");
-	    String name=(String)Input.getValue();
-		if (rController.exist(name))
-		{
-			throw new ValidatorException(new FacesMessage("Role already in use, choose another"));
-
-		}
-
-
-	}*/
 
 	public String getName() {
 		return name;
@@ -58,6 +64,26 @@ public class ValidatorRole implements Validator  {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Pattern getPattern() {
+		return pattern;
+	}
+
+	public void setPattern(Pattern pattern) {
+		this.pattern = pattern;
+	}
+
+	public Matcher getMatcher() {
+		return matcher;
+	}
+
+	public void setMatcher(Matcher matcher) {
+		this.matcher = matcher;
+	}
+
+	public static String getRolePattern() {
+		return ROLE_PATTERN;
 	}
 
 

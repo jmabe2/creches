@@ -81,10 +81,12 @@
 						<h:outputText value="Actif" />
 					</f:facet>
 					<!-- <h:outputText value="#{listContact.actif ? 'Oui' : 'Non'}" />-->
-					<h:graphicImage rendered="#{listContact.actif eq true}"
+					<span
+					class="#{listContact.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
+					<!-- <h:graphicImage rendered="#{listContact.actif eq true}"
 						value="pictures/true.png" />
 					<h:graphicImage rendered="#{listContact.actif eq false}"
-						value="pictures/false.png" />
+						value="pictures/false.png" />-->
 					<br />
 				</h:column>
 				<h:column>

@@ -7,7 +7,8 @@
 
 	<ui:define name="title"> Listing rôles</ui:define>
 	<ui:define name="content">
-
+	
+	
 		<h:form>
 			<h:commandLink value="#{roleController.loadRole()}" />
 
@@ -23,7 +24,6 @@
 						</h:commandLink>
 					</h3>
 				</f:facet>
-
 				<h:column style="width: 500px">
 					<f:facet name="header">
 						<h:outputText value="Nom" />
@@ -35,12 +35,16 @@
 						<h:outputText value="Actif" />
 					</f:facet>
 					<!--  <h:outputText value="#{listRole.actif ? 'Oui' : 'Non'}" /> -->
-					<h:graphicImage rendered="#{listRole.actif eq true}" value="pictures/true.png" />
-					<h:graphicImage rendered="#{listRole.actif eq false}" value="pictures/false.png" />
+					<span
+						class="#{listRole.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
+					<!-- <h:graphicImage rendered="#{listRole.actif eq true}" value="pictures/true.png" />
+					<h:graphicImage rendered="#{listRole.actif eq false}" value="pictures/false.png" /> -->
 				</h:column>
 				<h:column>
-					<h:commandLink class="btn btn-primary" id="modiRole" action="UpdateRole">
-						<f:setPropertyActionListener target="#{roleController.roleUpdate}" value="#{listRole}" />
+					<h:commandLink class="btn btn-primary" id="modiRole"
+						action="UpdateRole">
+						<f:setPropertyActionListener target="#{roleController.roleUpdate}"
+							value="#{listRole}" />
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
 				</h:column>

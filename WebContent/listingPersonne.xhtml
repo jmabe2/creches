@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Listing membres du personnel</ui:define>
+	<ui:define name="title"> Membres du personnel</ui:define>
 	<ui:define name="content">
 
 		<h:form>
@@ -65,9 +65,11 @@
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>
-					<!-- <h:outputText value="#{listPersonnel.actif ? 'Oui' : 'Non'}" />-->
+					<span
+					class="#{listPersonnel.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
+					<!-- <h:outputText value="#{listPersonnel.actif ? 'Oui' : 'Non'}" />
 					<h:graphicImage rendered="#{listPersonnel.actif eq true}" value="pictures/true.png" />
-					<h:graphicImage rendered="#{listPersonnel.actif eq false}" value="pictures/false.png" />
+					<h:graphicImage rendered="#{listPersonnel.actif eq false}" value="pictures/false.png" />-->
 					<br />
 				</h:column>
 				<h:column>

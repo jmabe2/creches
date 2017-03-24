@@ -11,14 +11,18 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Enfant.findAll", query="SELECT e FROM Enfant e")
+@NamedQueries({
+	@NamedQuery(name="Enfant.findAll", query="SELECT e FROM Enfant e"),
+	@NamedQuery(name="Enfant.findEnfantByID",
+	query="SELECT e FROM Enfant e WHERE e.enfantID = :enfantID" ) })
+
 public class Enfant implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int enfantID;
+	private Integer enfantID;
 
-	private byte actif;
+	private boolean actif;
 
 	@Temporal(TemporalType.DATE)
 	private Date ddn;
@@ -48,19 +52,19 @@ public class Enfant implements Serializable {
 	public Enfant() {
 	}
 
-	public int getEnfantID() {
+	public Integer getEnfantID() {
 		return this.enfantID;
 	}
 
-	public void setEnfantID(int enfantID) {
+	public void setEnfantID(Integer enfantID) {
 		this.enfantID = enfantID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 
