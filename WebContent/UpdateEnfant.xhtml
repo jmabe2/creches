@@ -45,12 +45,15 @@
 							<h:selectBooleanCheckbox id="actif"
 								value="#{enfantController.enfantUpdate.actif}" />
 							<br />
-							<br />
-							<h:commandButton value="Enregistrer"
+							<br />			
+							<div class="col-md-6" style="margin-bottom: 20px;">
+							<h:commandButton class="btn btn-primary" value="Enregistrer"
 								action="#{enfantController.updateEnfant()}"></h:commandButton>
-							<div class="col-md-6">
-								<h:link outcome="listingEnfant" value="Retour" />
-							</div>
+						</div>
+						<div class="col-md-6">
+							<h:link class="btn btn-primary" value="Annuler"
+								outcome="listingEnfant"></h:link>
+						</div>
 
 						</h:panelGrid>
 					</h:form>

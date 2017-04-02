@@ -9,78 +9,85 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Contactenfant.findAll", query="SELECT c FROM Contactenfant c")
-public class Contactenfant implements Serializable {
-	private static final long serialVersionUID = 1L;
+@NamedQueries ({
+	@NamedQuery (name="Contactenfant.findAll", query="SELECT c FROM Contactenfant c"),
+			@NamedQuery(name="Contact.findContactEnfantByID",
+			query="SELECT c FROM Contactenfant c WHERE c.contactEnfantID = :contactEnfantID"),
+			@NamedQuery(name="Contact.findContactEnfantBycontactID",
+			query="SELECT c FROM Contactenfant c WHERE c.enfant = :enfant"),
+})
 
-	@Id
-	private int contactEnfantID;
+	public class Contactenfant implements Serializable {
+		private static final long serialVersionUID = 1L;
 
-	private String lienParente;
+		@Id
+		private int contactEnfantID;
 
-	private String natureRelation;
+		private String lienParente;
 
-	private byte tuteur;
+		private String natureRelation;
 
-	//bi-directional many-to-one association to Contact
-	@ManyToOne
-	@JoinColumn(name="ContactID")
-	private Contact contact;
+		private boolean tuteur;
 
-	//bi-directional many-to-one association to Enfant
-	@ManyToOne
-	@JoinColumn(name="EnfantID")
-	private Enfant enfant;
+		//bi-directional many-to-one association to Contact
+		@ManyToOne
+		@JoinColumn(name="ContactID")
+		private Contact contact;
 
-	public Contactenfant() {
+		//bi-directional many-to-one association to Enfant
+		@ManyToOne
+		@JoinColumn(name="EnfantID")
+		private Enfant enfant;
+
+		public Contactenfant() {
+		}
+
+		public int getContactEnfantID() {
+			return this.contactEnfantID;
+		}
+
+		public void setContactEnfantID(int contactEnfantID) {
+			this.contactEnfantID = contactEnfantID;
+		}
+
+		public String getLienParente() {
+			return this.lienParente;
+		}
+
+		public void setLienParente(String lienParente) {
+			this.lienParente = lienParente;
+		}
+
+		public String getNatureRelation() {
+			return this.natureRelation;
+		}
+
+		public void setNatureRelation(String natureRelation) {
+			this.natureRelation = natureRelation;
+		}
+
+		public boolean getTuteur() {
+			return this.tuteur;
+		}
+
+		public void setTuteur(boolean tuteur) {
+			this.tuteur = tuteur;
+		}
+
+		public Contact getContact() {
+			return this.contact;
+		}
+
+		public void setContact(Contact contact) {
+			this.contact = contact;
+		}
+
+		public Enfant getEnfant() {
+			return this.enfant;
+		}
+
+		public void setEnfant(Enfant enfant) {
+			this.enfant = enfant;
+		}
+
 	}
-
-	public int getContactEnfantID() {
-		return this.contactEnfantID;
-	}
-
-	public void setContactEnfantID(int contactEnfantID) {
-		this.contactEnfantID = contactEnfantID;
-	}
-
-	public String getLienParente() {
-		return this.lienParente;
-	}
-
-	public void setLienParente(String lienParente) {
-		this.lienParente = lienParente;
-	}
-
-	public String getNatureRelation() {
-		return this.natureRelation;
-	}
-
-	public void setNatureRelation(String natureRelation) {
-		this.natureRelation = natureRelation;
-	}
-
-	public byte getTuteur() {
-		return this.tuteur;
-	}
-
-	public void setTuteur(byte tuteur) {
-		this.tuteur = tuteur;
-	}
-
-	public Contact getContact() {
-		return this.contact;
-	}
-
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
-
-	public Enfant getEnfant() {
-		return this.enfant;
-	}
-
-	public void setEnfant(Enfant enfant) {
-		this.enfant = enfant;
-	}
-
-}

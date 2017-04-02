@@ -45,6 +45,7 @@ public class EnfantController implements Serializable{
 	public void loadEnfant(){
 		EnfantService eService = new EnfantService();
 		listEnfant = eService.findAllEnfant();
+		clear();
 	}
 	
 	public void clear(){

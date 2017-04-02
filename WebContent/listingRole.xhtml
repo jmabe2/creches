@@ -5,10 +5,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Listing rôles</ui:define>
+	<ui:define name="title">Rôles </ui:define>
 	<ui:define name="content">
-	
-	
+
+
 		<h:form>
 			<h:commandLink value="#{roleController.loadRole()}" />
 
@@ -16,12 +16,12 @@
 				value="#{roleController.listRole}" var="listRole">
 				<f:facet name="header">
 
+					<h:commandLink class="btn btn-primary" id="AddRole"
+						action="AddRole">
+						<span class="glyphicon glyphicon-plus"></span>
+					</h:commandLink>
 					<h3 class="text-center">
-						<h:outputText value="Liste des rôles" />
-						<h:commandLink class="btn btn-primary" id="AddRole"
-							action="AddRole">
-							<span class="glyphicon glyphicon-plus"></span>
-						</h:commandLink>
+						<h:outputText value="Rôles " />
 					</h3>
 				</f:facet>
 				<h:column style="width: 500px">

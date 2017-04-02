@@ -19,7 +19,8 @@
 						<h3>Modifer une personne de contact</h3>
 						<h:panelGrid columns="3">
 							<h:outputLabel>Nom</h:outputLabel>
-							<h:inputText id="nom" value="#{contactController.contactUpdate.nom}"></h:inputText>
+							<h:inputText id="nom"
+								value="#{contactController.contactUpdate.nom}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Prénom</h:outputLabel>
@@ -28,11 +29,13 @@
 							<br />
 							<br />
 							<h:outputLabel>NISS</h:outputLabel>
-							<h:inputText id="niss" value="#{contactController.contactUpdate.niss}"></h:inputText>
+							<h:inputText id="niss"
+								value="#{contactController.contactUpdate.niss}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Rue</h:outputLabel>
-							<h:inputText id="rue" value="#{contactController.contactUpdate.rue}"></h:inputText>
+							<h:inputText id="rue"
+								value="#{contactController.contactUpdate.rue}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Numéro</h:outputLabel>
@@ -42,7 +45,8 @@
 							<br />
 							<br />
 							<h:outputLabel>Code postal</h:outputLabel>
-							<h:inputText id="codepostal" value="#{contactController.contactUpdate.codePostal}">
+							<h:inputText id="codepostal"
+								value="#{contactController.contactUpdate.codePostal}">
 							</h:inputText>
 							<br />
 							<br />
@@ -58,7 +62,8 @@
 							<br />
 							<br />
 							<h:outputLabel>GSM</h:outputLabel>
-							<h:inputText id="gsm" value="#{contactController.contactUpdate.gsm}">
+							<h:inputText id="gsm"
+								value="#{contactController.contactUpdate.gsm}">
 							</h:inputText>
 							<br />
 							<br />
@@ -68,8 +73,15 @@
 								value="#{contactController.contactUpdate.actif}" />
 							<br />
 							<br />
-							<h:commandButton value="Enregistrer" action="#{contactController.updateContact()}"></h:commandButton>
-							<h:commandButton outcome="Retour" action="listingContact" value="Retour" />
+							
+							<div class="col-md-6" style="margin-bottom: 20px;">
+								<h:commandButton class="btn btn-primary" value="Enregistrer"
+									action="#{contactController.updateContact()}"></h:commandButton>
+							</div>
+							<div class="col-md-6">
+								<h:link class="btn btn-primary" value="Annuler"
+									outcome="listingContact"></h:link>
+							</div>
 						</h:panelGrid>
 					</h:form>
 				</div>

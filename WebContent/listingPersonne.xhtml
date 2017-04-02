@@ -13,13 +13,14 @@
 
 			<h:dataTable class="table table-striped" id="personnel"
 				value="#{personnelController.listPersonnel}" var="listPersonnel">
-
+				
 				<f:facet name="header">
+					<h:commandLink class="btn btn-primary" id="AddPersonnel"
+						action="AddPersonnel">
+						<span class="glyphicon glyphicon-plus"></span>
+					</h:commandLink>
 					<h3 class="text-center">
-						<h:outputText value="Liste des membres du personnel" />
-						<h:commandLink class="btn btn-primary" id="AddPersonnel" action="AddPersonnel">
-							<span class="glyphicon glyphicon-plus"></span>
-						</h:commandLink>
+						<h:outputText value="Membres du personnel" />
 					</h3>
 				</f:facet>
 
@@ -39,8 +40,8 @@
 					<f:facet name="header">
 						<h:outputText value="Date de naissance" />
 					</f:facet>
-					<h:outputText  value="#{listPersonnel.ddn}" >
-					<f:convertDateTime pattern="dd-MM-yyyy" />
+					<h:outputText value="#{listPersonnel.ddn}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
 					</h:outputText>
 				</h:column>
 				<h:column>
@@ -66,7 +67,7 @@
 						<h:outputText value="Actif" />
 					</f:facet>
 					<span
-					class="#{listPersonnel.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
+						class="#{listPersonnel.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
 					<!-- <h:outputText value="#{listPersonnel.actif ? 'Oui' : 'Non'}" />
 					<h:graphicImage rendered="#{listPersonnel.actif eq true}" value="pictures/true.png" />
 					<h:graphicImage rendered="#{listPersonnel.actif eq false}" value="pictures/false.png" />-->
@@ -80,8 +81,11 @@
 					<br />
 				</h:column>
 				<h:column>
-					<h:commandLink class="btn btn-primary" id="modifContact" action="UpdatePersonnel" >
-						<f:setPropertyActionListener target="#{personnelController.personnelUpdate}" value="#{listPersonnel}" />
+					<h:commandLink class="btn btn-primary" id="modifContact"
+						action="UpdatePersonnel">
+						<f:setPropertyActionListener
+							target="#{personnelController.personnelUpdate}"
+							value="#{listPersonnel}" />
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
 				</h:column>

@@ -187,5 +187,20 @@ public class Enfant implements Serializable {
 
 		return soinsenfant;
 	}
+	
+	 @Override
+	    public boolean equals(Object other) {
+	        return (other != null && getClass() == other.getClass() && enfantID != null)
+	            ? enfantID.equals(((Enfant) other).enfantID)
+	            : (other == this);
+	    }
+
+	    @Override
+	    public int hashCode() {
+	        return (enfantID != null) 
+	            ? (getClass().hashCode() + enfantID.hashCode())
+	            : super.hashCode();
+	    }
+
 
 }

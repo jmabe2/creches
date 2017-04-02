@@ -159,5 +159,19 @@ public class Contact implements Serializable {
 
 		return contactenfant;
 	}
+	
+	 @Override
+	    public boolean equals(Object other) {
+	        return (other != null && getClass() == other.getClass() && contactID != null)
+	            ? contactID.equals(((Contact) other).contactID)
+	            : (other == this);
+	    }
+
+	    @Override
+	    public int hashCode() {
+	        return (contactID != null) 
+	            ? (getClass().hashCode() + contactID.hashCode())
+	            : super.hashCode();
+	    }
 
 }

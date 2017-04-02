@@ -68,10 +68,16 @@
 							<h:selectBooleanCheckbox id="actif"
 								value="#{contactController.contact.actif}" />
 							<br />
-							<br />
-							<h:commandButton value="Enregistrer"
+							<br />		
+							
+							<div class="col-md-6" style="margin-bottom: 20px;">
+							<h:commandButton class="btn btn-primary" value="Enregistrer"
 								action="#{contactController.fillContact()}"></h:commandButton>
-							<h:link outcome="Retour" action="listingContact" value="Retour" />
+						</div>
+						<div class="col-md-6">
+							<h:link class="btn btn-primary" value="Annuler"
+								outcome="listingContact"></h:link>
+						</div>
 						</h:panelGrid>
 					</h:form>
 				</div>

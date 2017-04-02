@@ -16,7 +16,7 @@ public class TypeRoleConverter implements Converter{
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
-    	System.out.print("if");
+    	//System.out.print("if");
 
 		if(submittedValue == null || submittedValue.isEmpty()) {
         	//System.out.print("if");
