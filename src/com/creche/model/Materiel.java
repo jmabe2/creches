@@ -13,6 +13,8 @@ import java.util.List;
 @NamedQueries({
 	@NamedQuery(name="Materiel.findAll",
 			query="SELECT m FROM Materiel m"),
+	@NamedQuery(name="Materiel.findAllActive",
+			query="SELECT m FROM Materiel m  WHERE m.actif = :actif"),
 	@NamedQuery(name="Materiel.findMaterielByID",
 			query="SELECT m FROM Materiel m WHERE m.materielID = :materielID"),
 })

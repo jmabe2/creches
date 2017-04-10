@@ -90,7 +90,16 @@ public class MaterielService implements Serializable {
 	      } catch (NoResultException e) {
 	        return null;
 	      }
-	}	
+	}
+	
+	public List<Materiel> findAllMateriel(boolean actif){
+	    try {
+	        TypedQuery<Materiel> query = em.createNamedQuery("Materiel.findAllActive", Materiel.class).setParameter("actif", actif);
+	        return query.getResultList();
+	      } catch (NoResultException e) {
+	        return null;
+	      }
+	}
 }
 
 

@@ -15,10 +15,10 @@
 				class="col-sm-6 col-md-4 col-md-offset-4">
 				<div style="margin: auto; text-align: center; padding: 5px;">
 					<h:form id="LocalForm">
-						<h:commandLink value="#{materielController.loadMateriel()}" />
+						<h:commandLink value="#{materielController.loadMaterielIfActive()}" />
 						<h3>Ajout de matériel</h3>
 						<div class="col-md-12" style="margin-bottom: 20px;">
-							<h:selectOneMenu id="materiel"
+							<h:selectOneMenu id="materiel" class="form-control"
 								value="#{localMaterielController.localMateriel.materiel}"
 								converter="#{materielConverter}">
 								<f:selectItems value="#{materielController.listMateriel}"

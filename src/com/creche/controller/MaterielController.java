@@ -50,6 +50,12 @@ public class MaterielController implements Serializable{
 		listMateriel = mService.findAllMateriel();
 		materiel = new Materiel();
 	}
+	
+	public void loadMaterielIfActive(){
+		MaterielService mService = new MaterielService();
+		listMateriel = mService.findAllMateriel(true);
+		materiel = new Materiel();
+	}
 
 
 	//getters & setters
