@@ -65,7 +65,7 @@ public class MedicamentController implements Serializable{
 		MedicamentService eService = new MedicamentService();
 		listMedicament = eService.findMedicamentByName(nameSearch);
 		log.debug("------------");
-		log.debug(listMedicament);
+		log.debug(listMedicament.size());
     	log.debug("------------");
 	}
 	
