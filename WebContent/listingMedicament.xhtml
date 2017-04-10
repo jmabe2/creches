@@ -1,0 +1,34 @@
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title"> Liste de médicaments</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+			<h:commandLink value="#{medicamentController.loadMedicament()}" />
+			<h:commandLink class="btn btn-primary" action="AddMedicament">
+				<span class="glyphicon glyphicon-plus"></span>
+			</h:commandLink>
+			<h:inputText class="form-control" value="#{medicamentController.nameSearch}"  id="nameSearch"/>
+			<h:commandLink class="btn btn-primary" action="#{medicamentController.searchMedicament()}">
+				<span>search</span>
+			</h:commandLink>
+			<h:dataTable class="table table-striped" id="medicamentTable"
+				value="#{medicamentController.listMedicament}" var="listMedicament">
+			
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nom" />
+					</f:facet>
+					<h:outputText value="#{listMedicament.nom}" />
+				</h:column>
+				</h:dataTable>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
