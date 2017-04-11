@@ -23,7 +23,7 @@
 					</li>
 					<li><a href="#soins" data-toggle="tab">Soins</a></li>
 					<li><a href="#contacts" data-toggle="tab">Contacts</a></li>
-					<li><a href="#prescriptions" data-toggle="tab">Prescriptions</a>
+					<li><a href="#medicaments" data-toggle="tab">Médicaments personels</a>
 					</li>
 				</ul>
 
@@ -84,8 +84,54 @@
 						</h:dataTable>
 
 					</div>
-					<div class="tab-pane" id="prescriptions">
-						<h3>Prescriptions</h3>
+					<div class="tab-pane" id="medicaments">
+												<h:commandLink
+							value="#{enfantMedicamentController.loadEnfantMedicament()}" />
+						<div class="col-md-11">
+							<h:commandLink class="btn btn-primary" action="AddEnfantMedicament">
+								<span class="glyphicon glyphicon-plus">Ajout médicament</span>
+							</h:commandLink>
+						</div>
+
+						<br /> <br />
+						<h:dataTable class="table table-striped" id="dtmedicament"
+							value="#{EnfantMedicamentController.listEnfantMedicament}" var="listMedicaments">
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Nom" />
+								</f:facet>
+								<h:outputText value="#{listMedicaments.medicament.nom}" />
+							</h:column>
+
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Type" />
+								</f:facet>
+								<h:outputText value="#{listMedicaments.medicament.type}" />
+							</h:column>
+
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Posologie" />
+								</f:facet>
+								<h:outputText value="#{listMedicaments.posologie}" />
+							</h:column>
+
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Date début" />
+								</f:facet>
+								<h:outputText value="#{listMedicaments.dateDebut}" />
+							</h:column>
+							
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Date fin" />
+								</f:facet>
+								<h:outputText value="#{listMedicaments.dateFin}" />
+							</h:column>
+							
+						</h:dataTable>
 					</div>
 				</div>
 			</div>
