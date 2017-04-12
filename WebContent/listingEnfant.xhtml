@@ -73,12 +73,9 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header" />
-						<h:commandLink class="btn btn-primary" id="editContactEnfant"
-							action="listingContactEnfant">
-							<f:setPropertyActionListener
-								target="#{contactEnfantController.enfant}"
-								value="#{listEnfant}" />
-							<span class="glyphicon glyphicon-list"></span>
+						<h:commandLink class="btn btn-primary" id="viewEnfant"
+							action="viewEnfant">							
+							<span class="glyphicon glyphicon-eye-open"></span>
 						</h:commandLink>
 				</h:column>
 			</h:dataTable>
