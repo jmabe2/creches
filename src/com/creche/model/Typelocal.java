@@ -13,6 +13,8 @@ import java.util.List;
 @NamedQueries({
 	@NamedQuery(name="Typelocal.findAllTypeLocal",
 			query="SELECT TypeLocal FROM Typelocal TypeLocal"),
+	@NamedQuery(name="Typelocal.findAllActive",
+			query="SELECT t FROM Typelocal t  WHERE t.actif = :actif"),
 	@NamedQuery(name="Typelocal.findTypeLocalByID",
 			query="SELECT t FROM Typelocal t WHERE t.typeLocalID = :typeLocalID"),
 })

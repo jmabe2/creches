@@ -23,6 +23,7 @@ public class LoginController implements Serializable{
 	private String login;
 	private String mdp;
 	private Personnel personnel;
+	private boolean loggedIn;
 
 
 	public LoginController(){		
@@ -41,6 +42,7 @@ public class LoginController implements Serializable{
 		FacesContext context = FacesContext.getCurrentInstance();
 		if (personnel!=null){
 			context.getExternalContext().getSessionMap().put("personnel", personnel);
+			loggedIn=true;
 			return "Success";
 		}else{
 			login=null;
@@ -61,8 +63,8 @@ public class LoginController implements Serializable{
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "index.html";
 	}
-		
-	
+
+
 	//Getters & Setters 
 	public String getLogin() {
 		return login;
@@ -90,6 +92,14 @@ public class LoginController implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}	
 
 

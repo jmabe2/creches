@@ -50,6 +50,12 @@ public class TypeLocalController implements Serializable{
 		listTypeLocal = tlService.findAllTypeLocal();
 		typeLocal = new Typelocal();
 	}
+	
+	public void loadTypeLocal(boolean actif){
+		TypeLocalService tlService = new TypeLocalService();
+		listTypeLocal = tlService.findAllTypeLocal(actif);
+		typeLocal = new Typelocal();
+	}
 
 	// Getters ans setters
 	public List<Typelocal> getListTypeLocal() {

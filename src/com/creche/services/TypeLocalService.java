@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.creche.model.Materiel;
 import com.creche.model.Typelocal;
 import com.creche.connection.EMF;
 
@@ -93,6 +94,15 @@ public class TypeLocalService implements Serializable {
 	      } catch (NoResultException e) {
 	        return null;
 	      }
-	}	
+	}
+	
+	public List<Typelocal> findAllTypeLocal(boolean actif){
+	    try {
+	        TypedQuery<Typelocal> query = em.createNamedQuery("Typelocal.findAllActive", Typelocal.class).setParameter("actif", actif);
+	        return query.getResultList();
+	      } catch (NoResultException e) {
+	        return null;
+	      }
+	}
 }
 

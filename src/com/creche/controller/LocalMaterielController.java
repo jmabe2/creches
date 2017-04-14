@@ -44,10 +44,9 @@ public class LocalMaterielController implements Serializable{
 		return "listingLocalMateriel";
 	}
 	
-	/*public String removeLocalMateriel() {
-		LocalMaterielService.removeLocalMateriel(test);
-		return "listingLocalMateriel";
-	}*/
+	public void removeLocalMateriel(Localmateriel lmToRemove) {
+		LocalMaterielService.removeLocalMateriel(lmToRemove);
+	}
 	
 	public void loadMaterielForALocal(){
 		LocalMaterielService lService = new LocalMaterielService();

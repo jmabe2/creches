@@ -71,7 +71,9 @@ public class LocalMaterielService implements Serializable {
 
 	public static void removeLocalMateriel(Localmateriel lM){
 		if (findLocalMaterielByID(lM.getLocalMaterielID())!=null){
+			em.getTransaction().begin();
 			em.remove(lM);
+			em.getTransaction().commit();
 		}
 	}
 
