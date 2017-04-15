@@ -22,7 +22,9 @@
 						<div class="col-md-8" style="margin-bottom: 20px;">
 							<h:inputText class="form-control" id="nom"
 								value="#{typeLocalController.typeLocal.nom}" required="true"
-								requiredMessage="Veuillez enntrer un type local" />
+								requiredMessage="Veuillez entrer un type local">
+								<f:validator binding="#{validatorTypeLocal}" />
+							</h:inputText>
 							<h:message for="nom" styleClass="errorMessage" />
 						</div>
 						<div class="col-md-4">

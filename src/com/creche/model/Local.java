@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Local.findAllLocal",
-			query="SELECT local FROM Local local"),
+			query="SELECT l FROM Local l ORDER BY l.typelocal"),
 	@NamedQuery(name="Local.findLocalByID",
 			query="SELECT l FROM Local l WHERE l.localID = :localID"),
 })

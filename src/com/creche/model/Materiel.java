@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Materiel.findAll",
-			query="SELECT m FROM Materiel m"),
+			query="SELECT m FROM Materiel m ORDER BY m.nom"),
 	@NamedQuery(name="Materiel.findAllActive",
 			query="SELECT m FROM Materiel m  WHERE m.actif = :actif"),
 	@NamedQuery(name="Materiel.findMaterielByID",
