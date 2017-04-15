@@ -17,6 +17,8 @@ import java.util.List;
 			query="SELECT t FROM Typelocal t  WHERE t.actif = :actif"),
 	@NamedQuery(name="Typelocal.findTypeLocalByID",
 			query="SELECT t FROM Typelocal t WHERE t.typeLocalID = :typeLocalID"),
+	@NamedQuery(name="Typelocal.findTypeLocalByName",
+			query="SELECT t FROM Typelocal t WHERE t.nom = :nom"),
 })
 public class Typelocal implements Serializable {
 	private static final long serialVersionUID = 1L;

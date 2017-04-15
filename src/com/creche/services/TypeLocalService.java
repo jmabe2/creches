@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.creche.model.Materiel;
 import com.creche.model.Typelocal;
 import com.creche.connection.EMF;
 
@@ -69,6 +68,15 @@ public class TypeLocalService implements Serializable {
 	        return null;
 	      }
 	    }
+	
+	public static Typelocal findTypeLocalByName (String nom){
+		try {
+	        return (Typelocal) em.createNamedQuery("Typelocal.findTypeLocalByName").setParameter("nom", nom).getSingleResult();
+	      } catch (NoResultException e) {
+	        return null;
+	      }
+		
+	}
 	
 	/**
 	 *  Method to remove a TypeLocal

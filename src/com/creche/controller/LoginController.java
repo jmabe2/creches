@@ -23,7 +23,7 @@ public class LoginController implements Serializable{
 	private String login;
 	private String mdp;
 	private Personnel personnel;
-	private boolean loggedIn;
+	private boolean admin;
 
 
 	public LoginController(){		
@@ -42,7 +42,9 @@ public class LoginController implements Serializable{
 		FacesContext context = FacesContext.getCurrentInstance();
 		if (personnel!=null){
 			context.getExternalContext().getSessionMap().put("personnel", personnel);
-			loggedIn=true;
+			if(personnel.getRole().getRoleID()==1){
+			admin=true;
+			}
 			return "Success";
 		}else{
 			login=null;
@@ -94,14 +96,12 @@ public class LoginController implements Serializable{
 		return serialVersionUID;
 	}
 
-	public boolean isLoggedIn() {
-		return loggedIn;
+	public boolean isAdmin() {
+		return admin;
 	}
 
-	public void setLoggedIn(boolean loggedIn) {
-		this.loggedIn = loggedIn;
-	}	
-
-
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 
 }

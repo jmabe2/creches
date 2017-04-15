@@ -13,7 +13,9 @@
 
 	<ui:define name="content">
 #{bundle['application.welcome']}, #{personnel.prenom} #{personnel.nom} ! <br />
+<h:outputText value="#{loginController.admin? 'Vous êtes en mode admin' : ''}" />
 		<br />
+		<br />		
 		<h:form>
 		Crèches de Belgique fait partie d'un groupe européen ayant une expérience de 10 années dans le secteur
 			 de la « petite enfance » notamment en France, au Luxembourg, en Allemagne et en Suisse. <br />
