@@ -23,7 +23,9 @@
 						<div class="col-md-8">
 							<h:inputText class="form-control" id="nom"
 								value="#{localController.local.section}" required="true"
-								requiredMessage="Veuillez entrer un nom de section" />
+								requiredMessage="Veuillez entrer un nom de section">
+								<f:validator binding="#{validatorLocal}" />
+							</h:inputText>
 							<h:message for="nom" styleClass="errorMessage" />
 						</div>
 						<div class="col-md-4">
@@ -43,11 +45,13 @@
 							</h:selectOneMenu>
 						</div>
 						<div class="col-md-6" style="margin-bottom: 20px;">
-							<h:commandButton class="btn btn-primary" value="#{bundle['application.add.enregistrer']}"
+							<h:commandButton class="btn btn-primary"
+								value="#{bundle['application.add.enregistrer']}"
 								action="#{localController.fillLocal()}"></h:commandButton>
 						</div>
 						<div class="col-md-6">
-							<h:link class="btn btn-primary" value="#{bundle['application.add.retour']}"
+							<h:link class="btn btn-primary"
+								value="#{bundle['application.add.retour']}"
 								outcome="listingLocal"></h:link>
 						</div>
 					</h:form>

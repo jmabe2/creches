@@ -13,13 +13,13 @@ import com.creche.connection.EMF;
 public class LocalService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected static EntityManager em;
-		
+
 	/**
 	 * 
 	 * @param em (EntityManager)
 	 */
 	public LocalService() {
-		 LocalService.em = EMF.getEM();
+		LocalService.em = EMF.getEM();
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class LocalService implements Serializable {
 	 * @param typeLocalID
 	 * @return
 	 */
-	
+
 	public static Local createLocal(Local local ) 
 	{
 		em.getTransaction().begin();
@@ -39,7 +39,7 @@ public class LocalService implements Serializable {
 		em.getTransaction().commit();
 		return local;
 	}
-	
+
 	/**
 	 * Method to update a local
 
@@ -59,7 +59,7 @@ public class LocalService implements Serializable {
 		em.getTransaction().commit();
 		return localToUpdate;
 	}
-	
+
 	/**
 	 *  Method to find a local by ID
 	 * @param localID
@@ -68,40 +68,49 @@ public class LocalService implements Serializable {
 	 * @param typeLocalID
 	 * @return
 	 */
-	
+
 	public static Local findLocalByID(int localID){
-	    try {
-	        return (Local) em.createNamedQuery("Local.findLocalByID").setParameter("localID", localID)
-	            .getSingleResult();
-	      } catch (NoResultException e) {
-	        return null;
-	      }
-	    }
-	
+		try {
+			return (Local) em.createNamedQuery("Local.findLocalByID").setParameter("localID", localID)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	} 
+
+	public static Local findLocalByName(String name){
+		try {
+			return (Local) em.createNamedQuery("Local.findLocalByName").setParameter("section", name)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
 	/**
 	 *  Method to remove a local
 	 * @param localID
 	 */
-	
+
 	public static void removeLocal(int localID){
-		
+
 		Local local=findLocalByID(localID);
 		if (local!=null){
 			em.remove(local);
 		}
 	}
-	
+
 	/**
 	 *  Method to list a contact
 	 * @return
 	 */
 	public  List<Local> findAllLocal (){
-	    try {
-	        TypedQuery<Local> query = em.createNamedQuery("Local.findAllLocal", Local.class);
-	        return query.getResultList();
-	      } catch (NoResultException e) {
-	        return null;
-	      }
+		try {
+			TypedQuery<Local> query = em.createNamedQuery("Local.findAllLocal", Local.class);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}	
 }
 

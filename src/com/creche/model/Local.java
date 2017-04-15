@@ -15,6 +15,8 @@ import java.util.List;
 			query="SELECT l FROM Local l ORDER BY l.typelocal"),
 	@NamedQuery(name="Local.findLocalByID",
 			query="SELECT l FROM Local l WHERE l.localID = :localID"),
+	@NamedQuery(name="Local.findLocalByName",
+			query="SELECT l FROM Local l WHERE l.section = :section"),
 })
 public class Local implements Serializable {
 	private static final long serialVersionUID = 1L;
