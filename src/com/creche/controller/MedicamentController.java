@@ -19,6 +19,7 @@ public class MedicamentController implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private List <Medicament> listMedicament;
+	private Medicament selectedMedicament;
 	private String nameSearch;
 	static Logger log = Logger.getLogger(MedicamentController.class);
 	
@@ -61,9 +62,17 @@ public class MedicamentController implements Serializable{
 		clear();
 	}
 	
+	public void listClickListener() {
+		log.debug("------------");
+		log.debug("click");
+		log.debug(selectedMedicament);
+    	log.debug("------------");
+	}
+	
 	public void searchMedicament(){
 		MedicamentService eService = new MedicamentService();
 		listMedicament = eService.findMedicamentByName(nameSearch);
+		selectedMedicament=null;
 		log.debug("------------");
 		log.debug(listMedicament.size());
     	log.debug("------------");
@@ -100,6 +109,13 @@ public class MedicamentController implements Serializable{
 
 	public void setMedicamentUpdate(Medicament medicamentUpdate) {
 		this.medicamentUpdate = medicamentUpdate;
+	}
+	public Medicament getSelectedMedicament() {
+		return selectedMedicament;
+	}
+
+	public void setSelectedMedicament(Medicament selectedMedicament) {
+		this.selectedMedicament = selectedMedicament;
 	}
 	private Medicament medicamentUpdate;
 

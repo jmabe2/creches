@@ -65,7 +65,7 @@ public class EnfantMedicamentController implements Serializable{
 	public Medicament getMedicament() {
 		return medicament;
 	}
-	public void setContact(Medicament contact) {
+	public void setMedicament(Medicament medicament) {
 		this.medicament = medicament;
 	}
 	public EnfantMedicamentService getContactEnfServ() {
