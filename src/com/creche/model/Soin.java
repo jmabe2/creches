@@ -2,7 +2,6 @@ package com.creche.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 
@@ -19,8 +18,7 @@ public class Soin implements Serializable {
 	@Id
 	private int soinsID;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	private String nom;
 
 	//bi-directional many-to-one association to Medicamentsoin
 	@OneToMany(mappedBy="soin")
@@ -51,12 +49,12 @@ public class Soin implements Serializable {
 		this.soinsID = soinsID;
 	}
 
-	public Date getDate() {
-		return this.date;
+	public String getNom() {
+		return this.nom;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public List<Medicamentsoin> getMedicamentsoins() {
