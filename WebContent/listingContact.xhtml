@@ -77,7 +77,7 @@
 					</f:facet>
 					<h:outputText value="#{listContact.gsm}" />
 				</h:column>
-				<h:column>
+				<h:column rendered="#{loginController.admin? 'true' : 'false'}">
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>
