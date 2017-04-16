@@ -1,0 +1,69 @@
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title">Ajouter un soin</ui:define>
+	<ui:define name="content">
+
+
+		<div class="container">
+			<div
+				style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12); margin-top: 20px;"
+				class="col-md-6 col-md-offset-3">
+				<div style="margin: auto; text-align: center; padding: 5px;">
+					
+					<h:form id="soinForm">
+					<h:commandLink value="#{soinController.init()}" />
+					
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Nom</h:outputLabel>
+							<div class="col-md-4">
+								<h:inputText id="nom" size="45"
+									value="#{soinController.soin.nom}"></h:inputText>
+							</div>
+						</div>
+						
+							<h:outputLabel class="col-md-3 col-form-label">Type soin</h:outputLabel>
+							<h:selectOneMenu id="typesoin"
+								value="#{soinController.soin.typeSoin}"
+								converter="#{localConverter}">
+								<f:selectItems value="#{localController.listLocal}"
+									var="local" itemValue="#{local}" itemLabel="#{local.nom}" />
+							</h:selectOneMenu>
+							
+							<h:outputLabel class="col-md-3 col-form-label">Local</h:outputLabel>
+							<h:selectOneMenu id="local"
+								value="#{soinController.soin.local}"
+								converter="#{soinConverter}">
+								<f:selectItems value="#{typeSoinController.listTypeSoin}"
+									var="typesoin" itemValue="#{typesoin}" itemLabel="#{typesoin.nom}" />
+							</h:selectOneMenu>
+
+						<div class="col-md-6" style="margin-bottom: 20px;">
+							<h:commandButton class="btn btn-primary" value="Enregistrer"
+								action="#{soinController.fillSoin()}"></h:commandButton>
+						</div>
+						<div class="col-md-6">
+							<h:link class="btn btn-primary" value="Annuler"
+								outcome="listingSoin"></h:link>
+						</div>
+					</h:form>
+									</div>
+			</div>
+		</div>
+		<!-- Jquery for the datePicker -->
+		<script>
+			$(document).ready(function() {
+				$(".datepicker").datepicker({
+					showOn : "button",
+					format : 'yyyy-mm-dd',
+					buttonImage : "images/calendar.gif",
+					buttonImageOnly : true
+				})
+			});
+		</script>
+	</ui:define>
+</ui:composition>
