@@ -50,6 +50,12 @@ public class LocalController implements Serializable{
 		local = new Local();
 	}
 	
+	public void loadLocal(boolean actif){
+		LocalService lService = new LocalService();
+		listLocal = lService.findAllLocal(actif);
+		local = new Local();
+	}
+	
 	
 	//Getter & Setters
 	public List<Local> getListLocal() {

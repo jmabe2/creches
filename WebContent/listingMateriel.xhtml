@@ -9,7 +9,7 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{materielController.loadMateriel()}" />
+			<h:commandLink value="#{loginController.admin? materielController.loadMateriel() : materielController.loadMateriel(true)}" />
 			<h:commandLink class="btn btn-primary" action="AddMateriel">
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:commandLink>
@@ -29,7 +29,7 @@
 				</f:facet>
 				<h:outputText value="#{list.propriete}" />
 			</h:column>
-			<h:column>
+			<h:column rendered="#{loginController.admin? true : false}">
 				<f:facet name="header">
 					<h:outputText value="#{bundle['application.add.actif']}" />
 				</f:facet>

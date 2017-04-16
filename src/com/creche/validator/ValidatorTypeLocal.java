@@ -16,7 +16,6 @@ import com.creche.services.TypeLocalService;
 
 @ManagedBean
 @SessionScoped
-
 public class ValidatorTypeLocal implements Validator  {
 
 

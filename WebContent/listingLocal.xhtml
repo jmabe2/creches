@@ -9,7 +9,7 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{localController.loadLocal()}" />
+			<h:commandLink value="#{loginController.admin? localController.loadLocal() : localController.loadLocal(true)}" />
 			<h:commandLink class="btn btn-primary" action="AddLocal">
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:commandLink>

@@ -111,6 +111,15 @@ public class LocalService implements Serializable {
 		} catch (NoResultException e) {
 			return null;
 		}
-	}	
+	}
+	
+	public  List<Local> findAllLocal (boolean actif ){
+		try {
+			TypedQuery<Local> query = em.createNamedQuery("Local.findAllActive", Local.class).setParameter("actif", actif);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 }
 

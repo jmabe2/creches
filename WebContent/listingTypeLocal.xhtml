@@ -9,7 +9,7 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{typeLocalController.loadTypeLocal()}" />
+			<h:commandLink value="#{loginController.admin? typeLocalController.loadTypeLocal() : typeLocalController.loadTypeLocal(true)}" />
 			<h:commandLink class="btn btn-primary" action="AddTypeLocal">
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:commandLink>
@@ -23,7 +23,7 @@
 				</f:facet>
 				<h:outputText value="#{list.nom}" />
 			</h:column>
-			<h:column>
+			<h:column rendered="#{loginController.admin? true : false}">
 				<f:facet name="header">
 					<h:outputText value="#{bundle['application.add.actif']}" />
 				</f:facet>
