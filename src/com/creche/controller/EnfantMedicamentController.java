@@ -4,7 +4,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-
+import org.apache.log4j.Logger;
 import com.creche.model.Medicament;
 import com.creche.model.Enfantmedicament;
 import com.creche.model.Enfant;
@@ -16,7 +16,7 @@ public class EnfantMedicamentController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private List <Enfantmedicament> listEnfantmedicament;
-
+	static Logger log = Logger.getLogger(EnfantMedicamentController.class);
 	private Enfantmedicament enfantMedicament;
 	private Medicament medicament;
 	private Enfant enfant;
@@ -28,18 +28,19 @@ public class EnfantMedicamentController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		//contact = new Contact();
-		enfant = new Enfant();
+
+		enfantMedicament = new Enfantmedicament();
 	}
 
 
 	public String fillEnfantMedicament(){
+		log.debug("---------------------");
+		log.debug("ok");
+		enfantMedicament.setEnfant(enfant);
 		enfMedServ = new EnfantMedicamentService();
 		enfMedServ.createEnfantMedicament(enfantMedicament);
-		enfantMedicament = new Enfantmedicament();
-		enfantMedicament.getMedicament();
-		enfantMedicament.getEnfant();
-		return "listingEnfantMedicament";
+			
+		return "viewEnfant";
 	} 
 
 	public String updateEnfantMedicament(){

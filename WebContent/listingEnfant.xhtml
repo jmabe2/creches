@@ -75,6 +75,8 @@
 						<h:commandLink class="btn btn-primary" id="viewEnfant"
 							action="viewEnfant">							
 							<span class="glyphicon glyphicon-eye-open"></span>
+							<f:setPropertyActionListener
+							target="#{enfantController.enfant}" value="#{listEnfant}" />
 						</h:commandLink>
 				</h:column>
 			</h:dataTable>

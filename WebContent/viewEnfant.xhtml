@@ -8,7 +8,7 @@
 
 	<ui:define name="content">
 		<h3 class="text-center">
-			<h:outputFormat value="#{contactEnfantController.enfant.nom} #{contactEnfantController.enfant.prenom}" />
+			<h:outputFormat value="#{enfantController.enfant.nom} #{enfantController.enfant.prenom}" />
 		</h3>
 		<h:form>
 			<div class="col-md-1">
@@ -46,7 +46,7 @@
 
 						<br /> <br />
 						<h:dataTable class="table table-striped" id="contact"
-							value="#{contactEnfantController.listContactenfant}" var="list">
+							value="#{enfantController.enfant.contactenfants}" var="list">
 							<h:column style="width: 500px">
 								<f:facet name="header">
 									<h:outputText value="Nom personne de contact" />
@@ -90,12 +90,14 @@
 						<div class="col-md-11">
 							<h:commandLink class="btn btn-primary" action="AddEnfantMedicament">
 								<span class="glyphicon glyphicon-plus">Ajout médicament</span>
+								<f:setPropertyActionListener
+							target="#{enfantMedicamentController.enfant}" value="#{enfantController.enfant}" />
 							</h:commandLink>
 						</div>
 
 						<br /> <br />
 						<h:dataTable class="table table-striped" id="dtmedicament"
-							value="#{EnfantMedicamentController.listEnfantMedicament}" var="listMedicaments">
+							value="#{enfantController.enfant.enfantmedicaments}" var="listMedicaments">
 							<h:column style="width: 500px">
 								<f:facet name="header">
 									<h:outputText value="Nom" />

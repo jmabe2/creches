@@ -7,6 +7,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import com.creche.connection.EMF;
+import com.creche.model.Contact;
 import com.creche.model.Medicament;
 import com.creche.userManagedBean.User;
 
@@ -65,7 +66,14 @@ public class MedicamentService {
 	      }
 	    }
 	
-
+	public Medicament findMedicamentByID(Integer medicamentID){
+	    try {
+	        return (Medicament) em.createNamedQuery("Medicament.findMedicamentByID").setParameter("medicamentID", medicamentID)
+	            .getSingleResult();
+	      } catch (NoResultException e) {
+	        return null;
+	      }
+	    }
 	
 
 	

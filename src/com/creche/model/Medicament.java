@@ -12,6 +12,8 @@ import java.util.List;
 @Entity
 @NamedQueries({
 @NamedQuery(name="Medicament.findAll", query="SELECT m FROM Medicament m"),
+@NamedQuery(name="Medicament.findMedicamentByID",
+query="SELECT m FROM Medicament m WHERE m.medicamentID = :medicamentID"),
 @NamedQuery(name="Medicament.findMedicamentByName",
 query="SELECT m FROM Medicament m WHERE m.nom LIKE :name" ) })
 public class Medicament implements Serializable {
