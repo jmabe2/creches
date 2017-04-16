@@ -17,23 +17,23 @@
 
 					<h:form id="PersonnelForm">
 						<h:commandLink value="#{roleController.init()}" />
-						<h:commandLink value="#{roleController.loadRole()}" />
+						<h:commandLink value="#{roleController.loadRole(true)}" />
 						
 						<h3 class="text-center">Modification d'un membre</h3>
 						<h:panelGrid columns="3">
 						
 							<h:outputLabel>Nom </h:outputLabel>
-							<h:inputText id="nom"
+							<h:inputText id="nom" class="form-control"
 								value="#{personnelController.personnelUpdate.nom}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Prénom </h:outputLabel>
-							<h:inputText id="prenom"
+							<h:inputText id="prenom" class="form-control"
 								value="#{personnelController.personnelUpdate.prenom}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Sexe </h:outputLabel>
-							<h:inputText id="sexe"
+							<h:inputText id="sexe" class="form-control"
 								value="#{personnelController.personnelUpdate.sexe}"></h:inputText>
 							<br />
 							<br />
@@ -45,16 +45,16 @@
 							<br />
 							<br />
 							<h:outputLabel>Login </h:outputLabel>
-							<h:inputText id="login"
+							<h:inputText id="login" class="form-control"
 								value="#{personnelController.personnelUpdate.login}"></h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Mot de passe </h:outputLabel>
-							<h:inputSecret id="mdp"
+							<h:inputSecret id="mdp" class="form-control"
 								value="#{personnelController.personnelUpdate.mdp}"></h:inputSecret>
 							<br />
 							<h:outputLabel value="Role" />
-							<h:selectOneMenu id="typeRole"
+							<h:selectOneMenu id="typeRole" class="form-control"
 								value="#{personnelController.personnelUpdate.role}"
 								converter="#{typeRoleConverter}">
 								<f:selectItems value="#{roleController.listRole}" var="listRole"
@@ -63,7 +63,7 @@
 							<br />
 							<br />
 							<h:outputLabel value="Actif" />
-							<h:selectBooleanCheckbox id="actif"
+							<h:selectBooleanCheckbox id="actif" class="form-control"
 								value="#{personnelController.personnelUpdate.actif}" />
 							<br />
 							<br />
