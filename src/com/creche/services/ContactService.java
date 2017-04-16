@@ -103,6 +103,19 @@ public class ContactService implements Serializable {
 	        return null;
 	      }
 	}
+	
+	public List<Contact> findAllContact (boolean actif){
+	    try {
+	        TypedQuery<Contact> query = em.createNamedQuery("Contact.findAllActive", Contact.class).setParameter("actif", actif);
+	        return query.getResultList();
+	        
+	      }
+	    
+	    catch (NoResultException e) 
+	    {
+	        return null;
+	      }
+	}
 
 	
 }

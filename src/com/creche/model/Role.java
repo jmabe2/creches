@@ -13,6 +13,8 @@ import java.util.List;
 @NamedQueries({
 	@NamedQuery(name="Role.findAll"
 			, query="SELECT r FROM Role r"),
+	@NamedQuery(name="Role.findAllActive",
+			query="SELECT r FROM Role r  WHERE r.actif = :actif"),
 	@NamedQuery(name="Role.findRoleByID",
 			query="SELECT r FROM Role r WHERE r.roleID = :roleID"),
 	@NamedQuery(name="Role.findRoleByName",

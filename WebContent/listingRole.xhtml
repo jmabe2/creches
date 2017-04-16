@@ -10,7 +10,7 @@
 
 
 		<h:form>
-			<h:commandLink value="#{roleController.loadRole()}" />
+			<h:commandLink value="#{loginController.admin? roleController.loadRole() : roleController.loadRole(true)}" />
 
 			<h:dataTable class="table table-striped" id="role"
 				value="#{roleController.listRole}" var="listRole">
@@ -30,7 +30,7 @@
 					</f:facet>
 					<h:outputText value="#{listRole.nom}" />
 				</h:column>
-				<h:column>
+				<h:column rendered="#{loginController.admin? 'true' : 'false'}">
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>

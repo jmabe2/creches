@@ -14,6 +14,8 @@ import java.lang.Integer;
 @NamedQueries({
 	@NamedQuery(name="Contact.findAllContact",
 			query="SELECT contact FROM Contact contact"),
+	@NamedQuery(name="Contact.findAllActive",
+			query="SELECT c FROM Contact c  WHERE c.actif = :actif"),
 	@NamedQuery(name="Contact.findContactByID",
 			query="SELECT c FROM Contact c WHERE c.contactID = :contactID"),
 })
