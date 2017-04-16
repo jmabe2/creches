@@ -1,0 +1,51 @@
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title"> #{bundle['application.template.ListSoins']}</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+			<h:commandLink value="#{soinController.loadSoin()}" />
+			<h:commandLink class="btn btn-primary" action="AddSoin">
+				<span class="glyphicon glyphicon-plus"></span>
+			</h:commandLink>
+		</h:form>
+
+		<h:dataTable class="table table-striped" id="tblsoin"
+			value="#{soinController.listSoin}" var="listSoin">
+			<h:column style="width: 500px">
+				<f:facet name="header">
+					<h:outputText value="#{bundle['application.dataTable.nom']}" />
+				</f:facet>
+				<h:outputText value="#{listSoin.nom}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{bundle['application.dataTable.type']}" />
+				</f:facet>
+				<h:outputText value="#{listSoinl.typesoin.nom}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{bundle['application.dataTable.local']}" />
+				</f:facet>
+				<h:outputText value="#{listSoinl.local.nom}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header" />
+				<h:form>
+					<h:commandLink class="btn btn-primary" id="modifSoin"
+						action="UpdateSoin">
+						<f:setPropertyActionListener target="#{soinController.soin}"
+							value="#{listSoin}" />
+						<span class="glyphicon glyphicon-pencil"></span>
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>

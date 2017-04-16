@@ -123,14 +123,18 @@
 								<f:facet name="header">
 									<h:outputText value="Date début" />
 								</f:facet>
-								<h:outputText value="#{listMedicaments.dateDebut}" />
+								<h:outputText value="#{listMedicaments.dateDebut}" >
+								<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
 							</h:column>
 							
 							<h:column style="width: 500px">
 								<f:facet name="header">
 									<h:outputText value="Date fin" />
 								</f:facet>
-								<h:outputText value="#{listMedicaments.dateFin}" />
+								<h:outputText value="#{listMedicaments.dateFin}" >
+								<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
 							</h:column>
 							
 						</h:dataTable>
