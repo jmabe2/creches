@@ -32,10 +32,9 @@
 					<div class="tab-pane active" id="presences">
 						
 						<h:form>
-			<h:commandLink
-				value="#{enfantSectionController.loadAllEnfantSection()}" />
+			
 			<h:dataTable class="table table-striped" id="enfant"
-				value="#{enfantSectionController.listEnfantSection}" var="listsection">
+				value="#{enfantController.enfant.enfantsections}" var="listsection">
 				<h:column style="width: 500px">
 					<f:facet name="header">
 						<h:outputText value="Nom de l'enfant" />
