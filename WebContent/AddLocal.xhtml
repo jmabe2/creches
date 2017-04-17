@@ -24,6 +24,7 @@
 							<h:inputText class="form-control" id="nom"
 								value="#{localController.local.section}" required="true"
 								requiredMessage="Veuillez entrer un nom de section">
+								<f:validator binding="#{validatorLocal}" />
 							</h:inputText>
 							<h:message for="nom" styleClass="errorMessage" />
 						</div>
