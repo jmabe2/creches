@@ -38,20 +38,12 @@
 			<h:column>
 				<f:facet name="header" />
 				<h:form>
-					<h:commandLink class="btn btn-primary" id="modifSoin"
-						action="UpdateSoin">
+					<h:commandLink class="btn btn-primary" id="viewSoin"
+						action="viewSoin">
+						<span class="glyphicon glyphicon-eye-open"></span>
 						<f:setPropertyActionListener target="#{soinController.soin}"
 							value="#{listSoin}" />
-						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
-									<h:column>
-						<h:commandLink class="btn btn-primary" id="viewSoin"
-							action="viewSoin">							
-							<span class="glyphicon glyphicon-eye-open"></span>
-							<f:setPropertyActionListener
-							target="#{soinController.soin}" value="#{listSoin}" />
-						</h:commandLink>
-				</h:column>
 				</h:form>
 			</h:column>
 		</h:dataTable>

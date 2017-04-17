@@ -10,12 +10,11 @@
 
 		<h:form>
 			<h:commandLink value="#{medicamentController.loadMedicament()}" />
-			<h:commandLink class="btn btn-primary" action="AddMedicament">
-				<span class="glyphicon glyphicon-plus"></span>
-			</h:commandLink>
+			<div  class="col-md-5">
 			<h:inputText class="form-control" value="#{medicamentController.nameSearch}"  id="nameSearch"/>
+			</div>
 			<h:commandLink class="btn btn-primary" action="#{medicamentController.searchMedicament()}">
-				<span>search</span>
+				<span>Rechercher</span>
 			</h:commandLink>
 			<h:dataTable class="table table-striped" id="medicamentTable"
 				value="#{medicamentController.listMedicament}" var="listMedicament">
