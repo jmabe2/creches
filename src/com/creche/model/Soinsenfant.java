@@ -10,7 +10,13 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Soinsenfant.findAll", query="SELECT s FROM Soinsenfant s")
+@NamedQueries ({
+@NamedQuery(name="Soinsenfant.findAll", query="SELECT s FROM Soinsenfant s"),
+@NamedQuery(name="Soinsenfant.findSoinEnfantByEnfantID",
+query="SELECT se FROM Soinsenfant se WHERE se.enfant = :enfant"),
+})
+
+
 public class Soinsenfant implements Serializable {
 	private static final long serialVersionUID = 1L;
 

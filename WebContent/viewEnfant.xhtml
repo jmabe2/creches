@@ -32,7 +32,44 @@
 						<h3>Présences</h3>
 					</div>
 					<div class="tab-pane" id="soins">
-						<h3>Soins</h3>
+						<h:commandLink
+							value="#{soinsEnfantController.loadSoinsEnfant()}" />
+						<div class="col-md-11">
+							<h:commandLink class="btn btn-primary" action="AddSoinsEnfant">
+								<span class="glyphicon glyphicon-plus">Ajout soin</span>
+							</h:commandLink>
+						</div>
+						<h:dataTable class="table table-striped" id="soins"
+							value="#{enfantController.enfant.soinsenfants}" var="listsoins">
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Nom" />
+								</f:facet>
+								<h:outputText value="#{listsoins.soin.nom}" />
+							</h:column>
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Date" />
+								</f:facet>
+								<h:outputText value="#{listsoins.dateSoins}" >
+								<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</h:column>
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Remarque" />
+								</f:facet>
+								<h:outputText value="#{listsoins.remarque}" />
+							</h:column>
+							<h:column style="width: 500px">
+								<f:facet name="header">
+									<h:outputText value="Personnel" />
+								</f:facet>
+								<h:outputText value="#{listsoins.personnel.nom}" />
+							</h:column>
+						</h:dataTable>
+						
+						
 					</div>
 					<div class="tab-pane" id="contacts">
 
