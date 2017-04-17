@@ -34,12 +34,10 @@ public class MedicamentSoinController implements Serializable{
 
 
 	public String fillMedicamentSoin(){
-		log.debug("---------------------");
-		log.debug("ok");
 		soinMedicament.setSoin(soin);
 		medSoinServ = new MedicamentSoinService();
 		medSoinServ.createMedicamentSoin(soinMedicament);
-			
+		soin.getMedicamentsoins().add(soinMedicament);
 		return "viewSoin";
 	} 
 

@@ -36,6 +36,7 @@ public class ContactEnfantController implements Serializable{
 	public String fillContactEnfant(){
 		contactEnfServ = new ContactEnfantService();
 		contactEnfServ.createContactEnfant(contactEnfant);
+		enfant.getContactenfants().add(contactEnfant);
 		contactEnfant = new Contactenfant();
 		contactEnfant.getContact();
 		contactEnfant.getEnfant();

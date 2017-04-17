@@ -31,11 +31,6 @@ public class SoinController implements Serializable{
 		soin = new Soin();
 	}
 
-	public void test(){
-		log.debug("---------------");
-		log.debug(soin.getMedicamentsoins());
-	}
-
 	public String fillSoin(){
 		soinServ = new SoinService();
 		soinServ.createSoin(soin);

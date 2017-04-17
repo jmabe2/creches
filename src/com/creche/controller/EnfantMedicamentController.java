@@ -34,12 +34,10 @@ public class EnfantMedicamentController implements Serializable{
 
 
 	public String fillEnfantMedicament(){
-		log.debug("---------------------");
-		log.debug("ok");
 		enfantMedicament.setEnfant(enfant);
 		enfMedServ = new EnfantMedicamentService();
 		enfMedServ.createEnfantMedicament(enfantMedicament);
-			
+		enfant.getEnfantmedicaments().add(enfantMedicament);
 		return "viewEnfant";
 	} 
 

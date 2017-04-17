@@ -36,12 +36,10 @@ public class SoinsEnfantController implements Serializable{
 
 
 	public String fillSoinsEnfant(){
-		log.debug("---------------------");
-		log.debug("ok");
 		soinEnfant.setEnfant(enfant);
 		soinEnfServ = new SoinsEnfantService();
 		soinEnfServ.createSoinsEnfant(soinEnfant);
-			
+		enfant.getSoinsenfants().add(soinEnfant);
 		return "viewEnfant";
 	} 
 
