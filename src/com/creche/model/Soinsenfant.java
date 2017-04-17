@@ -23,7 +23,7 @@ public class Soinsenfant implements Serializable {
 	@Id
 	private int soinsEnfantID;
 
-	private byte actif;
+	private boolean actif;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateSoins;
@@ -56,11 +56,11 @@ public class Soinsenfant implements Serializable {
 		this.soinsEnfantID = soinsEnfantID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 

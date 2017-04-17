@@ -5,7 +5,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.log4j.Logger;
-import com.creche.model.Medicament;
+import com.creche.model.Soin;
 import com.creche.model.Soinsenfant;
 import com.creche.model.Enfant;
 import com.creche.services.SoinsEnfantService;
@@ -18,8 +18,10 @@ public class SoinsEnfantController implements Serializable{
 	private List <Soinsenfant> listSoinsenfant;
 	static Logger log = Logger.getLogger(SoinsEnfantController.class);
 	private Soinsenfant soinEnfant;
-	private Medicament medicament;
+	
+
 	private Enfant enfant;
+	private Soin soin;
 	private SoinsEnfantService soinEnfServ;
 
 	public SoinsEnfantController (){
@@ -40,7 +42,7 @@ public class SoinsEnfantController implements Serializable{
 		soinEnfServ = new SoinsEnfantService();
 		soinEnfServ.createSoinsEnfant(soinEnfant);
 			
-		return "viewSoin";
+		return "viewEnfant";
 	} 
 
 
@@ -59,11 +61,11 @@ public class SoinsEnfantController implements Serializable{
 		this.soinEnfant = soinMedicament;
 	}
 	
-	public Medicament getMedicament() {
-		return medicament;
+	public Soin getSoin() {
+		return soin;
 	}
-	public void setMedicament(Medicament medicament) {
-		this.medicament = medicament;
+	public void setSoin(Soin soin) {
+		this.soin = soin;
 	}
 
 
@@ -87,4 +89,11 @@ public class SoinsEnfantController implements Serializable{
 		this.enfant = enfant;
 	}
 
+	public Soinsenfant getSoinEnfant() {
+		return soinEnfant;
+	}
+
+	public void setSoinEnfant(Soinsenfant soinEnfant) {
+		this.soinEnfant = soinEnfant;
+	}
 }

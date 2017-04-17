@@ -11,12 +11,19 @@ import java.util.List;
  */
 @Entity
 @Table(name="soins")
-@NamedQuery(name="Soin.findAll", query="SELECT s FROM Soin s")
+
+
+@NamedQueries({
+@NamedQuery(name="Soin.findSoinByID",
+query="SELECT s FROM Soin s WHERE s.soinsID = :SoinID"),
+@NamedQuery(name="Soin.findAll", query="SELECT s FROM Soin s")})
+
+
 public class Soin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int soinsID;
+	private Integer soinsID;
 
 	private String nom;
 
@@ -41,11 +48,11 @@ public class Soin implements Serializable {
 	public Soin() {
 	}
 
-	public int getSoinsID() {
+	public Integer getSoinsID() {
 		return this.soinsID;
 	}
 
-	public void setSoinsID(int soinsID) {
+	public void setSoinsID(Integer soinsID) {
 		this.soinsID = soinsID;
 	}
 
@@ -116,5 +123,19 @@ public class Soin implements Serializable {
 
 		return soinsenfant;
 	}
+	
+	 @Override
+	    public boolean equals(Object other) {
+	        return (other != null && getClass() == other.getClass() && soinsID != null)
+	            ? soinsID.equals(((Soin) other).soinsID)
+	            : (other == this);
+	    }
+
+	    @Override
+	    public int hashCode() {
+	        return (soinsID != null) 
+	            ? (getClass().hashCode() + soinsID.hashCode())
+	            : super.hashCode();
+	    }
 
 }

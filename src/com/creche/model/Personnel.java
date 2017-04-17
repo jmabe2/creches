@@ -22,7 +22,7 @@ public class Personnel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int personnelID;
+	private Integer personnelID;
 	
 	private boolean actif;
 
@@ -51,11 +51,11 @@ public class Personnel implements Serializable {
 	public Personnel() {
 	}
 
-	public int getPersonnelID() {
+	public Integer getPersonnelID() {
 		return this.personnelID;
 	}
 
-	public void setPersonnelID(int personnelID) {
+	public void setPersonnelID(Integer personnelID) {
 		this.personnelID = personnelID;
 	}
 
@@ -145,6 +145,19 @@ public class Personnel implements Serializable {
 		return soinsenfant;
 	}
 	
+	 @Override
+	    public boolean equals(Object other) {
+	        return (other != null && getClass() == other.getClass() && personnelID != null)
+	            ? personnelID.equals(((Personnel) other).personnelID)
+	            : (other == this);
+	    }
+
+	    @Override
+	    public int hashCode() {
+	        return (personnelID != null) 
+	            ? (getClass().hashCode() + personnelID.hashCode())
+	            : super.hashCode();
+	    }
 	
 
 }

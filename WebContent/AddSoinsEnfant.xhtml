@@ -1,0 +1,99 @@
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title">Attribuer un soin à un enfant</ui:define>
+	<ui:define name="content">
+
+
+		<div class="container">
+			<div
+				style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12); margin-top: 20px;"
+				class="col-md-6 col-md-offset-3">
+				<div style="margin: auto; text-align: center; padding: 5px;">
+					
+					<h:form id="soinsEnfantForm">
+					<h:commandLink value="#{personnelController.loadPersonnel()}" />
+					<h:commandLink value="#{soinController.init()}" />
+					<h:commandLink value="#{soinsEnfantController.init()}" />
+						<div class="form-group row">
+						<h:outputLabel class="col-md-3 col-form-label">Enfant</h:outputLabel>
+							<div class="col-md-8">
+								<h:outputFormat value="#{soinsEnfantController.enfant.nom} #{soinsEnfantController.enfant.prenom}"/>
+							</div>
+					</div>
+					
+					<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Soin</h:outputLabel>
+							<div class="col-md-4">
+								<h:selectOneMenu id="soin"
+									value="#{soinsEnfantController.soinEnfant.soin}"
+									converter="#{soinConverter}">
+									<f:selectItems value="#{soinController.listSoin}"
+										var="soin" itemValue="#{soin}"
+										itemLabel="#{soin.nom}" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Personnel</h:outputLabel>
+							<div class="col-md-4">
+								<h:selectOneMenu id="personnel"
+									value="#{soinsEnfantController.soinEnfant.personnel}"
+									converter="#{personnelConverter}">
+									<f:selectItems value="#{personnelController.listPersonnel}"
+										var="personnel" itemValue="#{personnel}"
+										itemLabel="#{personnel.nom} #{personnel.prenom}" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+					
+
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Date</h:outputLabel>
+							<div class="col-md-4">
+								<h:inputText id="dateSoins" styleClass="datepicker"
+									value="#{soinsEnfantController.soinEnfant.dateSoins}">
+									<f:convertDateTime pattern="yyyy-mm-dd" />
+								</h:inputText>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Remarque</h:outputLabel>
+							<div class="col-md-4">
+								<h:inputText id="remarque"
+									value="#{soinsEnfantController.soinEnfant.remarque}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="col-md-6" style="margin-bottom: 20px;">
+							<h:commandButton class="btn btn-primary" value="Enregistrer"
+								action="#{soinsEnfantController.fillSoinsEnfant()}"></h:commandButton>
+						</div>
+						<div class="col-md-6">
+							<h:link class="btn btn-primary" value="Annuler"
+								outcome="viewEnfant"></h:link>
+						</div>
+					</h:form>
+					
+				</div>
+			</div>
+		</div>
+		<!-- Jquery for the datePicker -->
+		<script>
+			$(document).ready(function() {
+				$(".datepicker").datepicker({
+					showOn : "button",
+					format : 'yyyy-mm-dd',
+					buttonImage : "images/calendar.gif",
+					buttonImageOnly : true
+				})
+			});
+		</script>
+	</ui:define>
+</ui:composition>

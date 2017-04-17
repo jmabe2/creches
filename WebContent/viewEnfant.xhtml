@@ -37,6 +37,8 @@
 						<div class="col-md-11">
 							<h:commandLink class="btn btn-primary" action="AddSoinsEnfant">
 								<span class="glyphicon glyphicon-plus">Ajout soin</span>
+								<f:setPropertyActionListener
+							target="#{soinsEnfantController.enfant}" value="#{enfantController.enfant}" />
 							</h:commandLink>
 						</div>
 						<h:dataTable class="table table-striped" id="soins"
