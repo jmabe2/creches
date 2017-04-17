@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Maj contact(s) enfant(s)</ui:define>
+	<ui:define name="title"> Update #{bundle['application.template.ListAllContactEnfants']}</ui:define>
 	<ui:define name="content">
 
 
@@ -17,18 +17,18 @@
 					<h:form id="contactEnfantForm">
 						<h:commandLink value="#{contactController.loadContact()}" />
 						<h:commandLink value="#{enfantController.loadEnfant()}" />
-						<h3>Contact(s) enfant(s)</h3>
+						<h3>#{bundle['application.template.ListAllContactEnfants']}</h3>
 						<h:panelGrid columns="2">
 							<br />
 							<h:messages style="color:red;margin:5px;" />
-							<h:outputLabel>Nom contact *</h:outputLabel>
+							<h:outputLabel>#{bundle['application.dataTable.nomContact']} *</h:outputLabel>
 							<h:selectOneMenu id="contact"
 								value="#{contactEnfantController.updateContactEnfant.contact}"
 								converter="#{contactConverter}" styleClass="form-control">
 								<f:selectItems value="#{contactController.listContact}"
 									var="contact" itemValue="#{contact}" itemLabel="#{contact.nom}" />
 							</h:selectOneMenu>
-							<h:outputLabel>Nom enfant *</h:outputLabel>
+							<h:outputLabel>#{bundle['application.dataTable.nomEnfant']}*</h:outputLabel>
 							<h:selectOneMenu id="enfant"
 								value="#{contactEnfantController.updateContactEnfant.enfant}"
 								converter="#{enfantConverter}" styleClass="form-control">
@@ -36,28 +36,28 @@
 									var="enfant" itemValue="#{enfant}" itemLabel="#{enfant.nom}" />
 							</h:selectOneMenu>
 
-							<h:outputLabel>Lien de parente *</h:outputLabel>
+							<h:outputLabel>#{bundle['application.dataTable.lienParente']}  *</h:outputLabel>
 							<h:inputText id="lienParente"
 								value="#{contactEnfantController.updateContactEnfant.lienParente}"
 								styleClass="form-control"></h:inputText>
 
-							<h:outputLabel>Nature relation *</h:outputLabel>
+							<h:outputLabel>#{bundle['application.dataTable.natureRelation']} *</h:outputLabel>
 							<h:inputText id="natureRelation"
 								value="#{contactEnfantController.updateContactEnfant.natureRelation}"
 								styleClass="form-control"></h:inputText>
 
-							<h:outputLabel label="tuteur">Tuteur *</h:outputLabel>
+							<h:outputLabel label="tuteur">#{bundle['application.dataTable.tuteur']} *</h:outputLabel>
 							<h:selectBooleanCheckbox id="tuteur"
 								value="#{contactEnfantController.updateContactEnfant.tuteur}"
 								styleClass="form-control" />
 							<br />
 							<br />
 							<div class="col-md-6" style="margin-bottom: 20px;">
-								<h:commandButton class="btn btn-primary" value="Enregistrer"
+								<h:commandButton class="btn btn-primary" value="#{bundle['application.add.enregistrer']}"
 									action="#{contactEnfantController.updateContactenfant()}"></h:commandButton>
 							</div>
 							<div class="col-md-6">
-								<h:link class="btn btn-primary" value="Annuler"
+								<h:link class="btn btn-primary" value="#{bundle['application.add.annuler']}"
 									outcome="listingContactEnfant"></h:link>
 							</div>
 						   #{bundle['application.madatory']}

@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Liste de contact</ui:define>
+	<ui:define name="title"> #{bundle['application.template.ListContacts']}</ui:define>
 	<ui:define name="content">
 
 		<div class="container">
@@ -19,7 +19,7 @@
 						<h3>Modifer une personne de contact</h3>
 						<h:messages style="color:red;margin:5px;" />
 						<h:panelGrid columns="3">
-							<h:outputLabel id="ValidateNom">Nom *</h:outputLabel>
+							<h:outputLabel id="ValidateNom">#{bundle['application.dataTable.nom']} *</h:outputLabel>
 							<h:inputText id="nom"
 								value="#{contactController.contactUpdate.nom}" required="true"
 								requiredMessage="Entrez un nom" styleClass="form-control">
@@ -27,7 +27,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel id="ValidatePrenom">Prénom *</h:outputLabel>
+							<h:outputLabel id="ValidatePrenom">#{bundle['application.dataTable.prenom']} *</h:outputLabel>
 							<h:inputText id="prenom"
 								value="#{contactController.contactUpdate.prenom}"
 								required="true" requiredMessage="Entrez un prénom"
@@ -36,7 +36,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel id="ValidateNiss">NISS</h:outputLabel>
+							<h:outputLabel id="ValidateNiss">#{bundle['application.dataTable.niss']}</h:outputLabel>
 							<h:inputText id="niss"
 								value="#{contactController.contactUpdate.niss}" required="true"
 								requiredMessage="Entrez un niss" styleClass="form-control">
@@ -44,7 +44,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel id="ValidateRue">Rue *</h:outputLabel>
+							<h:outputLabel id="ValidateRue">#{bundle['application.dataTable.rue']}  *</h:outputLabel>
 							<h:inputText id="rue"
 								value="#{contactController.contactUpdate.rue}" required="true"
 								requiredMessage="Entrez une rue" styleClass="form-control">
@@ -52,7 +52,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel id="ValidateNumero">Numéro</h:outputLabel>
+							<h:outputLabel id="ValidateNumero">#{bundle['application.dataTable.numero']}</h:outputLabel>
 							<h:inputText id="numero"
 								value="#{contactController.contactUpdate.numero}"
 								required="true" requiredMessage="Entrez un numéro"
@@ -61,7 +61,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel id="ValidateCp">Code postal *</h:outputLabel>
+							<h:outputLabel id="ValidateCp">#{bundle['application.dataTable.cp']}*</h:outputLabel>
 							<h:inputText id="codepostal"
 								value="#{contactController.contactUpdate.codePostal}"
 								required="true" requiredMessage="Entrez un code postal"
@@ -71,7 +71,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel id="ValidateLocalite">Localité</h:outputLabel>
+							<h:outputLabel id="ValidateLocalite">#{bundle['application.dataTable.localite']}</h:outputLabel>
 							<h:inputText id="localite"
 								value="#{contactController.contactUpdate.localite}"
 								styleClass="form-control">
@@ -79,13 +79,13 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Téléphone</h:outputLabel>
+							<h:outputLabel>#{bundle['application.dataTable.telephone']}</h:outputLabel>
 							<h:inputText id="telephone" class="form-control"
 								value="#{contactController.contactUpdate.telephone}">
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel id="ValidateGSM">GSM</h:outputLabel>
+							<h:outputLabel id="ValidateGSM">#{bundle['application.dataTable.gsm']}</h:outputLabel>
 							<h:inputText id="gsm"
 								value="#{contactController.contactUpdate.gsm}" required="true"
 								requiredMessage="Entrez un numéro de gsm"
@@ -94,7 +94,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel value="Actif">
+							<h:outputLabel value="#{bundle['application.dataTable.actif']}">
 							</h:outputLabel>
 							<h:selectBooleanCheckbox id="actif"
 								value="#{contactController.contactUpdate.actif}" 
@@ -103,11 +103,11 @@
 							<br />
 
 							<div class="col-md-6" style="margin-bottom: 20px;">
-								<h:commandButton class="btn btn-primary" value="Enregistrer"
+								<h:commandButton class="btn btn-primary" value="#{bundle['application.add.enregistrer']}"
 									action="#{contactController.updateContact()}"></h:commandButton>
 							</div>
 							<div class="col-md-6">
-								<h:link class="btn btn-primary" value="Annuler"
+								<h:link class="btn btn-primary" value="#{bundle['application.add.annuler']}"
 									outcome="listingContact"></h:link>
 							</div>
 							<br />

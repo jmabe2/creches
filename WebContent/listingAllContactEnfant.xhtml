@@ -6,7 +6,7 @@
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 
-	<ui:define name="title">Contacts enfants</ui:define>
+	<ui:define name="title">#{bundle['application.template.ListAllContactEnfants']}</ui:define>
 	<ui:define name="content">
 
 		<h:form id="listContactEnfantForm">
@@ -18,55 +18,55 @@
 				</h:commandLink>-->
 
 			<h3 class="text-center">
-				<h:outputText value="Contacts enfants" />
+				<h:outputText value="#{bundle['application.template.ListAllContactEnfants']}" />
 			</h3>
 
 			<h:dataTable class="table table-striped" id="contact"
 				value="#{contactEnfantController.listContactenfant}" var="list">
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Nom personne de contact" />
+						<h:outputText value="#{bundle['application.dataTable.nomContact']}" />
 					</f:facet>
 					<h:outputText value="#{list.contact.nom}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Prénom personne de contact" />
+						<h:outputText value="#{bundle['application.dataTable.prenomContact']}" />
 					</f:facet>
 					<h:outputText value="#{list.contact.prenom}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Nom enfants" />
+						<h:outputText value="#{bundle['application.dataTable.nomEnfant']}" />
 					</f:facet>
 					<h:outputText value="#{list.enfant.nom}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Prénom enfants" />
+						<h:outputText value="#{bundle['application.dataTable.prenomEnfant']}" />
 					</f:facet>
 					<h:outputText value="#{list.enfant.prenom}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Nature relation" />
+						<h:outputText value="#{bundle['application.dataTable.natureRelation']}" />
 					</f:facet>
 					<h:outputText value="#{list.natureRelation}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Lien de parente" />
+						<h:outputText value="#{bundle['application.dataTable.lienParente']}" />
 					</f:facet>
 					<h:outputText value="#{list.lienParente}" />
 				</h:column>
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Tuteur" />
+						<h:outputText value="#{bundle['application.dataTable.tuteur']} " />
 					</f:facet>
 					<span
 						class="#{list.tuteur? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />

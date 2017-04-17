@@ -6,7 +6,7 @@
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 
-	<ui:define name="title">Presences des enfants</ui:define>
+	<ui:define name="title">#{bundle['application.template.ListEnfantSection']}</ui:define>
 	<ui:define name="content">
 		<h:form>
 			<h:commandLink
@@ -18,27 +18,27 @@
 			</div>
 			<br />
 			<br />
-			<h3 class="text-center">Presences</h3>
+			<h3 class="text-center">#{bundle['application.template.ListEnfantSection']}</h3>
 			<br />
 			<h:dataTable class="table table-striped" id="enfant"
 				value="#{enfantSectionController.listEnfantSection}" var="list">
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Nom de l'enfant" />
+						<h:outputText value="#{bundle['application.dataTable.nomEnfant']}" />
 					</f:facet>
 					<h:outputText value="#{list.enfant.nom}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Type de section" />
+						<h:outputText value="#{bundle['application.dataTable.typeSection']}" />
 					</f:facet>
 					<h:outputText value="#{list.section.nom}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Date d'arrivee" />
+						<h:outputText value="#{bundle['application.dataTable.dateArrivee']}" />
 					</f:facet>
 					<h:outputText value="#{list.date_arrivee}">
 						<f:convertDateTime pattern="dd-MM-yyyy" />
@@ -47,7 +47,7 @@
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Date de depart" />
+						<h:outputText value="#{bundle['application.dataTable.dateDepart']}" />
 					</f:facet>
 					<h:outputText value="#{list.date_depart}">
 						<f:convertDateTime pattern="dd-MM-yyyy" />
@@ -56,14 +56,14 @@
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Remarque(s)" />
+						<h:outputText value="#{bundle['application.dataTable.remarque']}" />
 					</f:facet>
 					<h:outputText value="#{list.remarque}" />
 				</h:column>
 
 				<h:column style="width: 500px">
 					<f:facet name="header">
-						<h:outputText value="Actif" />
+						<h:outputText value="#{bundle['application.dataTable.actif']}" />
 					</f:facet>
 					<span
 						class="#{list.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />

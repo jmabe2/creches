@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Liste des rôles</ui:define>
+	<ui:define name="title">#{bundle['application.template.ListRoles']}</ui:define>
 	<ui:define name="content">
 
 		<div class="container">
@@ -16,10 +16,10 @@
 
 					<h:form id="RoleForm">
 						<h:commandLink value="#{roleController.init()}" />
-						<h3>Modifier un rôle existant</h3>
+						<h3>Update #{bundle['application.template.ListRoles']}</h3>
 						<h:messages style="color:red;margin:5px;" />
 						<h:panelGrid columns="3">
-							<h:outputLabel for="nom" value="Nom" />
+							<h:outputLabel for="nom" value="#{bundle['application.dataTable.nom']}" />
 							<h:inputText id="nom" value="#{roleController.roleUpdate.nom}"
 								required="true" requiredMessage="Entrez un nom"
 								styleClass="form-control">
@@ -28,7 +28,7 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel value="Actif" label="Actif">
+							<h:outputLabel value="#{bundle['application.dataTable.actif']}" label="Actif">
 							</h:outputLabel>
 							<h:selectBooleanCheckbox id="actif"
 								value="#{roleController.roleUpdate.actif}"
@@ -36,11 +36,11 @@
 							<br />
 							<br />
 							<div class="col-md-6" style="margin-bottom: 20px;">
-								<h:commandButton class="btn btn-primary" value="Enregistrer"
+								<h:commandButton class="btn btn-primary" value="#{bundle['application.add.enregistrer']}"
 									action="#{roleController.updateRole()}"></h:commandButton>
 							</div>
 							<div class="col-md-6">
-								<h:link class="btn btn-primary" value="Annuler"
+								<h:link class="btn btn-primary" value="#{bundle['application.add.annuler']}"
 									outcome="listingRole"></h:link>
 							</div>
 							<br />

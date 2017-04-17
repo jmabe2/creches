@@ -7,7 +7,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 
-	<ui:define name="title"> Contacts</ui:define>
+	<ui:define name="title"> #{bundle['application.template.ListContacts']}</ui:define>
 	<ui:define name="content">
 
 		<h:form id="listContactForm">
@@ -21,58 +21,58 @@
 					</h:commandLink>
 
 					<h3 class="text-center">
-						<h:outputText value="Contacts" />
+						<h:outputText value=" #{bundle['application.template.ListContacts']}" />
 						<br />
 					</h3>
 				</f:facet>
 				<h:column style="width: 500px">
 
 					<f:facet name="header">
-						<h:outputText value="Nom" />
+						<h:outputText value="#{bundle['application.dataTable.nom']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.nom}" />
 				</h:column>
 				<h:column>
 
 					<f:facet name="header">
-						<h:outputText value="Prénom" />
+						<h:outputText value="#{bundle['application.dataTable.prenom']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.prenom}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Rue" />
+						<h:outputText value="#{bundle['application.dataTable.rue']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.rue}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="N°" />
+						<h:outputText value="#{bundle['application.dataTable.numero']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.numero}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Code Postal" />
+						<h:outputText value="#{bundle['application.dataTable.cp']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.codePostal}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Localité" />
+						<h:outputText value="#{bundle['application.dataTable.localite']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.localite}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Téléphone" />
+						<h:outputText value="#{bundle['application.dataTable.telephone']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.telephone}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="GSM" />
+						<h:outputText value="#{bundle['application.dataTable.gsm']}" />
 					</f:facet>
 					<h:outputText value="#{listContact.gsm}" />
 				</h:column>
@@ -80,7 +80,6 @@
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>
-					<!-- <h:outputText value="#{listContact.actif ? 'Oui' : 'Non'}" />-->
 					<span
 						class="#{listContact.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
 					<br />

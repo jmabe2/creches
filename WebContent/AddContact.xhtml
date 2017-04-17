@@ -60,6 +60,7 @@
 								value="#{contactController.contact.numero}" required="true"
 								requiredMessage="Entrez un numéro" styleClass="form-control">
 								<h:message id="NumeroValidate" for="ValidateNumero" />
+								</h:inputText>
 							<br />
 							<br />
 							<h:outputLabel id="ValidateCp">#{bundle['application.dataTable.cp']} *</h:outputLabel>
@@ -68,6 +69,7 @@
 								requiredMessage="Entrez un code postal"
 								styleClass="form-control">
 								<h:message id="CpValidate" for="ValidateCp" />
+								</h:inputText>
 							<br />
 							<br />
 							<h:outputLabel id="ValidateLocalite">#{bundle['application.dataTable.localite']} *</h:outputLabel>
@@ -76,7 +78,6 @@
 								styleClass="form-control">
 								<h:message id="LocaliteValidate" for="ValidateLocalite" />
 							</h:inputText>
-
 							<br />
 							<br />
 							<h:outputLabel>#{bundle['application.dataTable.telephone']}</h:outputLabel>
