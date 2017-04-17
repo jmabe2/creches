@@ -80,7 +80,7 @@ public class EnfantService {
 
 	
 	/**
-	 *  Method to list a contact
+	 *  Method to list all enfant
 	 * @return
 	 */
 	public List<Enfant> findAllEnfant (){

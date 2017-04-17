@@ -1,0 +1,84 @@
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+
+	<ui:define name="title">Presences des enfants</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:commandLink
+				value="#{enfantSectionController.loadAllEnfantSection()}" />
+			<div class="col-md-11">
+				<h:commandLink class="btn btn-primary" action="AddEnfantSection">
+					<span class="glyphicon glyphicon-plus"></span>
+				</h:commandLink>
+			</div>
+			<br />
+			<br />
+			<h3 class="text-center">Presences</h3>
+			<br />
+			<h:dataTable class="table table-striped" id="enfant"
+				value="#{enfantSectionController.listEnfantSection}" var="list">
+				<h:column style="width: 500px">
+					<f:facet name="header">
+						<h:outputText value="Nom de l'enfant" />
+					</f:facet>
+					<h:outputText value="#{list.enfant.nom}" />
+				</h:column>
+
+				<h:column style="width: 500px">
+					<f:facet name="header">
+						<h:outputText value="Type de section" />
+					</f:facet>
+					<h:outputText value="#{list.section.nom}" />
+				</h:column>
+
+				<h:column style="width: 500px">
+					<f:facet name="header">
+						<h:outputText value="Date d'arrivee" />
+					</f:facet>
+					<h:outputText value="#{list.date_arrivee}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+				</h:column>
+
+				<h:column style="width: 500px">
+					<f:facet name="header">
+						<h:outputText value="Date de depart" />
+					</f:facet>
+					<h:outputText value="#{list.date_depart}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+				</h:column>
+
+				<h:column style="width: 500px">
+					<f:facet name="header">
+						<h:outputText value="Remarque(s)" />
+					</f:facet>
+					<h:outputText value="#{list.remarque}" />
+				</h:column>
+
+				<h:column style="width: 500px">
+					<f:facet name="header">
+						<h:outputText value="Actif" />
+					</f:facet>
+					<span
+						class="#{list.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
+				</h:column>
+				<h:column>
+					<h:commandLink class="btn btn-primary" id="modifEnfantSection"
+						action="UpdateEnfantSection">
+						<f:setPropertyActionListener
+							target="#{enfantSectionController.updateEnfantSection}"
+							value="#{list}" />
+						<span class="glyphicon glyphicon-pencil"></span>
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

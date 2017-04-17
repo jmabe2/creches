@@ -7,7 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import com.creche.model.Contact;
 import com.creche.services.ContactService;
-
+import com.creche.model.Role;
 
 @Named
 @SessionScoped
@@ -17,7 +17,8 @@ public class ContactController implements Serializable{
 	private List <Contact> listContact;
 	private Contact contact;
 	private Contact contactUpdate;
-   
+	private Role typeRole;
+
 	public ContactController(){
 
 	}
@@ -40,11 +41,11 @@ public class ContactController implements Serializable{
 		clear();
 		return "listingContact";
 	}
-	
+
 	public void clear(){
-	    setContact(null);
+		setContact(null);
 	}
-	
+
 	/*
 	 public void removeContact() {
 		ContactService cService = new ContactService();
@@ -54,6 +55,11 @@ public class ContactController implements Serializable{
 	public void loadContact(){
 		ContactService cService = new ContactService();
 		listContact = cService.findAllContact();
+	}
+
+	public void loadActiveContact(){
+		ContactService cService = new ContactService();
+		listContact = cService.findActiveContact();
 	}
 	
 	public void loadContact(boolean actif){
@@ -76,7 +82,8 @@ public class ContactController implements Serializable{
 	public void setContact(Contact contact) {
 		this.contact = contact;
 	}
-	
+
+
 	public Contact getContactUpdate() {
 		return contactUpdate;
 	}
@@ -84,6 +91,15 @@ public class ContactController implements Serializable{
 	public void setContactUpdate(Contact contactUpdate) {
 		this.contactUpdate = contactUpdate;
 	}
+
+	public Role getTypeRole() {
+		return typeRole;
+	}
+
+	public void setTypeRole(Role typeRole) {
+		this.typeRole = typeRole;
+	}
+
 	
 	
 	

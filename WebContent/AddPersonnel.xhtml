@@ -6,7 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Liste de contact</ui:define>
+	<ui:define name="title"> Liste des membres</ui:define>
 	<ui:define name="content">
 
 		<div class="container">
@@ -16,22 +16,34 @@
 				<div style="margin: auto; text-align: center; padding: 5px;">
 
 					<h:form id="PersonnelForm">
+						<h:commandLink value="#{personnelController.init()}" />
 						<h:commandLink value="#{roleController.loadRole(true)}" />
 						<h3>Créer un nouveau membre</h3>
+						<h:messages style="color:red;margin:5px;" />
 						<h:panelGrid columns="3">
-							<h:outputLabel>Nom </h:outputLabel>
-							<h:inputText id="nom" class="form-control"
-								value="#{personnelController.personnel.nom}"></h:inputText>
+							<h:outputLabel id="ValidateNom">Nom *</h:outputLabel>
+							<h:inputText id="nom"
+								value="#{personnelController.personnel.nom}" required="true"
+								requiredMessage="Entrez un nom" styleClass="form-control">
+								<h:message id="NomValidate" for="ValidateNom" />
+							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Prénom </h:outputLabel>
-							<h:inputText id="prenom" class="form-control"
-								value="#{personnelController.personnel.prenom}"></h:inputText>
+							<h:outputLabel id="ValidatePrenom">Prénom *</h:outputLabel>
+							<h:inputText id="prenom"
+								value="#{personnelController.personnel.prenom}" required="true"
+								requiredMessage="Entrez un prénom" styleClass="form-control">
+								<h:message id="PrenomValidate" for="ValidatePrenom" />
+							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Sexe </h:outputLabel>
-							<h:inputText id="sexe" class="form-control"
-								value="#{personnelController.personnel.sexe}"></h:inputText>
+
+							<h:outputLabel id="ValidateSexe">Sexe *</h:outputLabel>
+							<h:inputText id="sexe"
+								value="#{personnelController.personnel.sexe}" required="true"
+								requiredMessage="Entrez un sexe" styleClass="form-control">
+								<h:message id="SexeValidate" for="ValidateSexe" />
+							</h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Date de naissance </h:outputLabel>
@@ -41,19 +53,26 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Login </h:outputLabel>
-							<h:inputText id="login" class="form-control"
-								value="#{personnelController.personnel.login}"></h:inputText>
+							<h:outputLabel id="ValidateLogin">Login *</h:outputLabel>
+							<h:inputText id="login"
+								value="#{personnelController.personnel.login}" required="true"
+								requiredMessage="Entrez un login" styleClass="form-control">
+								<h:message id="LoginValidate" for="ValidateLogin" />
+							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Mot de passe </h:outputLabel>
-							<h:inputSecret id="mdp" class="form-control"
-								value="#{personnelController.personnel.mdp}"></h:inputSecret>
+							<h:outputLabel id="ValidateMdp">Mot de passe *</h:outputLabel>
+							<h:inputSecret id="mdp"
+								value="#{personnelController.personnel.mdp}" required="true"
+								requiredMessage="Entrez un mot de passe"
+								styleClass="form-control">
+								<h:message id="MdpValidate" for="ValidateMdp" />
+							</h:inputSecret>
 							<br />
 							<h:outputLabel value="Role" />
 							<h:selectOneMenu id="typeRole" class="form-control"
 								value="#{personnelController.personnel.role}"
-								converter="#{typeRoleConverter}">
+								converter="#{typeRoleConverter}" styleClass="form-control">
 								<f:selectItems value="#{roleController.listRole}" var="listRole"
 									itemValue="#{listRole}" itemLabel="#{listRole.nom}" />
 							</h:selectOneMenu>
@@ -61,7 +80,8 @@
 							<br />
 							<h:outputLabel value="Actif" />
 							<h:selectBooleanCheckbox id="actif"
-								value="#{personnelController.personnel.actif}" />
+								value="#{personnelController.personnel.actif}"
+								styleClass="form-control" />
 							<br />
 							<br />
 							<div class="col-md-6" style="margin-bottom: 20px;">
@@ -72,6 +92,8 @@
 								<h:link class="btn btn-primary" value="Annuler"
 									outcome="listingPersonne"></h:link>
 							</div>
+							<br />
+							#{bundle['application.madatory']}
 						</h:panelGrid>
 					</h:form>
 				</div>

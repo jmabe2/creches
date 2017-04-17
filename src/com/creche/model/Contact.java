@@ -18,6 +18,10 @@ import java.lang.Integer;
 			query="SELECT c FROM Contact c  WHERE c.actif = :actif"),
 	@NamedQuery(name="Contact.findContactByID",
 			query="SELECT c FROM Contact c WHERE c.contactID = :contactID"),
+	@NamedQuery(name="Contact.findActiveContact",
+	query="SELECT c FROM Contact c WHERE c.actif = true"),
+	@NamedQuery(name="Contact.findContactByName",
+	query="SELECT c FROM Contact c WHERE c.nom = :nom")
 })
 public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -175,5 +179,6 @@ public class Contact implements Serializable {
 	            ? (getClass().hashCode() + contactID.hashCode())
 	            : super.hashCode();
 	    }
+
 
 }

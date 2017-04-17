@@ -10,14 +10,23 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Section.findAll", query="SELECT s FROM Section s")
+@NamedQueries({
+	@NamedQuery(name="Section.findAll"
+			, query="SELECT s FROM Section s"),
+	@NamedQuery(name="Section.findSectionByID",
+			query="SELECT s FROM Section s WHERE s.sectionID = :sectionID"),
+	@NamedQuery(name="Section.findSectionByName",
+	query="SELECT s FROM Section s WHERE s.nom = :nom"),
+	
+})
+
 public class Section implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int sectionID;
+	private Integer sectionID;
 
-	private byte actif;
+	private boolean actif;
 
 	private String nom;
 
@@ -47,19 +56,19 @@ public class Section implements Serializable {
 	public Section() {
 	}
 
-	public int getSectionID() {
+	public Integer getSectionID() {
 		return this.sectionID;
 	}
 
-	public void setSectionID(int sectionID) {
+	public void setSectionID(Integer sectionID) {
 		this.sectionID = sectionID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 
@@ -130,5 +139,19 @@ public class Section implements Serializable {
 
 		return sectionlocal;
 	}
+	
+	@Override
+    public boolean equals(Object other) {
+        return (other != null && getClass() == other.getClass() && sectionID != null)
+            ? sectionID.equals(((Section) other).sectionID)
+            : (other == this);
+    }
+
+    @Override
+    public int hashCode() {
+        return (sectionID != null) 
+            ? (getClass().hashCode() + sectionID.hashCode())
+            : super.hashCode();
+    }
 
 }

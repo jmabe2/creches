@@ -24,20 +24,17 @@
 								required="true" requiredMessage="Entrez un nom"
 								styleClass="form-control">
 								<f:validateLength minimum="3" maximum="10" />
-								<!--  <f:validateRegex pattern="([_A-Za-z0-9-])" />-->
-								<!--  <f:validateRegex pattern="([_A-Za-z0-9-])" /> -->
-								<!--  <f:validator validatorId="#{validatorRole}"  /> -->
-								<!--  <f:validator binding="#{validatorRole}" /> -->
-								<!-- <f:ajax event="blur" render="Role_message" />  -->
+								<f:validator binding="#{validatorRole}" />
 							</h:inputText>
 							<br />
 							<br />
 							<h:outputLabel value="Actif" label="Actif">
 							</h:outputLabel>
 							<h:selectBooleanCheckbox id="actif"
-								value="#{roleController.roleUpdate.actif}" />
+								value="#{roleController.roleUpdate.actif}"
+								styleClass="form-control" />
 							<br />
-							<br />			
+							<br />
 							<div class="col-md-6" style="margin-bottom: 20px;">
 								<h:commandButton class="btn btn-primary" value="Enregistrer"
 									action="#{roleController.updateRole()}"></h:commandButton>
@@ -46,6 +43,8 @@
 								<h:link class="btn btn-primary" value="Annuler"
 									outcome="listingRole"></h:link>
 							</div>
+							<br />
+							#{bundle['application.madatory']}
 						</h:panelGrid>
 					</h:form>
 				</div>

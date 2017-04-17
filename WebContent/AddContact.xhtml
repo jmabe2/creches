@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Liste de contact</ui:define>
+	<ui:define name="title">#{bundle['application.template.ListContacts']}</ui:define>
 	<ui:define name="content">
 
 		<div class="container">
@@ -16,69 +16,99 @@
 
 					<h:form id="ContactForm">
 						<h:commandLink value="#{contactController.init()}" />
-						<h3>Créer une personne de contact</h3>
+						<h3>#{bundle['application.add.contact']}</h3>
+						<h:messages style="color:red;margin:5px;" />
 						<h:panelGrid columns="3">
-							<h:outputLabel>Nom</h:outputLabel>
-							<h:inputText id="nom" class="form-control" value="#{contactController.contact.nom}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>Prénom</h:outputLabel>
-							<h:inputText id="prenom" class="form-control"
-								value="#{contactController.contact.prenom}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>NISS</h:outputLabel>
-							<h:inputText id="niss" class="form-control" value="#{contactController.contact.niss}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>Rue</h:outputLabel>
-							<h:inputText id="rue" class="form-control" value="#{contactController.contact.rue}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>Numéro</h:outputLabel>
-							<h:inputText id="numero" class="form-control"
-								value="#{contactController.contact.numero}">
+
+							<h:outputLabel for="nom" id="ValidateNom">#{bundle['application.dataTable.nom']} *</h:outputLabel>
+							<h:inputText id="nom" value="#{contactController.contact.nom}"
+								required="true" requiredMessage="Entrez un nom"
+								styleClass="form-control">
+								<f:validateLength minimum="3" maximum="10" />
+								<f:validator binding="#{contactValidator}" />
+								<h:message id="NomValidate" for="ValidateNom" />
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Code postal</h:outputLabel>
-							<h:inputText id="codepostal" class="form-control"
-								value="#{contactController.contact.codePostal}">
+
+							<h:outputLabel id="ValidatePrenom">#{bundle['application.dataTable.prenom']} *</h:outputLabel>
+							<h:inputText id="prenom"
+								value="#{contactController.contact.prenom}" required="true"
+								requiredMessage="Entrez un prénom" styleClass="form-control">
+								<h:message id="PrenomValidate" for="ValidatePrenom" />
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Localité</h:outputLabel>
-							<h:inputText id="localite" class="form-control"
-								value="#{contactController.contact.localite}"></h:inputText>
+							<h:outputLabel id="ValidateNiss">#{bundle['application.dataTable.niss']} *</h:outputLabel>
+							<h:inputText id="niss" value="#{contactController.contact.niss}"
+								required="true" requiredMessage="Entrez un niss"
+								styleClass="form-control">
+								<h:message id="NissValidate" for="ValidateNiss" />
+							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Téléphone</h:outputLabel>
+							<h:outputLabel id="ValidateRue">#{bundle['application.dataTable.rue']} *</h:outputLabel>
+							<h:inputText id="rue" value="#{contactController.contact.rue}"
+								required="true" requiredMessage="Entrez une rue"
+								styleClass="form-control">
+								<h:message id="RueValidate" for="ValidateRue" />
+							</h:inputText>
+							<br />
+							<br />
+							<h:outputLabel id="ValidateNumero">#{bundle['application.dataTable.numero']} *</h:outputLabel>
+							<h:inputText id="numero"
+								value="#{contactController.contact.numero}" required="true"
+								requiredMessage="Entrez un numéro" styleClass="form-control">
+								<h:message id="NumeroValidate" for="ValidateNumero" />
+							<br />
+							<br />
+							<h:outputLabel id="ValidateCp">#{bundle['application.dataTable.cp']} *</h:outputLabel>
+							<h:inputText id="codepostal"
+								value="#{contactController.contact.codePostal}" required="true"
+								requiredMessage="Entrez un code postal"
+								styleClass="form-control">
+								<h:message id="CpValidate" for="ValidateCp" />
+							<br />
+							<br />
+							<h:outputLabel id="ValidateLocalite">#{bundle['application.dataTable.localite']} *</h:outputLabel>
+							<h:inputText id="localite"
+								value="#{contactController.contact.localite}"
+								styleClass="form-control">
+								<h:message id="LocaliteValidate" for="ValidateLocalite" />
+							</h:inputText>
+
+							<br />
+							<br />
+							<h:outputLabel>#{bundle['application.dataTable.telephone']}</h:outputLabel>
 							<h:inputText id="telephone" class="form-control"
 								value="#{contactController.contact.telephone}">
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>GSM</h:outputLabel>
-							<h:inputText id="gsm" class="form-control" value="#{contactController.contact.gsm}">
+							<h:outputLabel id="ValidateGSM">#{bundle['application.dataTable.gsm']} *</h:outputLabel>
+							<h:inputText id="gsm" value="#{contactController.contact.gsm}"
+								required="true" requiredMessage="Entrez un numéro de gsm"
+								styleClass="form-control">
+								<h:message id="GsmValidate" for="ValidateGSM" />
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel value="Actif">
-							</h:outputLabel>
+							<h:outputLabel>#{bundle['application.dataTable.actif']}</h:outputLabel>
 							<h:selectBooleanCheckbox id="actif" class="form-control"
 								value="#{contactController.contact.actif}" />
 							<br />
-							<br />		
-							
+							<br />
 							<div class="col-md-6" style="margin-bottom: 20px;">
-							<h:commandButton class="btn btn-primary" value="Enregistrer"
-								action="#{contactController.fillContact()}"></h:commandButton>
-						</div>
-						<div class="col-md-6">
-							<h:link class="btn btn-primary" value="Annuler"
-								outcome="listingContact"></h:link>
-						</div>
-						</h:panelGrid>
+								<h:commandButton class="btn btn-primary" value="#{bundle['application.add.enregistrer']}"
+									action="#{contactController.fillContact()}"></h:commandButton>
+							</div>
+							<div class="col-md-6">
+								<h:link class="btn btn-primary" value="#{bundle['application.add.annuler']}"
+									outcome="listingContact"></h:link>
+							</div>
+							<br />
+							#{bundle['application.madatory']}
+							</h:panelGrid>
 					</h:form>
 				</div>
 			</div>

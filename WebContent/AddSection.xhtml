@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> Liste des rôles</ui:define>
+	<ui:define name="title"> Liste des sections</ui:define>
 	<ui:define name="content">
 
 		<div class="container">
@@ -14,33 +14,39 @@
 				class="col-sm-6 col-md-4 col-md-offset-4">
 				<div style="margin: auto; text-align: center; padding: 5px;">
 
-					<h:form id="RoleForm">
-						<h:commandLink value="#{roleController.init()}" />
+					<h:form id="SectionForm">
+						<h:commandLink value="#{sectionController.init()}" />
 
-						<h3>Créer un nouveau rôle</h3>
+						<h3>Créer une section </h3>
 						<h:messages style="color:red;margin:5px;" />
+						
 						<h:panelGrid columns="3">
-							<h:outputLabel for="nom" value="Nom" id="role" />
-							<h:inputText id="nom" value="#{roleController.role.nom}"
-								required="true" requiredMessage="Entrez un nom"
+							<h:outputLabel for="nom" value="Nom" id="section" />
+							<h:inputText id="nom" value="#{sectionController.section.nom}"
+								required="true" requiredMessage="Entrez un nom de section"
 								styleClass="form-control">
-								<f:validateLength minimum="3" maximum="10" />
-								<f:validator binding="#{validatorRole}" />
 							</h:inputText>
-							<h:message id="Role_message" for="role" />
+							<br/>
+							<h:outputLabel for="typeSection" value="Type de section" id="typeSections" />
+							<h:inputText id="typeSection" value="#{sectionController.section.typeSection}"
+								required="true" requiredMessage="Entrez un type de section"
+								styleClass="form-control">
+							</h:inputText>
+							
+							<h:message id="Section_message" for="section" />
 							<h:outputLabel value="Actif" label="Actif">
 							</h:outputLabel>
 							<h:selectBooleanCheckbox id="actif"
-								value="#{roleController.role.actif}" styleClass="form-control"/>
+								value="#{sectionController.section.actif}" styleClass="form-control"/>
 							<br />
 							<br />
 							<div class="col-md-6" style="margin-bottom: 20px;">
 								<h:commandButton class="btn btn-primary" value="Enregistrer"
-									action="#{roleController.fillRole()}"></h:commandButton>
+									action="#{sectionController.fillSection()}"></h:commandButton>
 							</div>
 							<div class="col-md-6">
 								<h:link class="btn btn-primary" value="Annuler"
-									outcome="listingRole"></h:link>
+									outcome="listingSection"></h:link>
 							</div>
 							<br />
 							#{bundle['application.madatory']}

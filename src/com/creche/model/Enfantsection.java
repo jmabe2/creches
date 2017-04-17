@@ -10,14 +10,20 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Enfantsection.findAll", query="SELECT e FROM Enfantsection e")
+@NamedQueries ({
+@NamedQuery(name="EnfantSection.findAll", query="SELECT e FROM Enfantsection e"),
+@NamedQuery(name="EnfantSection.findEnfantSectionByEnfantID",
+query="SELECT es FROM Enfantsection es WHERE es.enfant = :enfant"),
+@NamedQuery(name="EnfantSection.findEnfantSectionBySection",
+query="SELECT es FROM Enfantsection es WHERE es.section = :section"),
+})
 public class Enfantsection implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int enfantSectionID;
 
-	private byte actif;
+	private boolean actif;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="`Date arrivee`")
@@ -50,11 +56,11 @@ public class Enfantsection implements Serializable {
 		this.enfantSectionID = enfantSectionID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 

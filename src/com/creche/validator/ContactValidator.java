@@ -10,93 +10,71 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-
-import com.creche.services.RoleService;
+import com.creche.services.ContactService;
 
 
 @ManagedBean
 @SessionScoped
 
-public class ValidatorRole implements Validator  {
-
-
+public class ContactValidator implements Validator{
+	
 	private String name;
 	private Pattern pattern;
 	private Matcher matcher;
+	
+	private static final String CONTACT_PATTERN ="[A-Za-z]";
 
-	private static final String ROLE_PATTERN ="[a-zA-Z]";
-
-	public ValidatorRole(){
-		setPattern(Pattern.compile(ROLE_PATTERN));
+	public ContactValidator(){
+		setPattern(Pattern.compile(CONTACT_PATTERN));
 
 	}
-
+	
 	public void validate(FacesContext context, UIComponent component, Object submittedValue) throws ValidatorException {
 
 		matcher = pattern.matcher(submittedValue.toString());
 
 		String name = (String)submittedValue;
-		
-		if (RoleService.findRoleByName(name) == null) 
+
+		if (ContactService.findContactByName(name) == null) 
 		{
 
 			if (!matcher.matches()){
-				System.out.println(name);	
-				throw new ValidatorException(new FacesMessage("Format not accepted, please use only A-Z-a-z"));
-				
+
+				throw new ValidatorException( new FacesMessage("Format not accepted, please use only A-Z-a-z"));
+
 			}
 			return;
 
 		}
 
 		else {
-			throw new ValidatorException(new FacesMessage("Role already in use, choose another"));
+			throw new ValidatorException(new FacesMessage("Contact already in use, choose another"));
 
 		}
 
+	}
+	
+	public static String getContactPattern() {
+		return CONTACT_PATTERN;
 	}
 
 	public String getName() {
 		return name;
 	}
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public Pattern getPattern() {
 		return pattern;
 	}
-
 	public void setPattern(Pattern pattern) {
 		this.pattern = pattern;
 	}
-
 	public Matcher getMatcher() {
 		return matcher;
 	}
-
 	public void setMatcher(Matcher matcher) {
 		this.matcher = matcher;
 	}
 
-	public static String getRolePattern() {
-		return ROLE_PATTERN;
-	}
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

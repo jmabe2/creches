@@ -17,42 +17,66 @@
 					<h:form id="ContactForm">
 						<h:commandLink value="#{contactController.init()}" />
 						<h3>Modifer une personne de contact</h3>
+						<h:messages style="color:red;margin:5px;" />
 						<h:panelGrid columns="3">
-							<h:outputLabel>Nom</h:outputLabel>
-							<h:inputText id="nom" class="form-control"
-								value="#{contactController.contactUpdate.nom}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>Prénom</h:outputLabel>
-							<h:inputText id="prenom" class="form-control"
-								value="#{contactController.contactUpdate.prenom}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>NISS</h:outputLabel>
-							<h:inputText id="niss" class="form-control"
-								value="#{contactController.contactUpdate.niss}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>Rue</h:outputLabel>
-							<h:inputText id="rue" class="form-control"
-								value="#{contactController.contactUpdate.rue}"></h:inputText>
-							<br />
-							<br />
-							<h:outputLabel>Numéro</h:outputLabel>
-							<h:inputText id="numero" class="form-control"
-								value="#{contactController.contactUpdate.numero}">
+							<h:outputLabel id="ValidateNom">Nom *</h:outputLabel>
+							<h:inputText id="nom"
+								value="#{contactController.contactUpdate.nom}" required="true"
+								requiredMessage="Entrez un nom" styleClass="form-control">
+								<h:message id="NomValidate" for="ValidateNom" />
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Code postal</h:outputLabel>
-							<h:inputText id="codepostal" class="form-control"
-								value="#{contactController.contactUpdate.codePostal}">
+							<h:outputLabel id="ValidatePrenom">Prénom *</h:outputLabel>
+							<h:inputText id="prenom"
+								value="#{contactController.contactUpdate.prenom}"
+								required="true" requiredMessage="Entrez un prénom"
+								styleClass="form-control">
+								<h:message id="PrenomValidate" for="ValidatePrenom" />
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>Localité</h:outputLabel>
-							<h:inputText id="localite" class="form-control"
-								value="#{contactController.contactUpdate.localite}"></h:inputText>
+							<h:outputLabel id="ValidateNiss">NISS</h:outputLabel>
+							<h:inputText id="niss"
+								value="#{contactController.contactUpdate.niss}" required="true"
+								requiredMessage="Entrez un niss" styleClass="form-control">
+								<h:message id="NissValidate" for="ValidateNiss" />
+							</h:inputText>
+							<br />
+							<br />
+							<h:outputLabel id="ValidateRue">Rue *</h:outputLabel>
+							<h:inputText id="rue"
+								value="#{contactController.contactUpdate.rue}" required="true"
+								requiredMessage="Entrez une rue" styleClass="form-control">
+								<h:message id="RueValidate" for="ValidateRue"/>
+							</h:inputText>
+							<br />
+							<br />
+							<h:outputLabel id="ValidateNumero">Numéro</h:outputLabel>
+							<h:inputText id="numero"
+								value="#{contactController.contactUpdate.numero}"
+								required="true" requiredMessage="Entrez un numéro"
+								styleClass="form-control">
+								<h:message id="NumeroValidate" for="ValidateNumero"/>
+							</h:inputText>
+							<br />
+							<br />
+							<h:outputLabel id="ValidateCp">Code postal *</h:outputLabel>
+							<h:inputText id="codepostal"
+								value="#{contactController.contactUpdate.codePostal}"
+								required="true" requiredMessage="Entrez un code postal"
+								styleClass="form-control">
+								<h:message id="CpValidate" for="ValidateCp" />
+
+							</h:inputText>
+							<br />
+							<br />
+							<h:outputLabel id="ValidateLocalite">Localité</h:outputLabel>
+							<h:inputText id="localite"
+								value="#{contactController.contactUpdate.localite}"
+								styleClass="form-control">
+								<h:message id="LocaliteValidate" for="ValidateLocalite" />
+							</h:inputText>
 							<br />
 							<br />
 							<h:outputLabel>Téléphone</h:outputLabel>
@@ -61,19 +85,23 @@
 							</h:inputText>
 							<br />
 							<br />
-							<h:outputLabel>GSM</h:outputLabel>
-							<h:inputText id="gsm" class="form-control"
-								value="#{contactController.contactUpdate.gsm}">
+							<h:outputLabel id="ValidateGSM">GSM</h:outputLabel>
+							<h:inputText id="gsm"
+								value="#{contactController.contactUpdate.gsm}" required="true"
+								requiredMessage="Entrez un numéro de gsm"
+								styleClass="form-control">
+								<h:message id="GsmValidate" for="ValidateGSM" />
 							</h:inputText>
 							<br />
 							<br />
 							<h:outputLabel value="Actif">
 							</h:outputLabel>
-							<h:selectBooleanCheckbox id="actif" class="form-control"
-								value="#{contactController.contactUpdate.actif}" />
+							<h:selectBooleanCheckbox id="actif"
+								value="#{contactController.contactUpdate.actif}" 
+								styleClass="form-control"/>
 							<br />
 							<br />
-							
+
 							<div class="col-md-6" style="margin-bottom: 20px;">
 								<h:commandButton class="btn btn-primary" value="Enregistrer"
 									action="#{contactController.updateContact()}"></h:commandButton>
@@ -82,6 +110,8 @@
 								<h:link class="btn btn-primary" value="Annuler"
 									outcome="listingContact"></h:link>
 							</div>
+							<br />
+							#{bundle['application.madatory']}
 						</h:panelGrid>
 					</h:form>
 				</div>

@@ -21,6 +21,7 @@ public class ContactEnfantController implements Serializable{
 	private Contact contact;
 	private Enfant enfant;
 	private ContactEnfantService contactEnfServ;
+	private Contactenfant updateContactEnfant;
 
 	public ContactEnfantController (){
 
@@ -28,8 +29,8 @@ public class ContactEnfantController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		//contact = new Contact();
-		enfant = new Enfant();
+		//enfant = new Enfant();
+		contactEnfant = new Contactenfant();
 	}
 
 
@@ -43,10 +44,10 @@ public class ContactEnfantController implements Serializable{
 		return "listingContactEnfant";
 	} 
 
-	public String updateContactEnfant(){
+	public String updateContactenfant(){
 		contactEnfServ = new ContactEnfantService();
-		contactEnfServ.updateContactEnfant(contactEnfant);
-		return "listingContactEnfant";
+		contactEnfant=contactEnfServ.updateContactEnfant(updateContactEnfant);
+		return "listingAllContactEnfant";
 	}
 
 
@@ -101,6 +102,14 @@ public class ContactEnfantController implements Serializable{
 
 	public void setEnfant(Enfant enfant) {
 		this.enfant = enfant;
+	}
+
+	public Contactenfant getUpdateContactEnfant() {
+		return updateContactEnfant;
+	}
+
+	public void setUpdateContactEnfant(Contactenfant updateContactEnfant) {
+		this.updateContactEnfant = updateContactEnfant;
 	}
 
 }

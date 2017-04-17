@@ -34,11 +34,8 @@
 					<f:facet name="header">
 						<h:outputText value="Actif" />
 					</f:facet>
-					<!--  <h:outputText value="#{listRole.actif ? 'Oui' : 'Non'}" /> -->
 					<span
 						class="#{listRole.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
-					<!-- <h:graphicImage rendered="#{listRole.actif eq true}" value="pictures/true.png" />
-					<h:graphicImage rendered="#{listRole.actif eq false}" value="pictures/false.png" /> -->
 				</h:column>
 				<h:column>
 					<h:commandLink class="btn btn-primary" id="modiRole"

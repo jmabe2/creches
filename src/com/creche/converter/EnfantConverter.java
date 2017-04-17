@@ -15,7 +15,9 @@ public class EnfantConverter implements Converter{
 	
 			@Override
 			public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
-		        if(submittedValue == null || submittedValue.isEmpty()) {
+
+				if(submittedValue == null || submittedValue.isEmpty()) {
+
 		            return null;
 		        }
 				try {

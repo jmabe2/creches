@@ -30,9 +30,9 @@ public class ContactEnfantService implements Serializable {
 		Contactenfant contactEnfantUpdate = em.find(Contactenfant.class, contactEnfant.getContactEnfantID());
 		em.getTransaction().begin();
 		em.merge(contactEnfant);
-		contactEnfant.getTuteur();
-		contactEnfant.getNatureRelation();
-		contactEnfant.getLienParente();
+		contactEnfantUpdate.getTuteur();
+		contactEnfantUpdate.getNatureRelation();
+		contactEnfantUpdate.getLienParente();
 		em.getTransaction().commit();
 		return contactEnfantUpdate;
 

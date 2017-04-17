@@ -14,17 +14,16 @@
 			<h:commandLink value="#{loginController.admin? contactController.loadContact() : contactController.loadContact(true)}" />
 			<h:dataTable class="table table-striped" id="contactTable"
 				value="#{contactController.listContact}" var="listContact">
+				<f:facet name="header">
+					<h:commandLink class="btn btn-primary" id="AddContact"
+						action="AddContact">
+						<span class="glyphicon glyphicon-plus"></span>
+					</h:commandLink>
 
-				<f:facet name="header">	
-						<h:commandLink class="btn btn-primary" id="AddContact"
-							action="AddContact">
-							<span class="glyphicon glyphicon-plus"></span>
-						</h:commandLink>
-						
-						<h3 class="text-center">
+					<h3 class="text-center">
 						<h:outputText value="Contacts" />
+						<br />
 					</h3>
-						
 				</f:facet>
 				<h:column style="width: 500px">
 
@@ -83,17 +82,17 @@
 					</f:facet>
 					<!-- <h:outputText value="#{listContact.actif ? 'Oui' : 'Non'}" />-->
 					<span
-					class="#{listContact.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
-					<!-- <h:graphicImage rendered="#{listContact.actif eq true}"
-						value="pictures/true.png" />
-					<h:graphicImage rendered="#{listContact.actif eq false}"
-						value="pictures/false.png" />-->
+						class="#{listContact.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
 					<br />
 				</h:column>
+
 				<h:column>
-					<h:commandLink class="btn btn-primary" id="modifContact" action="UpdateContact">
+					<h:commandLink class="btn btn-primary" id="modifContact"
+						action="UpdateContact">
 						<span class="glyphicon glyphicon-pencil"></span>
-						<f:setPropertyActionListener target="#{contactController.contactUpdate}" value="#{listContact}" />
+						<f:setPropertyActionListener
+							target="#{contactController.contactUpdate}"
+							value="#{listContact}" />
 					</h:commandLink>
 				</h:column>
 			</h:dataTable>
