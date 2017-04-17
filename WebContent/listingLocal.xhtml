@@ -53,7 +53,7 @@
 					<h:commandLink class="btn btn-primary" id="editLocalMateriel"
 						action="listingLocalMateriel">
 						<f:setPropertyActionListener
-							target="#{localMaterielController.local}" value="#{listLocal}" />
+							target="#{localMaterielController.setLocal()}" value="#{listLocal}" />
 						<span class="glyphicon glyphicon-list"></span>
 					</h:commandLink>
 				</h:form>
