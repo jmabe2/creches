@@ -29,13 +29,14 @@ public class ContactEnfantController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-		//enfant = new Enfant();
+		enfant = new Enfant();
 		contactEnfant = new Contactenfant();
 	}
 
 
 	public String fillContactEnfant(){
 		contactEnfServ = new ContactEnfantService();
+		contactEnfant.setEnfant(enfant);
 		contactEnfServ.createContactEnfant(contactEnfant);
 		enfant.getContactenfants().add(contactEnfant);
 		contactEnfant = new Contactenfant();

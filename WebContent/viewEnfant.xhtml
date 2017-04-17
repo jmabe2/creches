@@ -21,8 +21,8 @@
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#presences" data-toggle="tab">Présences</a>
 					</li>
-					<li><a href="#contacts" data-toggle="tab">Contacts</a></li>
 					<li><a href="#soins" data-toggle="tab">Soins</a></li>
+					<li><a href="#contacts" data-toggle="tab">Contacts</a></li>
 					<li><a href="#medicaments" data-toggle="tab">Médicaments personels</a>
 					</li>
 				</ul>
@@ -140,6 +140,13 @@
 
 						<h:commandLink
 							value="#{contactEnfantController.loadContactEnfant()}" />
+						<div class="col-md-11">
+							<h:commandLink class="btn btn-primary" action="AddContactEnfant">
+								<span class="glyphicon glyphicon-plus">Ajout contact</span>
+								<f:setPropertyActionListener
+							target="#{contactEnfantController.enfant}" value="#{enfantController.enfant}" />
+							</h:commandLink>
+						</div>
 
 						<br /> <br />
 						<h:dataTable class="table table-striped" id="contact"

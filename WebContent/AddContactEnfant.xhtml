@@ -28,13 +28,12 @@
 								<f:selectItems value="#{contactController.listContact}"
 									var="contact" itemValue="#{contact}" itemLabel="#{contact.nom}" />
 							</h:selectOneMenu>
-							<h:outputLabel>Nom enfant *</h:outputLabel>
-							<h:selectOneMenu id="enfant"
-								value="#{contactEnfantController.contactEnfant.enfant}"
-								converter="#{enfantConverter}" styleClass="form-control">
-								<f:selectItems value="#{enfantController.listEnfant}"
-									var="enfant" itemValue="#{enfant}" itemLabel="#{enfant.nom}" />
-							</h:selectOneMenu>
+							
+						<h:outputLabel class="col-md-3 col-form-label">Enfant</h:outputLabel>
+							<div class="col-md-8">
+								<h:outputFormat value="#{contactEnfantController.enfant.nom} #{contactEnfantController.enfant.prenom}"/>
+							</div>
+				
 
 							<h:outputLabel>Lien de parente *</h:outputLabel>
 							<h:inputText id="lienParente"
