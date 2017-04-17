@@ -8,7 +8,8 @@
 
 	<ui:define name="content">
 		<h3 class="text-center">
-			<h:outputFormat value="#{enfantController.enfant.nom} #{enfantController.enfant.prenom}" />
+			<h:outputFormat
+				value="#{enfantController.enfant.nom} #{enfantController.enfant.prenom}" />
 		</h3>
 		<h:form>
 			<div class="col-md-1">
@@ -21,87 +22,88 @@
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#presences" data-toggle="tab">Présences</a>
 					</li>
-					<li><a href="#soins" data-toggle="tab">Soins</a></li>
 					<li><a href="#contacts" data-toggle="tab">Contacts</a></li>
-					<li><a href="#medicaments" data-toggle="tab">Médicaments personels</a>
-					</li>
+					<li><a href="#soins" data-toggle="tab">Soins</a></li>
+					<li><a href="#medicaments" data-toggle="tab">Médicaments
+							personels</a></li>
 				</ul>
 
 				<div class="tab-content ">
 					<div class="tab-pane active" id="presences">
-						
+
 						<h:form>
-			<h:commandLink
-				value="#{enfantSectionController.loadAllEnfantSection()}" />
-			<h:dataTable class="table table-striped" id="enfant"
-				value="#{enfantSectionController.listEnfantSection}" var="listsection">
-				<h:column style="width: 500px">
-					<f:facet name="header">
-						<h:outputText value="Nom de l'enfant" />
-					</f:facet>
-					<h:outputText value="#{listsection.enfant.nom}" />
-				</h:column>
+							<h:commandLink
+								value="#{enfantSectionController.loadAllEnfantSection()}" />
+							<h:dataTable class="table table-striped" id="enfant"
+								value="#{enfantSectionController.listEnfantSection}"
+								var="listsection">
+								<h:column style="width: 500px">
+									<f:facet name="header">
+										<h:outputText value="Nom de l'enfant" />
+									</f:facet>
+									<h:outputText value="#{listsection.enfant.nom}" />
+								</h:column>
 
-				<h:column style="width: 500px">
-					<f:facet name="header">
-						<h:outputText value="Type de section" />
-					</f:facet>
-					<h:outputText value="#{listsection.section.nom}" />
-				</h:column>
+								<h:column style="width: 500px">
+									<f:facet name="header">
+										<h:outputText value="Type de section" />
+									</f:facet>
+									<h:outputText value="#{listsection.section.nom}" />
+								</h:column>
 
-				<h:column style="width: 500px">
-					<f:facet name="header">
-						<h:outputText value="Date d'arrivee" />
-					</f:facet>
-					<h:outputText value="#{listsection.date_arrivee}">
-						<f:convertDateTime pattern="dd-MM-yyyy" />
-					</h:outputText>
-				</h:column>
+								<h:column style="width: 500px">
+									<f:facet name="header">
+										<h:outputText value="Date d'arrivee" />
+									</f:facet>
+									<h:outputText value="#{listsection.date_arrivee}">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</h:column>
 
-				<h:column style="width: 500px">
-					<f:facet name="header">
-						<h:outputText value="Date de depart" />
-					</f:facet>
-					<h:outputText value="#{listsection.date_depart}">
-						<f:convertDateTime pattern="dd-MM-yyyy" />
-					</h:outputText>
-				</h:column>
+								<h:column style="width: 500px">
+									<f:facet name="header">
+										<h:outputText value="Date de depart" />
+									</f:facet>
+									<h:outputText value="#{listsection.date_depart}">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</h:column>
 
-				<h:column style="width: 500px">
-					<f:facet name="header">
-						<h:outputText value="Remarque(s)" />
-					</f:facet>
-					<h:outputText value="#{listsection.remarque}" />
-				</h:column>
+								<h:column style="width: 500px">
+									<f:facet name="header">
+										<h:outputText value="Remarque(s)" />
+									</f:facet>
+									<h:outputText value="#{listsection.remarque}" />
+								</h:column>
 
-				<h:column style="width: 500px">
-					<f:facet name="header">
-						<h:outputText value="Actif" />
-					</f:facet>
-					<span
-						class="#{listsection.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
-				</h:column>
-				<h:column>
-					<h:commandLink class="btn btn-primary" id="modifEnfantSection"
-						action="UpdateEnfantSection">
-						<f:setPropertyActionListener
-							target="#{enfantSectionController.updateEnfantSection}"
-							value="#{listsection}" />
-						<span class="glyphicon glyphicon-pencil"></span>
-					</h:commandLink>
-				</h:column>
-			</h:dataTable>
-		</h:form>
-						
+								<h:column style="width: 500px">
+									<f:facet name="header">
+										<h:outputText value="Actif" />
+									</f:facet>
+									<span
+										class="#{listsection.actif? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'}" />
+								</h:column>
+								<h:column>
+									<h:commandLink class="btn btn-primary" id="modifEnfantSection"
+										action="UpdateEnfantSection">
+										<f:setPropertyActionListener
+											target="#{enfantSectionController.updateEnfantSection}"
+											value="#{listsection}" />
+										<span class="glyphicon glyphicon-pencil"></span>
+									</h:commandLink>
+								</h:column>
+							</h:dataTable>
+						</h:form>
+
 					</div>
 					<div class="tab-pane" id="soins">
-						<h:commandLink
-							value="#{soinsEnfantController.loadSoinsEnfant()}" />
+						<h:commandLink value="#{soinsEnfantController.loadSoinsEnfant()}" />
 						<div class="col-md-11">
 							<h:commandLink class="btn btn-primary" action="AddSoinsEnfant">
 								<span class="glyphicon glyphicon-plus">Ajout soin</span>
 								<f:setPropertyActionListener
-							target="#{soinsEnfantController.enfant}" value="#{enfantController.enfant}" />
+									target="#{soinsEnfantController.enfant}"
+									value="#{enfantController.enfant}" />
 							</h:commandLink>
 						</div>
 						<h:dataTable class="table table-striped" id="soins"
@@ -116,8 +118,8 @@
 								<f:facet name="header">
 									<h:outputText value="Date" />
 								</f:facet>
-								<h:outputText value="#{listsoins.dateSoins}" >
-								<f:convertDateTime pattern="dd-MM-yyyy" />
+								<h:outputText value="#{listsoins.dateSoins}">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
 								</h:outputText>
 							</h:column>
 							<h:column style="width: 500px">
@@ -133,20 +135,13 @@
 								<h:outputText value="#{listsoins.personnel.nom}" />
 							</h:column>
 						</h:dataTable>
-						
-						
+
+
 					</div>
 					<div class="tab-pane" id="contacts">
 
 						<h:commandLink
 							value="#{contactEnfantController.loadContactEnfant()}" />
-						<div class="col-md-11">
-							<h:commandLink class="btn btn-primary" action="AddContactEnfant">
-								<span class="glyphicon glyphicon-plus">Ajout contact</span>
-								<f:setPropertyActionListener
-							target="#{contactEnfantController.enfant}" value="#{enfantController.enfant}" />
-							</h:commandLink>
-						</div>
 
 						<br /> <br />
 						<h:dataTable class="table table-striped" id="contact"
@@ -189,19 +184,22 @@
 
 					</div>
 					<div class="tab-pane" id="medicaments">
-												<h:commandLink
+						<h:commandLink
 							value="#{enfantMedicamentController.loadEnfantMedicament()}" />
 						<div class="col-md-11">
-							<h:commandLink class="btn btn-primary" action="AddEnfantMedicament">
+							<h:commandLink class="btn btn-primary"
+								action="AddEnfantMedicament">
 								<span class="glyphicon glyphicon-plus">Ajout médicament</span>
 								<f:setPropertyActionListener
-							target="#{enfantMedicamentController.enfant}" value="#{enfantController.enfant}" />
+									target="#{enfantMedicamentController.enfant}"
+									value="#{enfantController.enfant}" />
 							</h:commandLink>
 						</div>
 
 						<br /> <br />
 						<h:dataTable class="table table-striped" id="dtmedicament"
-							value="#{enfantController.enfant.enfantmedicaments}" var="listMedicaments">
+							value="#{enfantController.enfant.enfantmedicaments}"
+							var="listMedicaments">
 							<h:column style="width: 500px">
 								<f:facet name="header">
 									<h:outputText value="Nom" />
@@ -227,20 +225,20 @@
 								<f:facet name="header">
 									<h:outputText value="Date début" />
 								</f:facet>
-								<h:outputText value="#{listMedicaments.dateDebut}" >
-								<f:convertDateTime pattern="dd-MM-yyyy" />
+								<h:outputText value="#{listMedicaments.dateDebut}">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
 								</h:outputText>
 							</h:column>
-							
+
 							<h:column style="width: 500px">
 								<f:facet name="header">
 									<h:outputText value="Date fin" />
 								</f:facet>
-								<h:outputText value="#{listMedicaments.dateFin}" >
-								<f:convertDateTime pattern="dd-MM-yyyy" />
+								<h:outputText value="#{listMedicaments.dateFin}">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
 								</h:outputText>
 							</h:column>
-							
+
 						</h:dataTable>
 					</div>
 				</div>
