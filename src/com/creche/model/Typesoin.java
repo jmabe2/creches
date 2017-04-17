@@ -11,14 +11,17 @@ import java.util.List;
  */
 @Entity
 @Table(name="typesoins")
-@NamedQuery(name="Typesoin.findAll", query="SELECT t FROM Typesoin t")
+@NamedQueries({
+@NamedQuery(name="Typesoin.findTypeSoinByID",
+query="SELECT t FROM Typesoin t WHERE t.typeSoinsID = :TypeSoinID"),
+@NamedQuery(name="Typesoin.findAll", query="SELECT t FROM Typesoin t")})
 public class Typesoin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int typeSoinsID;
 
-	private byte actif;
+	private boolean actif;
 
 	private String description;
 
@@ -41,11 +44,11 @@ public class Typesoin implements Serializable {
 		this.typeSoinsID = typeSoinsID;
 	}
 
-	public byte getActif() {
+	public boolean getActif() {
 		return this.actif;
 	}
 
-	public void setActif(byte actif) {
+	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 

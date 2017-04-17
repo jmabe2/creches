@@ -5,43 +5,38 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:define name="title"> #{bundle['application.template.ListSoins']}</ui:define>
+	<ui:define name="title"> #{bundle['application.template.ListTypeSoins']}</ui:define>
 	<ui:define name="content">
 
 		<h:form>
-			<h:commandLink value="#{soinController.init()}" />
-			<h:commandLink class="btn btn-primary" action="AddSoin">
+			<h:commandLink value="#{typeSoinController.init()}" />
+			<h:commandLink class="btn btn-primary" action="AddTypeSoin">
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:commandLink>
 		</h:form>
 
-		<h:dataTable class="table table-striped" id="tblsoin"
-			value="#{soinController.listSoin}" var="listSoin">
+		<h:dataTable class="table table-striped" id="tbltypesoin"
+			value="#{typeSoinController.listTypeSoin}" var="listTypeSoin">
 			<h:column style="width: 500px">
 				<f:facet name="header">
 					<h:outputText value="#{bundle['application.dataTable.nom']}" />
 				</f:facet>
-				<h:outputText value="#{listSoin.nom}" />
+				<h:outputText value="#{listTypeSoin.nom}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="#{bundle['application.dataTable.type']}" />
+					<h:outputText value="#{bundle['application.dataTable.description']}" />
 				</f:facet>
-				<h:outputText value="#{listSoin.typesoin.nom}" />
+				<h:outputText value="#{listTypeSoin.description}" />
 			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#{bundle['application.dataTable.local']}" />
-				</f:facet>
-				<h:outputText value="#{listSoin.local.nom}" />
-			</h:column>
+			
 			<h:column>
 				<f:facet name="header" />
 				<h:form>
-					<h:commandLink class="btn btn-primary" id="modifSoin"
-						action="UpdateSoin">
-						<f:setPropertyActionListener target="#{soinController.soin}"
-							value="#{listSoin}" />
+					<h:commandLink class="btn btn-primary" id="modifTypeSoin"
+						action="UpdateTypeSoin">
+						<f:setPropertyActionListener target="#{typeSoinController.typeSoin}"
+							value="#{listTypeSoin}" />
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
 				</h:form>

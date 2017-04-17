@@ -6,6 +6,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.log4j.Logger;
 import com.creche.model.Typesoin;
+import com.creche.services.LocalService;
 import com.creche.services.TypeSoinService;
 
 @Named
@@ -24,15 +25,19 @@ public class TypeSoinController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-
+		TypeSoinService tsService = new TypeSoinService();
+		listTypeSoin = tsService.findAllTypeSoin();
 		typeSoin = new Typesoin();
 	}
 
 
 	public String fillTypeSoin(){
+		log.debug("-------------------------------------");
+		log.debug("ok");
+		log.debug("-------------------------------------");
 		typeSoinServ = new TypeSoinService();
 		typeSoinServ.createTypeSoin(typeSoin);
-			
+
 		return "listingTypeSoin";
 	} 
 
