@@ -11,7 +11,7 @@
 	<ui:define name="content">
 
 		<h:form id="listContactForm">
-			<h:commandLink value="#{contactController.loadContact()}" />
+			<h:commandLink value="#{loginController.admin? contactController.loadContact() : contactController.loadContact(true)}" />
 			<h:dataTable class="table table-striped" id="contactTable"
 				value="#{contactController.listContact}" var="listContact">
 

@@ -55,6 +55,11 @@ public class ContactController implements Serializable{
 		ContactService cService = new ContactService();
 		listContact = cService.findAllContact();
 	}
+	
+	public void loadContact(boolean actif){
+		ContactService cService = new ContactService();
+		listContact = cService.findAllContact(actif);
+	}
 
 	public List<Contact> getListContact() {
 		return listContact;

@@ -46,6 +46,11 @@ public class RoleController implements Serializable{
 		listRole = rService.findAllRules();
 	}
 	
+	public void loadRole(boolean actif){
+		RoleService rService = new RoleService();
+		listRole = rService.findAllRules(actif);
+	}
+	
 
 	public void clear(){
 		setRole(null);

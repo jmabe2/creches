@@ -103,6 +103,15 @@ public class RoleService implements Serializable{
 	        return null;
 	      }
 	}
+	
+	public List<Role> findAllRules (boolean actif){
+	    try {
+	        TypedQuery<Role> query = em.createNamedQuery("Role.findAllActive", Role.class).setParameter("actif", actif);
+	        return query.getResultList();
+	      } catch (NoResultException e) {
+	        return null;
+	      }
+	}
 
 	public boolean findRole(String roleName) {
 		// TODO Auto-generated method stub
