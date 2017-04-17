@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import com.creche.model.Soin;
 import com.creche.services.EnfantMedicamentService;
 import com.creche.services.SoinService;
+import com.creche.services.TypeSoinService;
 
 @Named
 @SessionScoped
@@ -25,10 +26,15 @@ public class SoinController implements Serializable{
 	
 	@PostConstruct
 	public void init(){
-
+		SoinService sService = new SoinService();
+		listSoin = sService.findAllSoin();
 		soin = new Soin();
 	}
 
+	public void test(){
+		log.debug("---------------");
+		log.debug(soin.getMedicamentsoins());
+	}
 
 	public String fillSoin(){
 		soinServ = new SoinService();

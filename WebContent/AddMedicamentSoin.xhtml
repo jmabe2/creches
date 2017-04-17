@@ -1,0 +1,126 @@
+<ui:composition template="/WEB-INF/templates/simple.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title">Attribuer un médicament a un soin</ui:define>
+	<ui:define name="content">
+
+
+		<div class="container">
+			<div
+				style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12); margin-top: 20px;"
+				class="col-md-6 col-md-offset-3">
+				<div style="margin: auto; text-align: center; padding: 5px;">
+
+					<h:form id="medicamentSoinForm">
+						<h:commandLink value="#{medicamentSoinController.init()}" />
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Soin</h:outputLabel>
+							<div class="col-md-8">
+								<h:outputFormat value="#{medicamentSoinController.soin.nom}" />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Médicament</h:outputLabel>
+							<h:inputHidden id="medicamentId"
+								value="#{medicamentSoinController.medicamentSoin.medicament}"
+								converter="#{medicamentConverter}" />
+							<div class="col-md-9">
+								<div class="col-md-8">
+									<h:outputText id="medicamentName"
+										value="#{medicamentSoinController.medicamentSoin.medicament.nom}" />
+								</div>
+								<div class="col-md-2">
+									<h:commandLink action="#" styleClass="btn btn-primary"
+										onclick="$('#selectMedicamentModal').modal('show');"
+										immediate="true">
+										<span class="glyphicon glyphicon-pencil" />
+										<f:ajax execute="@this" render=":selectMedicamentForm" />
+									</h:commandLink>
+								</div>
+							</div>
+
+						</div>
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Posologie</h:outputLabel>
+							<div class="col-md-4">
+								<h:inputText id="posologie" size="45"
+									value="#{medicamentSoinController.medicamentSoin.posologie}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<h:outputLabel class="col-md-3 col-form-label">Remarque</h:outputLabel>
+							<div class="col-md-4">
+								<h:inputText id="remarque" size="45"
+									value="#{medicamentSoinController.medicamentSoin.remarque}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="col-md-6" style="margin-bottom: 20px;">
+							<h:commandButton class="btn btn-primary" value="Enregistrer"
+								action="#{medicamentSoinController.fillMedicamentSoin()}"></h:commandButton>
+						</div>
+						<div class="col-md-6">
+							<h:link class="btn btn-primary" value="Annuler"
+								outcome="viewSoin"></h:link>
+						</div>
+					</h:form>
+					<div class="modal fade" id="selectMedicamentModal" tabindex="-1"
+						role="dialog" aria-labelledby="myModal" aria-hidden="true"
+						data-keyboard="false" data-backdrop="static">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<h:form id="selectMedicamentForm">
+									<div class="modal-header">
+										<h4 class="modal-title">Medicaments</h4>
+
+									</div>
+									<div class="modal-body">
+										<h:inputText autocomplete="off"
+											value="#{medicamentController.nameSearch}" id="nameSearch">
+											<f:passThroughAttribute name="placeHolder" value="Search ..." />
+											<f:ajax event="keyup"
+												listener="#{medicamentController.searchMedicament()}"
+												execute="@this" render="medicamentTable" />
+										</h:inputText>
+										<div style="height: 300px; overflow: auto;">
+											<h:dataTable class="table table-striped" id="medicamentTable"
+												value="#{medicamentController.listMedicament}"
+												var="listMedicament">
+
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Nom" />
+													</f:facet>
+													<h:outputText value="#{listMedicament.nom}" />
+												</h:column>
+												<h:column>
+													<h:commandLink styleClass="btn btn-primary"
+														onclick="document.getElementById('medicamentSoinForm:medicamentId').value = '#{listMedicament.medicamentID}';document.getElementById('medicamentSoinForm:medicamentName').innerHTML = '#{listMedicament.nom}';$('#selectMedicamentModal').modal('hide');"
+														immediate="true">
+														<span>Select</span>
+														<f:ajax execute="@this" render=":selectMedicamentForm" />
+													</h:commandLink>
+												</h:column>
+											</h:dataTable>
+										</div>
+										<h:panelGroup layout="block" styleClass="modal-footer">
+											<h:commandLink value="Close" immediate="true"
+												styleClass="btn btn-default"
+												onclick="$('#selectMedicamentModal').modal('hide');" />
+										</h:panelGroup>
+									</div>
+								</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

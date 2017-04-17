@@ -44,6 +44,7 @@ public class TypeSoinService implements Serializable {
 
 	public Typesoin findTypeSoinByID (Integer TypeSoinID){
 		try {
+			log.debug(TypeSoinID);
 			return (Typesoin) em.createNamedQuery("Typesoin.findTypeSoinByID").setParameter("TypeSoinID", TypeSoinID).getSingleResult();
 		} catch (NoResultException e) {
 			return null;

@@ -33,7 +33,7 @@
 				<f:facet name="header">
 					<h:outputText value="#{bundle['application.dataTable.local']}" />
 				</f:facet>
-				<h:outputText value="#{listSoin.local.nom}" />
+				<h:outputText value="#{listSoin.local.section}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header" />
@@ -44,6 +44,14 @@
 							value="#{listSoin}" />
 						<span class="glyphicon glyphicon-pencil"></span>
 					</h:commandLink>
+									<h:column>
+						<h:commandLink class="btn btn-primary" id="viewSoin"
+							action="viewSoin">							
+							<span class="glyphicon glyphicon-eye-open"></span>
+							<f:setPropertyActionListener
+							target="#{soinController.soin}" value="#{listSoin}" />
+						</h:commandLink>
+				</h:column>
 				</h:form>
 			</h:column>
 		</h:dataTable>

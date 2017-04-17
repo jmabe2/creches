@@ -11,7 +11,13 @@ import java.util.Date;
  */
 @Entity
 @Table(name="medicamentsoins")
-@NamedQuery(name="Medicamentsoin.findAll", query="SELECT m FROM Medicamentsoin m")
+
+@NamedQueries ({
+@NamedQuery(name="Medicamentsoin.findAll", query="SELECT m FROM Medicamentsoin m"),
+@NamedQuery(name="Medicamentsoin.findMedicamentSoinBySoinID", query="SELECT ms FROM Medicamentsoin ms WHERE ms.soin = :soin"),
+})
+
+
 public class Medicamentsoin implements Serializable {
 	private static final long serialVersionUID = 1L;
 

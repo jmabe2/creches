@@ -19,7 +19,7 @@ public class Typesoin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int typeSoinsID;
+	private Integer typeSoinsID;
 
 	private boolean actif;
 
@@ -36,11 +36,11 @@ public class Typesoin implements Serializable {
 	public Typesoin() {
 	}
 
-	public int getTypeSoinsID() {
+	public Integer getTypeSoinsID() {
 		return this.typeSoinsID;
 	}
 
-	public void setTypeSoinsID(int typeSoinsID) {
+	public void setTypeSoinsID(Integer typeSoinsID) {
 		this.typeSoinsID = typeSoinsID;
 	}
 
@@ -97,5 +97,20 @@ public class Typesoin implements Serializable {
 
 		return soin;
 	}
+	
+	 @Override
+	    public boolean equals(Object other) {
+	        return (other != null && getClass() == other.getClass() && typeSoinsID != null)
+	            ? typeSoinsID.equals(((Typesoin) other).typeSoinsID)
+	            : (other == this);
+	    }
+
+	    @Override
+	    public int hashCode() {
+	        return (typeSoinsID != null) 
+	            ? (getClass().hashCode() + typeSoinsID.hashCode())
+	            : super.hashCode();
+	    }
+
 
 }

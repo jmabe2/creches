@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 import com.creche.model.Soin;
+import com.creche.model.Typesoin;
 import com.creche.connection.EMF;
 
 public class SoinService implements Serializable {
@@ -44,7 +45,14 @@ public class SoinService implements Serializable {
 
 	}
 
-
+	public  List<Soin> findAllSoin (){
+		try {
+			TypedQuery<Soin> query = em.createNamedQuery("Soin.findAll", Soin.class);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 
 	
 }
